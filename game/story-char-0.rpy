@@ -20,14 +20,17 @@ label story_char_0_true:
     menu:
         "你看见了一些小孩（xxs）。是否攻击？"
         "是":
+            $ _history_list.pop()
             scene black with dissolve
             show screen battle_status("会飞的猪 击败了 xxs\n剩余 2 击败 1") with dissolve
             "你抓住了 xxs 并淘汰了他。"
             menu:
                 "是否对 知道的93 攻击并释放技能？"
                 "是":
+                    $ _history_list.pop()
                     pass
                 "使用技能 眩晕 并击败他":
+                    $ _history_list.pop()
                     stop music
                     play sound dizzy
                     pause 1.0
@@ -44,12 +47,13 @@ label story_char_0_true:
                     $ quick_menu = True
                     jump endgame
         "撤退":
+            $ _history_list.pop()
+            window hide dissolve
             scene black with dissolve
+            $ quick_menu = False
             stop music
             play sound run
             pause 1.0
-            $ quick_menu = False
-            window hide dissolve
             scene dead with dissolve
             play sound gameover
             show screen reload_prompt("你最后被陷害了。你死了！")

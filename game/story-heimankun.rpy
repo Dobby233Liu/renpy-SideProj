@@ -1,5 +1,5 @@
 label story_heimankun:
-    "技能了解：{w=1.0}{nw}"
+    "技能：{w=1.0}{nw}"
     $ _history_list.pop()
     show screen spell_showcase("heiman_spell_coming2urhome") with dissolve
     "很快就到你家门口：所有小孩全部眩晕 10 秒。"
@@ -23,6 +23,7 @@ label heimankun_start:
     menu:
         "你看见了一个拿着平底锅的小孩。你准备做点什么？"
         "跑！":
+            $ _history_list.pop()
             $ quick_menu = False
             window hide dissolve
             stop music
@@ -39,6 +40,7 @@ label heimankun_start:
             $ quick_menu = True
             jump endgame
         "干就完了":
+            $ _history_list.pop()
             pass
     show screen spell_showcase("decomap") with dissolve
     "你看见了一张地图。你要去哪里呢？{w=2.0}{nw}"
@@ -47,8 +49,10 @@ label heimankun_start:
     menu:
         "你看见了一张地图。你要去哪里呢？"
         "厨房":
+            $ _history_list.pop()
             pass
         "卧室":
+            $ _history_list.pop()
             $ quick_menu = False
             window hide dissolve
             stop music
@@ -71,6 +75,7 @@ label heimankun_start:
     menu:
         "要吃它吗？"
         "是":
+            $ _history_list.pop()
             $ quick_menu = False
             window hide dissolve
             stop music
@@ -85,6 +90,7 @@ label heimankun_start:
             $ quick_menu = True
             jump endgame
         "否":
+            $ _history_list.pop()
             pass
     $ quick_menu = False
     window hide dissolve

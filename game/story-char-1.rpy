@@ -15,6 +15,7 @@ label story_char_1:
     menu:
         "接下来要修哪台机子？"
         "第一个":
+            $ _history_list.pop()
             pause 1.0
             hide car_fixing with dissolve
             "已经修好了一台机子，还剩 2 台。"
@@ -58,11 +59,16 @@ label story_char_1:
             stop sound
             $ quick_menu = True
             jump endgame
+
+    show car_fixing with dissolve
+    pause 1.0
+    hide car_fixing with dissolve
     "已经修好了第二台机子，并解决了乌鸦，还剩 1 台。"
     label story_char_1_contiune:
         menu:
             "现在可以进入洞穴里了。要去那里避难吗？"
             "再修一台":
+                $ _history_list.pop()
                 $ quick_menu = False
                 window hide dissolve
                 stop music
@@ -74,6 +80,7 @@ label story_char_1:
                 $ quick_menu = True
                 jump endgame
             "去洞穴":
+                $ _history_list.pop()
                 $ quick_menu = False
                 window hide dissolve
                 stop music
@@ -84,9 +91,11 @@ label story_char_1:
                 stop sound
                 $ quick_menu = True
             "请给我提示！":
+                $ _history_list.pop()
                 show screen notify("洞穴wx")
                 jump story_char_1_contiune
             "死掉":
+                $ _history_list.pop()
                 $ quick_menu = False
                 window hide dissolve
                 stop music
