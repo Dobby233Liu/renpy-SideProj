@@ -32,10 +32,6 @@ label search:
     jump expression jump_to_label
     jump endgame
 
-label todo:
-    "TODO"
-    jump endgame
-
 # see story-char-0.rpy
 
 # see story-char-1.rpy

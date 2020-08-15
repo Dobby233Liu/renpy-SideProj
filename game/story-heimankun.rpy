@@ -6,10 +6,10 @@ label story_heimankun:
     hide screen spell_showcase with dissolve
     show screen spell_showcase("spell_heilafu") with dissolve
     "我是黑拉夫：附近倒地者死亡时间减少 10 秒（有概率直接秒死）。"
-    window hide dissolve
     hide screen spell_showcase with dissolve
 label heimankun_start:
     $ quick_menu = False
+    window hide dissolve
     show screen race_prepare("黑曼君", "小孩") with dissolve
     pause
     hide screen race_prepare with dissolve
@@ -23,8 +23,8 @@ label heimankun_start:
     menu:
         "你看见了一个拿着平底锅的小孩。你准备做点什么？"
         "跑！":
-            window hide dissolve
             $ quick_menu = False
+            window hide dissolve
             stop music
             scene black with dissolve
             play sound run
@@ -49,8 +49,8 @@ label heimankun_start:
         "厨房":
             pass
         "卧室":
-            window hide dissolve
             $ quick_menu = False
+            window hide dissolve
             stop music
             scene black with dissolve
             play sound run
@@ -71,8 +71,8 @@ label heimankun_start:
     menu:
         "要吃它吗？"
         "是":
-            window hide dissolve
             $ quick_menu = False
+            window hide dissolve
             stop music
             scene black with dissolve
             play sound chomp
@@ -86,8 +86,8 @@ label heimankun_start:
             jump endgame
         "否":
             pass
-    window hide dissolve
     $ quick_menu = False
+    window hide dissolve
     stop music
     scene win with dissolve
     play sound win

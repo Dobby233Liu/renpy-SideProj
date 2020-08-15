@@ -212,9 +212,9 @@ define gui.choice_button_text_insensitive_color = "#444444"
 ## 存档位按钮。
 define gui.slot_button_width = 1
 define gui.slot_button_height = 1
-define gui.slot_button_borders = Borders(10, 10, 10, 10)
+define gui.slot_button_borders = Borders(1,1,1,1)
 define gui.slot_button_text_size = 1
-define gui.slot_button_text_xalign = 0.5
+define gui.slot_button_text_xalign = 0
 define gui.slot_button_text_idle_color = gui.idle_small_color
 define gui.slot_button_text_selected_idle_color = gui.selected_color
 define gui.slot_button_text_selected_hover_color = gui.hover_color
@@ -224,8 +224,8 @@ define config.thumbnail_width = 1
 define config.thumbnail_height = 1
 
 ## The number of columns and rows in the grid of save slots.
-define gui.file_slot_cols = 3
-define gui.file_slot_rows = 2
+define gui.file_slot_cols = 1
+define gui.file_slot_rows = 1
 
 
 ## Positioning and Spacing #####################################################

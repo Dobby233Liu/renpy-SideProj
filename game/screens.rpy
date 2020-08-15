@@ -269,7 +269,6 @@ style quick_button:
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
 
-
 ################################################################################
 ## 标题和游戏菜单屏幕
 ################################################################################
@@ -295,8 +294,6 @@ screen navigation():
         else:
 
             textbutton _("历史") action ShowMenu("history")
-
-            textbutton _("保存") action ShowMenu("save")
 
         textbutton _("设置") action ShowMenu("preferences")
 
@@ -857,10 +854,6 @@ screen keyboard_help():
         text _("导航界面。")
 
     hbox:
-        label _("Esc")
-        text _("访问游戏菜单。")
-
-    hbox:
         label _("Page Up")
         text _("回退至先前的对话。")
 
@@ -1361,6 +1354,14 @@ screen reload_prompt(my_text):
 
         text my_text size 36
 
+screen battle_status(my_text):
+
+    hbox:
+        xalign 0.5
+        yalign 0
+
+        text my_text size 24
+
 screen race_prepare(positive, negative):
 
     hbox:
@@ -1384,3 +1385,7 @@ screen race_prepare(positive, negative):
 screen spell_showcase(spell_sprite):
 
     add spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
+
+screen spell_showcase_small(spell_sprite, scale_factor=0.5):
+    $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor, scale_factor, False)
+    add scaled_spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
