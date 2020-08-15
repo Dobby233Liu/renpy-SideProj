@@ -1354,6 +1354,27 @@ screen fake_search(my_text):
 
         text my_text at delayed_blink(0.25, 0.25) style "fake_search_text_big"
 
+
+screen race_prepare(positive, negative):
+
+    hbox:
+        xalign 0.25
+        yalign 0.5
+
+        text positive size 24
+
+    hbox:
+        xalign 0.5
+        yalign 0.5
+
+        text "VS" size 36
+
+    hbox:
+        xalign 0.75
+        yalign 0.5
+
+        text negative size 24
+
 screen spell_showcase(spell_sprite):
 
     add spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0.25, 0.25)

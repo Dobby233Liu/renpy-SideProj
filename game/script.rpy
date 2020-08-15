@@ -1,6 +1,6 @@
 ﻿# 游戏在此开始。
 
-define player_character = 0 # 0: heiman, 1: fulafu, 2: children
+define player_character = 0 # 0: fulafu, 1: child
 
 label start:
     scene black
@@ -12,12 +12,11 @@ label start:
             menu:
                 "请选择角色。"
                 "黑曼君":
-                    $ player_character = 0
                     jump story_heimankun
                 "伏拉夫":
-                    $ player_character = 1
+                    $ player_character = 0
         "逃离":
-            $ player_character = 2
+            $ player_character = 1
             "已自动选择小孩。"
     
 label search:
@@ -34,12 +33,15 @@ label story_heimankun:
     hide screen spell_showcase with dissolve
     show screen spell_showcase("spell_heilafu") with dissolve
     "我是黑拉夫：附近倒地者死亡时间减少 10 秒（有概率直接秒死）。"
+    window hide dissolve
     hide screen spell_showcase with dissolve
-    menu:
-        "开始游戏":
-            pass
-        "退出":
-            jump endgame
+label heimankun_start:
+    $ quick_menu = False
+    show screen race_prepare("黑曼君", "小孩") with dissolve
+    pause
+    hide screen race_prepare with dissolve
+    $ quick_menu = True
+    window show dissolve
     "TODO"
 
 label endgame:
