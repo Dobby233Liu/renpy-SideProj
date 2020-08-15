@@ -60,7 +60,7 @@ define config.sample_voice = audio.haoci
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
 
-define audio.china2 = "<loop 96 to 199.96>audio/china2.mp3"
+define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
 define config.main_menu_music = audio.china2
 
 

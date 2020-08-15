@@ -1343,8 +1343,7 @@ style slider_pref_slider:
     variant "small"
     xsize 600
 
-style fake_search_text_big is text:
-    size 36
+# ~~~
 
 screen fake_search(my_text):
 
@@ -1352,8 +1351,15 @@ screen fake_search(my_text):
         xalign 0.5
         yalign 0.5
 
-        text my_text at delayed_blink(0.25, 0.25) style "fake_search_text_big"
+        text my_text at delayed_blink(0, 0.25) size 36
 
+screen reload_prompt(my_text):
+
+    hbox:
+        xalign 0.5
+        yalign 0.5
+
+        text my_text size 36
 
 screen race_prepare(positive, negative):
 
@@ -1377,4 +1383,4 @@ screen race_prepare(positive, negative):
 
 screen spell_showcase(spell_sprite):
 
-    add spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0.25, 0.25)
+    add spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
