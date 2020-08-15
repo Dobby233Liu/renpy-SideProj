@@ -1395,5 +1395,5 @@ screen spell_showcase(spell_sprite):
     add spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
 
 screen spell_showcase_small(spell_sprite, scale_factor=0.5):
-    $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor, scale_factor, False)
+    $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor)
     add scaled_spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
