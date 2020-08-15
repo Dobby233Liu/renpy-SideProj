@@ -30,6 +30,18 @@ define gui.about = _p("""1.0更新：初始版本。
 
 游戏规则：你可以扮演小孩（修机子，获得胜利），也可以扮演伏拉夫（抓小孩）。
 
+音频来源：
+
+china2：Sand - China-2
+
+win：张秀华 - 我爱中国
+
+chomp、pong：植物大战僵尸/main.pak/sounds/bigchomp.ogg、植物大战僵尸/main.pak/sounds/shieldhit.ogg
+
+haoci：伏拉夫的抖音视频（《火锅包子》）
+
+dizzy、dizzypt2、run：自制
+
 游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由某个神必人制作。
 
 请不要倒卖本游戏。
@@ -48,7 +60,7 @@ define build.name = "EscapeFromFulafu"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## 允许用户在音效或语音轨道上播放测试音频文件，将以下语句取消注释并设置样音就可
@@ -60,7 +72,7 @@ define config.sample_voice = audio.haoci
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
 
-define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
+define audio.china2 = "<loop 96.02 to 199.96>audio/china2.mp3"
 define config.main_menu_music = audio.china2
 
 

@@ -1362,6 +1362,14 @@ screen battle_status(my_text):
 
         text my_text size 24
 
+screen chat(my_text):
+
+    hbox:
+        xalign 0
+        yalign 0.75
+
+        text my_text size 24
+
 screen race_prepare(positive, negative):
 
     hbox:
