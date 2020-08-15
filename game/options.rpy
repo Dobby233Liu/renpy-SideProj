@@ -32,19 +32,16 @@ define gui.about = _p("""1.0更新：初始版本。
 
 音频来源：
 
-china2：Sand - China-2
-
-win：张秀华 - 我爱中国
-
-chomp、pong：植物大战僵尸/main.pak/sounds/bigchomp.ogg、植物大战僵尸/main.pak/sounds/shieldhit.ogg
-
-haoci：伏拉夫的抖音视频（《火锅包子》）
-
+china2：Sand - China-2\n
+win：张秀华 - 我爱中国\n
+gameover：Jun Senoue - Game Over（来自 Sonic 3D Blast）\n
+chomp、pong：植物大战僵尸/main.pak/sounds/bigchomp.ogg、植物大战僵尸/main.pak/sounds/shieldhit.ogg\n
+haoci：伏拉夫的抖音视频（《火锅包子》）\n
 dizzy、dizzypt2、run：自制
 
 游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由某个神必人制作。
 
-请不要倒卖本游戏。
+本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，请不要倒卖本游戏。
 """)
 
 
@@ -72,7 +69,7 @@ define config.sample_voice = audio.haoci
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
 
-define audio.china2 = "<loop 96.02 to 199.96>audio/china2.mp3"
+define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
 define config.main_menu_music = audio.china2
 
 
