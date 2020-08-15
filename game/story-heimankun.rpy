@@ -69,7 +69,7 @@ label heimankun_start:
             $ quick_menu = True
             jump endgame
     scene kitchen with dissolve
-    show screen spell_showcase("wowotou") with dissolve
+    show screen spell_showcase_small("wowotou", 1.5) with dissolve
     "你找到了一个窝窝头。它可能会提升你的移动速度。"
     hide screen spell_showcase with dissolve
     menu:

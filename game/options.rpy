@@ -39,6 +39,9 @@ chomp、pong：植物大战僵尸/main.pak/sounds/bigchomp.ogg、植物大战僵
 haoci：伏拉夫的抖音视频（《火锅包子》）\n
 dizzy、dizzypt2、run：自制
 
+技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度百科{/a}。
+技能“我是黑拉夫”的贴图 P 图自 {a=https://www.bilibili.com/video/BV1Fi4y1g7mv}bilibili 上某个视频的封面{/a}。
+
 游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由某个神必人制作。
 
 本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，请不要倒卖本游戏。
