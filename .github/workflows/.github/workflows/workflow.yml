@@ -1,0 +1,62 @@
+name: Ren'Py 生成
+
+# 在这里定义触发工作流程的事件组
+on:
+  push:
+  pull_request:
+  release:
+    types: [created]
+
+# 定义作业和它的步骤
+jobs:
+  build:
+    name: 使用 Ren'Py SDK 生成
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 克隆 repo
+        uses: actions/checkout@v1
+        with:
+          submodules: true
+
+      # 确保代码可行
+      - name: 检查脚本
+        uses: ProjectAliceDev/renpy-lint-action@master
+        with:
+          sdk-version: '7.3.5'
+          project-dir: .
+        env:
+          # GitHub Actions 环境下没有 GUI
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+
+      # 生成项目
+      - name: 生成 VN
+        uses: Dobby233Liu/renpy-build-action@master
+        # 定义一个 ID 以便之后使用
+        id: buildseq
+        with:
+          sdk-version: '7.3.5'
+          project-dir: .
+          extra-options: '--packages market'
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+
+      # 将生成的 zip 上传
+      - name: 上传生成的 zip 到 GitHub Actions
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.buildseq.outputs.dir }}
+          path: ${{ format('{0}/{1}-market.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
+
+      # 用这个步骤将生成的 zip 上传到一个刚创建的 Release 里
+      # 有了这个，Release 的 Assets 模式也改变了
+      # DDLCModTempCN-*-Mod.zip 是 Demo，Source code (zip) 是模板
+      - name: 上传生成的 zip 到 Release
+        uses: skx/github-action-publish-binaries@master
+        if: github.event.release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: ${{ format('{0}/{1}-Mod.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
