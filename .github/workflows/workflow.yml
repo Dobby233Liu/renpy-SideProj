@@ -38,7 +38,7 @@ jobs:
         with:
           sdk-version: '7.3.5'
           project-dir: .
-          extra-options: '--packages market'
+          extra-options: '--package market'
         env:
           SDL_AUDIODRIVER: dummy
           SDL_VIDEODRIVER: dummy
