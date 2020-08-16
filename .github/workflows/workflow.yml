@@ -50,9 +50,7 @@ jobs:
           name: ${{ steps.buildseq.outputs.dir }}
           path: ${{ format('{0}/{1}-market.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
 
-      # 用这个步骤将生成的 zip 上传到一个刚创建的 Release 里
-      # 有了这个，Release 的 Assets 模式也改变了
-      # DDLCModTempCN-*-Mod.zip 是 Demo，Source code (zip) 是模板
+      # 将生成的 zip 上传到一个刚创建的 Release 里
       - name: 上传生成的 zip 到 Release
         uses: skx/github-action-publish-binaries@master
         if: github.event.release
