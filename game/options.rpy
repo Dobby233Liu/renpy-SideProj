@@ -26,25 +26,26 @@ define config.version = "1.0"
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
 
-define gui.about = _p("""1.0更新：初始版本。
-
-游戏规则：你可以扮演小孩（修机子，获得胜利），也可以扮演伏拉夫（抓小孩）。
+define gui.about = _p("""游戏规则：你可以扮演小孩（修机子，获得胜利），也可以扮演伏拉夫（抓小孩）。
 
 音频来源：
 
 china2：Sand - China-2\n
+poke_mus_battle27、pokerg_mus_win：pokeemerald/sound/songs/midi/mus_battle27.mid、pokeemerald/sound/songs/midi/mus_rg_win_yasei.mid\n
 win：张秀华 - 我爱中国\n
 gameover：Jun Senoue - Game Over（来自 Sonic 3D Blast）\n
-chomp、pong：植物大战僵尸/main.pak/sounds/bigchomp.ogg、植物大战僵尸/main.pak/sounds/shieldhit.ogg\n
+chomp、pong：Plants Vs Zombies/main.pak/sounds/bigchomp.ogg、Plants Vs Zombies/main.pak/sounds/shieldhit.ogg\n
 haoci：伏拉夫的抖音视频（《火锅包子》）\n
 dizzy、dizzypt2、run：自制
 
-技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度百科{/a}。
+技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度经验{/a}。
 技能“我是黑拉夫”的贴图 P 图自 {a=https://www.bilibili.com/video/BV1Fi4y1g7mv}bilibili 上某个视频的封面{/a}。
+
+Pokémon © Nintendo, Game Freak, The Pokémon Company
 
 游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由某个神必人制作。
 
-本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，请不要倒卖本游戏。
+本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，基本使用 MIT 许可证，请不要倒卖本游戏。
 """)
 
 
@@ -60,19 +61,22 @@ define build.name = "EscapeFromFulafu"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = False
+define config.has_voice = True
 
 
 ## 允许用户在音效或语音轨道上播放测试音频文件，将以下语句取消注释并设置样音就可
 ## 以使用。
 
-define config.sample_sound = audio.pong
+define config.sample_sound = audio.dizzy
 define config.sample_voice = audio.haoci
+
+## 需要循环的音频。
+define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
+define audio.poke_mus_battle27 = "<loop 14 to 52.64>audio/poke_mus_battle27.ogg"
+define audio.pokerg_mus_win = "<loop 1.88 to 15.58>audio/pokerg_mus_win.ogg"
 
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
-
-define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
 define config.main_menu_music = audio.china2
 
 
@@ -115,7 +119,7 @@ define config.end_game_transition = dissolve
 ## 在游戏开始后，此变量可通过“window show”、“window hide”和“window auto”声明来改
 ## 变。
 
-define config.window = "auto"
+define config.window = "hide"
 
 
 ## 用于显示和隐藏对话框窗口的转场

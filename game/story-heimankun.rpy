@@ -11,7 +11,7 @@ label heimankun_start:
     $ quick_menu = False
     window hide dissolve
     show screen race_prepare("黑曼君", "小孩") with dissolve
-    pause
+    pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
     window show dissolve
@@ -21,6 +21,7 @@ label heimankun_start:
     $ _history_list.pop()
     hide child_with_pan with dissolve
     menu:
+        with dissolve
         "你看见了一个拿着平底锅的小孩。你准备做点什么？"
         "跑！":
             $ _history_list.pop()
@@ -47,6 +48,7 @@ label heimankun_start:
     $ _history_list.pop()
     hide screen spell_showcase with dissolve
     menu:
+        with dissolve
         "你看见了一张地图。你要去哪里呢？"
         "厨房":
             $ _history_list.pop()
@@ -69,10 +71,11 @@ label heimankun_start:
             $ quick_menu = True
             jump endgame
     scene kitchen with dissolve
-    show screen spell_showcase_small("wowotou", 1.5) with dissolve
+    show screen spell_showcase("images/wowotou.png", 1.5, 0.25) with dissolve
     "你找到了一个窝窝头。它可能会提升你的移动速度。"
     hide screen spell_showcase with dissolve
     menu:
+        with dissolve
         "要吃它吗？"
         "是":
             $ _history_list.pop()
@@ -81,7 +84,9 @@ label heimankun_start:
             stop music
             scene black with dissolve
             play sound chomp
-            pause 2.0
+            pause 1.0
+            play sound dizzypt2
+            pause 1.0
             scene dead with dissolve
             play sound gameover
             show screen reload_prompt("你被毒死了！")

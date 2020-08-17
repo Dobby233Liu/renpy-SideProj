@@ -7,10 +7,12 @@ label start:
 
     window show dissolve
     menu:
+        with dissolve
         "请选择阵营。"
         "狩猎":
             $ _history_list.pop()
             menu:
+                with dissolve
                 "请选择角色。"
                 "黑曼君":
                     $ _history_list.pop()

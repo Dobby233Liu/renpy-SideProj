@@ -307,6 +307,9 @@ screen navigation():
 
         textbutton _("关于") action ShowMenu("about")
 
+        if config.developer:
+            textbutton _("Music Room") action ShowMenu("music_room")
+
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## “帮助”对移动设备来说并非必须或相关。
@@ -355,7 +358,7 @@ screen main_menu():
     if gui.show_name:
 
         vbox:
-            text "{b}{color=fff0f0}逃离伏拉夫{/color}{/b}\n~抵制不良游戏":
+            text "{b}{color=fff0f0}逃离伏拉夫{/color}{/b}":
                 style "main_menu_title"
 
 
@@ -546,6 +549,36 @@ screen about():
 ## 此变量在 options.rpy 中重新定义，来添加文本到关于屏幕。
 define gui.about = ""
 
+## Music Room ######################################################################
+##
+## 仅供开发者使用。
+##
+## 用于快速调试音频循环的 screen。
+
+
+# Step 3. 创建音乐空间界面。
+screen music_room:
+
+    tag menu
+
+    ## 此“use”语句将包含“game_menu”屏幕到此处。子级“vbox”将包含在“game_menu”屏幕
+    ## 的“viewport”内。
+    use game_menu(_("Music Room"), scroll="viewport"):
+
+        style_prefix "about"
+
+        vbox:
+            text _("以下是本次需要测试的音频。")
+            text _("（内置的 Music Room 功能好垃圾啊...）")
+
+            null height 20
+
+            # 每条音轨的播放按钮。
+            textbutton _("绿宝石疑似野生战斗") action Play("music", audio.poke_mus_battle27)
+            textbutton _("火红叶绿野生战斗胜利") action Play("music", audio.pokerg_mus_win)
+
+        # 离开时恢复主菜单的音乐。
+        # on "replaced" action Play("music", config.main_menu_music)
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -994,6 +1027,38 @@ screen confirm(message, yes_action, no_action):
     ## 右键点击退出并答复“no”（取消）。
     key "game_menu" action no_action
 
+## 弹窗 ########################################################################
+##
+## 当需要提醒用户时，请使用此屏幕。
+## 暂不使用。
+
+screen prompt(message, action):
+
+    ## 显示此屏幕时，确保其他屏幕无法输入。
+    modal True
+
+    zorder 200
+
+    style_prefix "confirm"
+
+    add "gui/overlay/confirm.png"
+
+    frame:
+
+        vbox:
+            xalign .5
+            yalign .5
+            spacing 30
+
+            label _(message):
+                style "confirm_prompt"
+                xalign 0.5
+
+            hbox:
+                xalign 0.5
+                spacing 100
+
+                textbutton _("确定") action action
 
 style confirm_frame is gui_frame
 style confirm_prompt is gui_prompt
@@ -1054,6 +1119,13 @@ transform delayed_blink(delay, cycle):
         pause (cycle - .4)
         repeat
 
+transform blink():
+    alpha .0
+
+    block:
+        linear .25 alpha 1.0
+        linear .25 alpha 0.0
+        repeat
 
 style skip_frame is empty
 style skip_text is gui_text
@@ -1344,7 +1416,7 @@ screen fake_search(my_text):
         xalign 0.5
         yalign 0.5
 
-        text my_text at delayed_blink(0, 0.25) size 36
+        text my_text at blink() size 36
 
 screen reload_prompt(my_text):
 
@@ -1390,10 +1462,7 @@ screen race_prepare(positive, negative):
 
         text negative size 24
 
-screen spell_showcase(spell_sprite):
-
-    add spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
-
-screen spell_showcase_small(spell_sprite, scale_factor=0.5):
+screen spell_showcase(spell_sprite, scale_factor=1, yalign_diff=0):
     $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor)
-    add scaled_spell_sprite xalign 0.5 yalign 0.25 at delayed_blink(0, 0.25)
+    $ yalign_calc = 0.25 + yalign_diff
+    add scaled_spell_sprite xalign 0.5 yalign yalign_calc at blink()
