@@ -327,7 +327,7 @@ define gui.unscrollable = "hide"
 define config.history_length = 250
 
 ## 历史屏幕条目的高度，或设置为“None”以使高度变量自适应。
-define gui.history_height = 140
+define gui.history_height = None
 
 ## 所指定叙述角色的标签的坐标、宽度和对齐方式。
 define gui.history_name_xpos = 155
@@ -362,10 +362,10 @@ define gui.nvl_height = 115
 define gui.nvl_spacing = 10
 
 ## 所指定叙述角色的标签的坐标、宽度和对齐方式。
-define gui.nvl_name_xpos = 430
+define gui.nvl_name_xpos = 395
 define gui.nvl_name_ypos = 0
 define gui.nvl_name_width = 150
-define gui.nvl_name_xalign = 1.0
+define gui.nvl_name_xalign = 0.8
 
 ## 对话文本的坐标、宽度和对齐方式。
 define gui.nvl_text_xpos = 450
@@ -390,68 +390,3 @@ define gui.nvl_button_xalign = 0.0
 ## www.renpy.org/doc/html/style_properties.html#style-property-language
 
 define gui.language = "unicode"
-
-
-################################################################################
-## 移动设备
-################################################################################
-
-init python:
-
-    ## 该变量增加快捷菜单按钮的尺寸来使它们在平板和手机上更容易按到。
-    if renpy.variant("touch"):
-
-        gui.quick_button_borders = Borders(40, 14, 40, 0)
-
-    ## 该变量更改各个 GUI 元素的尺寸和间距来确保它们在手机上更容易识别。
-    if renpy.variant("small"):
-
-        ## 字体大小。
-        gui.text_size = 30
-        gui.name_text_size = 36
-        gui.notify_text_size = 25
-        gui.interface_text_size = 30
-        gui.button_text_size = 30
-        gui.label_text_size = 34
-
-        ## 调整对话框的位置。
-        gui.textbox_height = 240
-        gui.name_xpos = 80
-        gui.text_xpos = 90
-        gui.text_width = 1100
-
-        ## 更改各元素的尺寸和间距。
-        gui.slider_size = 36
-
-        gui.choice_button_width = 1240
-
-        gui.navigation_spacing = 20
-        gui.pref_button_spacing = 10
-
-        gui.history_height = 190
-        gui.history_text_width = 690
-
-        gui.quick_button_text_size = 20
-
-        ## 文件按钮布局。
-        gui.file_slot_cols = 2
-        gui.file_slot_rows = 2
-
-        ## NVL 模式。
-        gui.nvl_height = 170
-
-        gui.nvl_name_width = 305
-        gui.nvl_name_xpos = 325
-
-        gui.nvl_text_width = 915
-        gui.nvl_text_xpos = 345
-        gui.nvl_text_ypos = 5
-
-        gui.nvl_thought_width = 1240
-        gui.nvl_thought_xpos = 20
-
-        gui.nvl_button_width = 1240
-        gui.nvl_button_xpos = 20
-
-
-

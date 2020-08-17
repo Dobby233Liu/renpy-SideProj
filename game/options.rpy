@@ -21,7 +21,7 @@ define gui.show_name = True
 
 ## 游戏版本号。
 
-define config.version = "1.0"
+define config.version = "1.1"
 
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
@@ -36,7 +36,9 @@ win：张秀华 - 我爱中国\n
 gameover：Jun Senoue - Game Over（来自 Sonic 3D Blast）\n
 chomp、pong：Plants Vs Zombies/main.pak/sounds/bigchomp.ogg、Plants Vs Zombies/main.pak/sounds/shieldhit.ogg\n
 haoci：伏拉夫的抖音视频（《火锅包子》）\n
-dizzy、dizzypt2、run：自制
+dizzy、dizzypt2、run、punchs：自制\n
+child_faint: {a=http://www.9ku.com/play/900092.htm}九酷音乐{/a}（疑似来源于{a=http://sc.chinaz.com}站长之家{/a}）\n
+child_cry：{a=http://www.yisell.com/sound/TiO5TuuPIEJJnPM=.html}音笑网{/a}
 
 技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度经验{/a}。
 技能“我是黑拉夫”的贴图 P 图自 {a=https://www.bilibili.com/video/BV1Fi4y1g7mv}bilibili 上某个视频的封面{/a}。
@@ -72,8 +74,8 @@ define config.sample_voice = audio.haoci
 
 ## 需要循环的音频。
 define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
-define audio.poke_mus_battle27 = "<loop 14 to 52.64>audio/poke_mus_battle27.ogg"
-define audio.pokerg_mus_win = "<loop 1.88 to 15.58>audio/pokerg_mus_win.ogg"
+define audio.poke_mus_battle27 = "<loop 13.94 to 52.64>audio/poke_mus_battle27.ogg"
+define audio.pokerg_mus_win = "<loop 1.755 to 15.58>audio/pokerg_mus_win.ogg"
 
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
@@ -198,3 +200,4 @@ init python:
 
 # ~~~
 define config.has_autosave = False
+# define config.language = "poke" "poke" language is only ever used in battles, don't do it here
