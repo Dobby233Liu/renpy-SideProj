@@ -36,7 +36,11 @@ label story_char_2_start:
     menu: with dissolve
         "但是你的血量不足。是否打血包？"
         "是":
+            play sound dizzy
+            pause 0.5
             "你恢复了 100 HP。你的 HP 已满。"
+            play sound punchs
+            pause 0.5
             hide child_with_pan with dissolve
             "你打败了 xxs。"
         "否":
@@ -53,6 +57,26 @@ label story_char_2_start:
     show child_with_pan with dissolve
     menu: with dissolve
         "你又看见了另外两个小孩。要用哪个招式攻击？"
-        "？？？":
+        "奥利给":
             pass
+        "奥利给干了":
+            pass
+        "组合技":
+            $ quick_menu = False
+            window hide dissolve
+            stop music
+            scene black with dissolve
+            "奥利给，干了！" nointeract
+            pause 0.5
+            play sound dizzypt2
+            play sound punchs
+            "呕呕呕呕呕呕呕呕呕呕呕呕呕呕" nointeract
+            pause 0.5
+            scene win with dissolve
+            play sound win
+            show screen reload_prompt("你击败了所有小孩！")
+            pause
+            stop sound
+            $ quick_menu = True
+            jump endgame
     jump endgame
