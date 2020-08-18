@@ -30,6 +30,7 @@ label start:
             $ _history_list.pop()
             menu:
                 with dissolve
+                "请选择角色。"
                 "小孩":
                     $ player_character = 1
                     $ _history_list.pop()
