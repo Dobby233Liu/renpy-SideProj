@@ -57,4 +57,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: ${{ format('{0}/{1}-Mod.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
+          args: ${{ format('{0}/{1}-market.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
