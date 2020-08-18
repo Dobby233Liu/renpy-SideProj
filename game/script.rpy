@@ -1,6 +1,6 @@
 ﻿# 游戏在此开始。
 
-define player_character = 0 # 0: fulafu, 1: child
+define player_character = 0 # 0: fulafu, 1: child, 2: laoba, 3: laoqi, 4: ropejumper
 
 label start:
     scene black
@@ -20,11 +20,22 @@ label start:
                 "伏拉夫":
                     $ _history_list.pop()
                     $ player_character = 0
+                "老八":
+                    $ _history_list.pop()
+                    $ player_character = 2
+                "老祺":
+                    $ _history_list.pop()
+                    $ player_character = 3
         "逃离":
             $ _history_list.pop()
-            $ player_character = 1
-            "已自动选择小孩。"
-            $ _history_list.pop()
+            menu:
+                with dissolve
+                "小孩":
+                    $ player_character = 1
+                    $ _history_list.pop()
+                "跳绳小妞":
+                    $ player_character = 4
+                    $ _history_list.pop()
     
 label search:
     window hide dissolve
