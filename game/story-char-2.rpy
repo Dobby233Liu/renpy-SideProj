@@ -79,4 +79,13 @@ label story_char_2_start:
             stop sound
             $ quick_menu = True
             jump endgame
-    jump endgame
+    $ quick_menu = False
+    window hide dissolve
+    stop music
+    scene dead with dissolve
+    play sound gameover
+    show screen reload_prompt("技能不仅没有打败小孩，他们还把你打死了！")
+    pause
+    stop sound
+    $ quick_menu = True
+    return
