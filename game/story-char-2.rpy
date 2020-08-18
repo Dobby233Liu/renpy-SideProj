@@ -16,6 +16,7 @@ label story_char_2_start:
     $ quick_menu = True
     window show dissolve
     scene kitchen with dissolve
+    show child_with_pan with dissolve
     menu:
         with dissolve
         "你在厨房遇到了 xxs。是否攻击？"
@@ -36,6 +37,8 @@ label story_char_2_start:
         "但是你的血量不足。是否打血包？"
         "是":
             "你恢复了 100 HP。你的 HP 已满。"
+            hide child_with_pan with dissolve
+            "你打败了 xxs。"
         "否":
             $ quick_menu = False
             window hide dissolve
@@ -47,4 +50,9 @@ label story_char_2_start:
             stop sound
             $ quick_menu = True
             jump endgame
+    show child_with_pan with dissolve
+    menu: with dissolve
+        "你又看见了另外两个小孩。要用哪个招式攻击？"
+        "？？？":
+            pass
     jump endgame
