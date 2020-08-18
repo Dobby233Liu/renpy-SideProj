@@ -560,7 +560,7 @@ define gui.about = ""
 
 
 # Step 3. 创建音乐空间界面。
-screen music_room:
+screen music_room():
 
     tag menu
 

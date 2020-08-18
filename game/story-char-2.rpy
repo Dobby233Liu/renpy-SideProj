@@ -1,10 +1,10 @@
 label story_char_2:
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
-    show screen spell_showcase("spell_shit") with dissolve
+    show screen spell_showcase("images/spell_shit.png") with dissolve
     "奥利给：使周围的小孩呕吐。"
-    hide screen spell_showcase with dissolve
-    show screen spell_showcase("spell_letseatit") with dissolve
+    hide screen spell_showcase
+    show screen spell_showcase("images/spell_letseatit.png")
     "奥利给干了：扣周围的小孩一半的血量。"
     hide screen spell_showcase with dissolve
 label story_char_2_start:
@@ -33,7 +33,8 @@ label story_char_2_start:
             stop sound
             $ quick_menu = True
             jump endgame
-    menu: with dissolve
+    menu:
+        with dissolve
         "但是你的血量不足。是否打血包？"
         "是":
             play sound dizzy
@@ -55,7 +56,8 @@ label story_char_2_start:
             $ quick_menu = True
             jump endgame
     show child_with_pan with dissolve
-    menu: with dissolve
+    menu:
+        with dissolve
         "你又看见了另外两个小孩。要用哪个招式攻击？"
         "奥利给":
             pass
@@ -67,11 +69,11 @@ label story_char_2_start:
             stop music
             scene black with dissolve
             "奥利给，干了！" nointeract
-            pause 0.5
+            pause 1.0
             play sound dizzypt2
             play sound punchs
             "呕呕呕呕呕呕呕呕呕呕呕呕呕呕" nointeract
-            pause 0.5
+            pause 2.0
             scene win with dissolve
             play sound win
             show screen reload_prompt("你击败了所有小孩！")
@@ -84,7 +86,7 @@ label story_char_2_start:
     stop music
     scene dead with dissolve
     play sound gameover
-    show screen reload_prompt("技能不仅没有打败小孩，他们还把你打死了！")
+    show screen reload_prompt("你使用的技能不仅没有打败小孩，他们还把你打死了！")
     pause
     stop sound
     $ quick_menu = True

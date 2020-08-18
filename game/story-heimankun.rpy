@@ -1,10 +1,10 @@
 label story_heimankun:
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
-    show screen spell_showcase("heiman_spell_coming2urhome") with dissolve
+    show screen spell_showcase("images/heiman_spell_coming2urhome.png") with dissolve
     "很快就到你家门口：所有小孩全部眩晕 10 秒。"
     hide screen spell_showcase with dissolve
-    show screen spell_showcase("spell_heilafu") with dissolve
+    show screen spell_showcase("images/spell_heilafu.png") with dissolve
     "我是黑拉夫：附近倒地者死亡时间减少 10 秒（有概率直接秒死）。"
     hide screen spell_showcase with dissolve
 label heimankun_start:
@@ -43,7 +43,7 @@ label heimankun_start:
         "干就完了":
             $ _history_list.pop()
             pass
-    show screen spell_showcase("decomap") with dissolve
+    show screen spell_showcase("images/decomap.png") with dissolve
     "你看见了一张地图。你要去哪里呢？{w=2.0}{nw}"
     $ _history_list.pop()
     hide screen spell_showcase with dissolve

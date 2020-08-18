@@ -1233,4 +1233,4 @@ translate None strings:
     old "long: Print the full representation of objects on the console."
     new "long: Print the full representation of objects on the console."
 
-define gui.system_font = u'SourceHanSans-Light-Lite.ttf'
+define gui.system_font = u'NotoSansCJKsc-DemiLight.otf'

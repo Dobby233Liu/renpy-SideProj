@@ -30,7 +30,7 @@ define gui.about = _p("""游戏规则：你可以扮演小孩（修机子，获�
 
 音频来源：
 
-china2：Sand - China-2\n
+china2、c2g：Sand - China-2\n
 poke_mus_battle27、pokerg_mus_win：pokeemerald/sound/songs/midi/mus_battle27.mid、pokeemerald/sound/songs/midi/mus_rg_win_yasei.mid\n
 win：张秀华 - 我爱中国\n
 gameover：Jun Senoue - Game Over（来自 Sonic 3D Blast）\n
