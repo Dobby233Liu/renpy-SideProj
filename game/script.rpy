@@ -37,6 +37,12 @@ label start:
                 "跳绳小妞":
                     $ player_character = 4
                     $ _history_list.pop()
+                "小孩（Pre-2.0）" if persistent.old_version_content:
+                    $ _history_list.pop()
+                    jump story_child_pre2
+        "伏拉夫（模拟器）" if persistent.old_version_content:
+            $ _history_list.pop()
+            jump story_fulafu_simulator
     
 label search:
     window hide dissolve
