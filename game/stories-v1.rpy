@@ -1,0 +1,59 @@
+label story_fulafu_simulator:
+    scene bg_sunny_outside with dissolve
+    if persistent.introduced_sim_character_fulafu:
+        jump flfsim_choose_type
+    show fulafu_overworld with dissolve
+    "你是伏拉夫，抖音上的一个俄罗斯博主。"
+    "你以前在优酷和线下代言红酒、开包子店等等。"
+    "但是自从加入了抖音，并在某个火锅店吃了火锅并去了火锅气味之后，你开始做起了吃播。"
+    "中国的火锅如此好吃，中国的技术如此好，使你爱起中国，现在又变成了一名正式的中国人。"
+    # be aware about some strange glitch that change the music
+    if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
+        # lolol ddlc reference
+        $ old_pos = safe_get_pos()
+        #$ print(str(old_pos))
+        play music "<from " + str(old_pos) + " " + audio.china2[1:21] + ">audio/c2g.ogg"
+        hide fulafu_overworld
+        show fulafu_overworld_jumpscare
+        "甚至每天都去中国小孩的家拿“火锅底料”。{p=1.0}{nw}"
+        stop music
+        play music "<from " + str(old_pos) + " " + audio.china2[1:]
+        hide fulafu_overworld_jumpscare
+        show fulafu_overworld
+   "这一天，你一时兴起，想拍一个作品上传到抖音和西瓜视频。"
+   hide fulafu_overworld with dissolve
+   $ persistent.introduced_sim_character_fulafu = True
+label flfsim_choose_type:
+    menu:
+        with dissolve
+        "那么，要拍什么类型的作品呢？"
+        "我们中国的厉害之处":
+            pass
+        "与红酒的日常生活":
+            scene black with dissolve
+            "...{p=1.0}{nw}"
+            "之后，你被喷子们喷了一顿。"
+            "这里是可可CoCo_" "文明观猴 不要投喂"
+            "微雨的温柔丶（已黑化）" "这不是我们中国的经典猴戏🐒\n说，你到底是什么品种的猴？"
+            "用户1145141919" "你是藏不住你取款的意图的1111"
+            "火山用户8102341934" "这骗人的把戏...是个人都看得出来吧"
+            "于是，你伤心地退抖了..."
+            jump endgame
+    "你录了一段作品，并且发出去了。"
+    "现在，我们只需要睡个午觉..."
+    scene black with dissolve
+    "...{p=1.0}{nw}"
+    scene fix_house with dissolve
+    "然后就可以看到喷子们在云观猴了。"
+    menu:
+        with dissolve
+        "你要怎么对付喷子呢？"
+        "问候他们的父母":
+            scene black with dissolve
+            "...{p=1.0}{nw}"
+            "喷了没多久，你就被封号了。"
+        "提醒他们网络不是法外之地":
+            scene black with dissolve
+            "于是，你又拍了一个作品，把它发出去了。你还把它置顶了。"
+            "后来，你逐渐退气，最后只能安静隐退..."
+    jump endgame
