@@ -21,7 +21,7 @@ define gui.show_name = True
 
 ## 游戏版本号。
 
-define config.version = "1.2"
+define config.version = "1.3"
 
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
@@ -45,7 +45,7 @@ child_cry：{a=http://www.yisell.com/sound/TiO5TuuPIEJJnPM=.html}音笑网{/a}
 
 Pokémon © Nintendo, Game Freak, The Pokémon Company
 
-游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由 我是内存条 制作。
+游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由 我是内存条/游戏试毒菌 制作。
 
 本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，基本使用 MIT 许可证，请不要倒卖本游戏。
 """)
