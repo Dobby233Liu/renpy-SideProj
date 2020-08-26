@@ -38,11 +38,11 @@ label flfsim_choose_type:
             "之后，你被喷子们喷了一顿。"
             $ this_is = renpy.random.choose("这里是", "我是", "我素", "这是", "")
             $ postfix = renpy.random.choose("★_", "★", "_", "_★", "★_★", "")
-            $ feed = renpy.random.choose(" 不要投喂", "")
-            $ inm_ref = renpy.random.choose("CoCo", "coco", "Coco", "COCO", "CO2", "kerker", "")
+            $ feed = renpy.random.choose(" 不要投喂", "，不要投喂！", "")
+            $ inm_ref = renpy.random.choose("CoCo", "coco", "Coco", "COCO", "CO2", "kekker", "")
             "[this_is]可可[inm_ref][postfix]" "文明观猴[feed]"
             $ blackened = renpy.random.choose("丶", "丶（已黑化）", "（已黑化）", "")
-            "微雨的温柔[blackened]" "这不是我们中国的经典猴戏🐒"
+            "微雨的温柔[blackened]" "这不是我们中国的知名猴戏🐒"
             $ pls_no = renpy.random.choose("你是藏不住你取款的意图的1111", "我爱中国的Q", "你以为我们大家不知道你又要恰烂钱？", "我们的常客这次加密拿钱了！11", "帐号正确，密码错误")
             "用户1145141919" "[pls_no]"
             $ recall_methodlogy = "骗人的把戏"
