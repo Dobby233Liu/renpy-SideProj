@@ -36,9 +36,15 @@ label flfsim_choose_type:
             scene black with dissolve
             "...{p=1.0}{nw}"
             "之后，你被喷子们喷了一顿。"
-            "这里是可可CoCo★_" "文明观猴 不要投喂"
-            "微雨的温柔丶（已黑化）" "这不是我们中国的经典猴戏🐒\n说，你到底是什么品种的猴？"
-            "用户1145141919" "你是藏不住你取款的意图的1111"
+            $ this_is = renpy.random.choose("这里是", "我是", "我素", "这是", "")
+            $ postfix = renpy.random.choose("★_", "★", "_", "_★", "★_★", "")
+            $ feed = renpy.random.choose(" 不要投喂", "")
+            $ inm_ref = renpy.random.choose("CoCo", "coco", "Coco", "COCO", "CO2", "kerker", "")
+            "[this_is]可可[inm_ref][postfix]" "文明观猴[feed]"
+            $ blackened = renpy.random.choose("丶", "丶（已黑化）", "（已黑化）", "")
+            "微雨的温柔丶[blackened]" "这不是我们中国的经典猴戏🐒"
+            $ pls_no = renpy.random.choose("你是藏不住你取款的意图的1111", "我爱中国的Q", "你以为我们大家不知道你又要恰烂钱？", "我们的常客这次加密拿钱了！11", "帐号正确，密码错误")
+            "用户1145141919" "[pls_no]"
             $ recall_methodlogy = "骗人的把戏"
             $ oneninethreefour = "1934"
             if persistent.bad_fund == "恰烂钱":
@@ -69,17 +75,16 @@ label flfsim_choose_type:
             window hide dissolve
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("喷了他们没多久，你就被封号了。")
+            show screen reload_prompt("喷了他们没多久，你就被封号了！")
             pause
             stop sound
             $ quick_menu = True
         "提醒他们网络不是法外之地":
             scene black with dissolve
             "于是，你又拍了一个作品，把它发出去了。你还把它置顶了。"
-            "后来，你逐渐退气，最后只能安静隐退..."
+            "后来，你逐渐退气，最后只能安静地隐退..."
             stop music
             $ quick_menu = False
-            scene black with dissolve
             window hide dissolve
             scene fail with dissolve
             play sound gameover
