@@ -42,7 +42,7 @@ label flfsim_choose_type:
             $ inm_ref = renpy.random.choose("CoCo", "coco", "Coco", "COCO", "CO2", "kerker", "")
             "[this_is]可可[inm_ref][postfix]" "文明观猴[feed]"
             $ blackened = renpy.random.choose("丶", "丶（已黑化）", "（已黑化）", "")
-            "微雨的温柔丶[blackened]" "这不是我们中国的经典猴戏🐒"
+            "微雨的温柔[blackened]" "这不是我们中国的经典猴戏🐒"
             $ pls_no = renpy.random.choose("你是藏不住你取款的意图的1111", "我爱中国的Q", "你以为我们大家不知道你又要恰烂钱？", "我们的常客这次加密拿钱了！11", "帐号正确，密码错误")
             "用户1145141919" "[pls_no]"
             $ recall_methodlogy = "骗人的把戏"
@@ -50,8 +50,17 @@ label flfsim_choose_type:
             if persistent.bad_fund == "恰烂钱":
                 $ recall_methodlogy = renpy.random.choose("恰烂钱", "赚钱") + "的手法"
                 $ oneninethreefour = "2016"
-            "火山用户810234[oneninethreefour]" "这[recall_methodlogy]，是个人都看得出来吧"
+            $ fake_user_pfx = renpy.random.choose("火山", "西瓜", "头条", "")
+            "[fake_user_pfx]用户810234[oneninethreefour]" "这[recall_methodlogy]，是个人都看得出来吧"
             "于是，你伤心地退抖了..."
+            stop music
+            $ quick_menu = False
+            window hide dissolve
+            scene fail with dissolve
+            play sound gameover
+            pause
+            stop sound
+            $ quick_menu = True
             jump endgame
     "你录了一段作品，并且发出去了。"
     "现在，我们只需要睡个午觉..."
