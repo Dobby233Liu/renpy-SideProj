@@ -240,7 +240,7 @@ label story_char_1_pre2:
             $ _history_list.pop()
             "...{w=1.0}{nw}"
             $ _history_list.pop()
-            call story_char_1_pre2_end("之后，你找到了最后一把钥匙！", "images/win.png", "win.mp3")
+            call story_char_1_pre2_end("之后，你找到了最后一把钥匙！", "win", "win.mp3")
         "去挖地道":
             $ _history_list.pop()
             $ quick_menu = False
@@ -265,10 +265,11 @@ label story_char_1_pre2:
             $ _history_list.pop()
             call story_char_1_pre2_end
     jump endgame
-label story_char_1_pre2_end(content="你背叛了其他的队员！", scrn="images/fail.png", mus="gameover.ogg"):
+label story_char_1_pre2_end(content="你背叛了你的队友！", scrn="fail", mus="gameover.ogg"):
     window hide dissolve
     stop music
-    scene scrn with dissolve
+    $ renpy.scene()
+    $ renpy.show(scrn, at_list=[Dissolve(1.0)])
     $ audio._mus = "audio/" + mus
     play sound _mus
     show screen reload_prompt(content) with dissolve
