@@ -120,6 +120,13 @@ jobs:
             sudo make all
             sudo make install
             cd ..
+            wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz -q
+            tar -xzf SDL2_mixer-2.0.4.tar.gz
+            cd SDL2_mixer-2.0.4
+            ./configure
+            sudo make all
+            sudo make install
+            cd ..
             wget https://www.renpy.org/dl/7.3.5/pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz -q
             tar -xzf pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz
             cd pygame_sdl2-2.1.0-for-renpy-7.3.5
