@@ -91,11 +91,18 @@ jobs:
       - name: 下载 RAPT
         run: |
             cd ~
-            wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip
+            wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip -q
             unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
-            wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-rapt.zip
-            unzip -d rapt -j -o renpy-7.3.5-rapt.zip 
+            wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-rapt.zip -q
+            unzip -d rapt -j -o renpy-7.3.5-rapt.zip
+      - name: 安装 pygame_sdl2
+        run: |
+            cd ~
+            wget https://www.renpy.org/dl/7.3.5/pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz -q
+            tar -xzf pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz
+            cd pygame_sdl2-2.1.0-for-renpy-7.3.5
+            python2 setup.py install
       - name: 初始化 RAPT 用 Android SDK
         run: |
             cd ~/renpy-7.3.5-sdk/rapt
