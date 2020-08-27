@@ -268,8 +268,8 @@ label story_char_1_pre2:
 label story_char_1_pre2_end(content="你背叛了其他的队员！", scrn="fail", mus="gameover"):
     window hide dissolve
     stop music
-    scene fail with dissolve
-    play sound gameover
+    scene scrn with dissolve
+    play sound mus
     show screen reload_prompt(content) with dissolve
     pause
     stop sound
