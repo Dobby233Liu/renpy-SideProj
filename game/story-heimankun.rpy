@@ -43,7 +43,7 @@ label heimankun_start:
         "干就完了":
             $ _history_list.pop()
             pass
-    show screen spell_showcase("images/decomap.png") with dissolve
+    show screen spell_showcase("images/decomap.png", 1.25) with dissolve
     "你看见了一张地图。你要去哪里呢？{w=2.0}{nw}"
     $ _history_list.pop()
     hide screen spell_showcase with dissolve
