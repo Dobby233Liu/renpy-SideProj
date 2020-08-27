@@ -102,6 +102,7 @@ jobs:
             wget https://www.libsdl.org/release/SDL2-2.0.12.tar.gz -q
             tar -xzf SDL2-2.0.12.tar.gz
             cd SDL2-2.0.12
+            ./configure
             sudo make all
             sudo make install
             cd ..
