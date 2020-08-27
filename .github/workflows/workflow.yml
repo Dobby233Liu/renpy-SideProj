@@ -92,7 +92,7 @@ jobs:
         run: |
             cd ~
             wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip
-            unzip -j -o renpy-7.3.5-sdk.zip
+            unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
             wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-rapt.zip
             unzip -d rapt -j -o renpy-7.3.5-rapt.zip 
