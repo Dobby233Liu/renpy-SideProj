@@ -99,6 +99,12 @@ jobs:
       - name: 安装 pygame_sdl2
         run: |
             cd ~
+            wget https://www.libsdl.org/release/SDL2-2.0.12.tar.gz -q
+            tar -xzf SDL2-2.0.12.tar.gz
+            cd SDL2-2.0.12
+            sudo make all
+            sudo make install
+            cd ..
             wget https://www.renpy.org/dl/7.3.5/pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz -q
             tar -xzf pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz
             cd pygame_sdl2-2.1.0-for-renpy-7.3.5
