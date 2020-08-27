@@ -3,9 +3,9 @@ label story_char_2:
     $ _history_list.pop()
     show screen spell_showcase("images/spell_shit.png") with dissolve
     "奥利给：使周围的小孩呕吐。"
-    hide screen spell_showcase
-    show screen spell_showcase("images/spell_letseatit.png")
-    "奥利给干了：扣周围的小孩一半的血量。"
+    hide screen spell_showcase with dissolve
+    show screen spell_showcase("images/spell_letseatit.png") with dissolve
+    "奥利给干了：伤害周围的小孩，血量掉一半。"
     hide screen spell_showcase with dissolve
 label story_char_2_start:
     $ quick_menu = False
