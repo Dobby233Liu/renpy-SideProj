@@ -31,15 +31,15 @@ label start:
             menu:
                 with dissolve
                 "请选择角色。"
-                "小孩":
+                "小孩（Pre-2.0）":
+                    $ player_character = "1_pre2" # special hack
+                    $ _history_list.pop()
+                "小孩（2.0+）" if persistent.old_version_content:
                     $ player_character = 1
                     $ _history_list.pop()
                 "跳绳小妞":
                     $ player_character = 4
                     $ _history_list.pop()
-                "小孩（Pre-2.0）" if persistent.old_version_content:
-                    $ _history_list.pop()
-                    jump story_child_pre2
         "伏拉夫（模拟器）" if persistent.old_version_content:
             $ _history_list.pop()
             jump story_fulafu_simulator
