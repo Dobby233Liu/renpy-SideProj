@@ -108,4 +108,6 @@ jobs:
             cd ~/renpy-7.3.5-sdk/rapt
             python2 android.py installsdk
       - name: 生成 APK
-        run: python2 ~/renpy-7.3.5-sdk/rapt/android.py build . assembleDebug
+        run: |
+            cd ~/renpy-7.3.5-sdk/rapt
+            python2 android.py build $GITHUB_WORKSPACE assembleDebug
