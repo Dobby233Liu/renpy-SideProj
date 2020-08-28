@@ -94,8 +94,7 @@ jobs:
             wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip -q
             unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
-            git config url."https://".insteadOf ssh://git@
-            git clone --depth=1 --recursive https://github.com/renpy/rapt.git
+            git clone --depth=1 --recursive https://github.com/Dobby233Liu/rapt.git
       - name: 安装 pygame_sdl2
         run: |
             cd ~
