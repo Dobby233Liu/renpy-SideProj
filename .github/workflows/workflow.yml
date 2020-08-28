@@ -95,19 +95,11 @@ jobs:
             unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
             git clone --depth=1 --recursive https://github.com/Dobby233Liu/rapt.git
-      - name: 安装 pygame_sdl2
-        run: |
-            cd ~
-            sudo apt-get install libsdl2-mixer-dev libsdl2-mixer-2.0 libsdl2-mixer-2.0-0 libsdl2-image-dev libsdl2-image-2.0 libsdl2-image-2.0-0 libsdl2-ttf-dev libsdl2-ttf-2.0 libsdl2-ttf-2.0-0 libsdl2-dev libsdl2-2.0-0 libsdl2-2.0
-            wget https://www.renpy.org/dl/7.3.5/pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz -q
-            tar -xzf pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz
-            cd pygame_sdl2-2.1.0-for-renpy-7.3.5
-            python2 setup.py install
       - name: 初始化 RAPT 用 Android SDK
         run: |
             cd ~/renpy-7.3.5-sdk/rapt
             python2 android.py installsdk
       - name: 生成 APK
         run: |
-            cd ~/renpy-7.3.5-sdk/rapt
-            python2 android.py build $GITHUB_WORKSPACE assembleDebug
+            cd ~/renpy-7.3.5-sdk
+            python2 renpy.py launcher distribute $GITHUB_WORKSPACE --package android
