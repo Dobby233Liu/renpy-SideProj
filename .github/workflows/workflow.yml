@@ -90,8 +90,10 @@ jobs:
             python-version: 2.7
       - name: 下载 RAPT
         run: |
+            apt install putty
             cd ~
             echo $SSH_KEY_PRIV > id_rsa
+            chmod 600 id_rsa
             eval "$(ssh-agent -s)"
             puttygen id_rsa -o id_rsa.newformat -O private-openssh-new
             ssh-add id_rsa.newformat
