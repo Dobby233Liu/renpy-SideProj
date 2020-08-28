@@ -90,16 +90,11 @@ jobs:
             python-version: 2.7
       - name: 下载 RAPT
         run: |
-            apt install putty
             cd ~
-            echo $SSH_KEY_PRIV > id_rsa
-            chmod 600 id_rsa
-            eval "$(ssh-agent -s)"
-            puttygen id_rsa -o id_rsa.newformat -O private-openssh-new
-            ssh-add id_rsa.newformat
             wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip -q
             unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
+            git config url."https://".insteadOf ssh://git@
             git clone --depth=1 --recursive https://github.com/renpy/rapt.git
       - name: 安装 pygame_sdl2
         run: |
