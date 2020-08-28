@@ -99,8 +99,9 @@ jobs:
         run: |
             cd ~
             sudo apt-get install libsdl2-mixer-dev libsdl2-mixer-2.0 libsdl2-mixer-2.0-0 libsdl2-image-dev libsdl2-image-2.0 libsdl2-image-2.0-0 libsdl2-ttf-dev libsdl2-ttf-2.0 libsdl2-ttf-2.0-0 libsdl2-dev libsdl2-2.0-0 libsdl2-2.0
-            git clone --depth=1 --recursive https://github.com/renpy/pygame_sdl2.git
-            cd pygame_sdl2
+            wget https://www.renpy.org/dl/7.3.5/pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz -q
+            tar -xzf pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz
+            cd pygame_sdl2-2.1.0-for-renpy-7.3.5
             python2 setup.py install
       - name: 初始化 RAPT 用 Android SDK
         run: |
