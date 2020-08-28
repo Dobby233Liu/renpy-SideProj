@@ -93,8 +93,7 @@ jobs:
             cd ~
             echo $SSH_KEY_PRIV > id_rsa
             eval "$(ssh-agent -s)"
-            openssl rsa -noout -text < id_rsa > id_rsa.ssl
-            ssh-add id_rsa.ssl
+            ssh-add.openssh id_rsa
             wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip -q
             unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
