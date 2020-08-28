@@ -94,15 +94,13 @@ jobs:
             wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-sdk.zip -q
             unzip -o renpy-7.3.5-sdk.zip
             cd renpy-7.3.5-sdk
-            wget https://www.renpy.org/dl/7.3.5/renpy-7.3.5-rapt.zip -q
-            unzip -d rapt -j -o renpy-7.3.5-rapt.zip
+            git clone https://github.com/renpy/rapt.git --depth=1 --submodules
       - name: 安装 pygame_sdl2
         run: |
             cd ~
             sudo apt-get install libsdl2-mixer-dev libsdl2-mixer-2.0 libsdl2-mixer-2.0-0 libsdl2-image-dev libsdl2-image-2.0 libsdl2-image-2.0-0 libsdl2-ttf-dev libsdl2-ttf-2.0 libsdl2-ttf-2.0-0 libsdl2-dev libsdl2-2.0-0 libsdl2-2.0
-            wget https://www.renpy.org/dl/7.3.5/pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz -q
-            tar -xzf pygame_sdl2-2.1.0-for-renpy-7.3.5.tar.gz
-            cd pygame_sdl2-2.1.0-for-renpy-7.3.5
+            git clone https://github.com/renpy/pygame_sdl2.git --depth=1 --submodules
+            cd pygame_sdl2
             python2 setup.py install
       - name: 初始化 RAPT 用 Android SDK
         run: |
