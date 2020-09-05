@@ -56,8 +56,8 @@ label story_char_0_battle_myround:
             menu:
                 with dissolve
                 "要使用哪个招数？"
-                "马上就到你家门口":
-                    "会飞的鸡 使用了 马上就到你家门口！" nointeract
+                "很快就到你那里":
+                    "会飞的鸡 使用了 很快就到你那里！" nointeract
                     hide fulafu_battle_normal with squares
                     play sound run
                     show fulafu_battle_cast with easeinright:
