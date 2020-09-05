@@ -12,6 +12,7 @@ label story_char_0_true:
     hide screen race_prepare with dissolve
     $ quick_menu = True
     window show dissolve
+label story_char_0_intro:
     scene bg_sunny_outside with dissolve
     # jump story_char_0_legacy_battle
     flying_chicken "这是什么神仙画技？？？"
@@ -32,7 +33,6 @@ label story_char_0_battle_intro:
     pause 2.5
     hide black
     scene black with blinds
-    pause 1.5 # emulate the tiny pause
 label story_char_0_battle_appear:
     $ renpy.change_language("poke") # gui changes (FIXME houyiz to other playthroughs)
     $ quick_menu = True
@@ -154,7 +154,7 @@ label story_char_0_battle_myround:
                     if renpy.random.randint(0,3) == 2:
                         child_lead "啊啊啊啊啊啊啊啊啊啊"
                         "小孩♂ xxs 做了个噩梦，又醒来了！"
-                        "攻击不是很有效果...！"
+                        "攻击不是很有效果..."
                         jump story_char_0_battle_myround
                     else:
                         child_lead "zzzzzzzzzz"
@@ -176,9 +176,9 @@ label story_char_0_battle_myround:
                         "获得了 0 GOLD！"
         "逃跑":
             if renpy.random.randint(0,3) == 2:
-                flying_chicken "那我就逃—" nointeract
+                flying_chicken "我赶快逃—" nointeract
                 play sound run
-                pause 0.083
+                pause 0.08
                 window hide
                 show black
                 stop sound
@@ -188,10 +188,10 @@ label story_char_0_battle_myround:
                 with hpunch
                 play sound run
                 hide fulafu_overworld_jumpscare
-                hide black
                 pause 0.08
                 window show
                 "不，你不想！"
+                hide black
             else:
                 play sound run
                 hide fulafu_battle_normal with easeoutleft
