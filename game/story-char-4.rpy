@@ -1,3 +1,8 @@
+python:
+    def safe_get_pos():
+        pos = renpy.music.get_pos(channel="music")
+        if pos: return pos
+        return 0
 label story_char_4:
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
@@ -22,6 +27,10 @@ label story_char_4_start:
             window hide dissolve
             stop music
             scene black with dissolve
+            play sound chomp
+            pause 0.25
+            play voice haoci
+            pause 0.5
             "...等会？怎么有股狗剩的味道——"
             scene dead with dissolve
             play sound gameover
@@ -40,11 +49,6 @@ label story_char_4_start:
     pause 0.25
     play sound run
     pause 0.25
-    python:
-        def safe_get_pos():
-            pos = renpy.music.get_pos(channel="music")
-            if pos: return pos
-            return 0
     # be aware about some strange glitch that change the music
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference
@@ -140,7 +144,6 @@ label story_char_4_start:
             hide fulafu_overworld_bundled_just_yet with dissolve
             scene black with dissolve
             window hide dissolve
-            play voice haoci
             show screen chat("跳绳小妞 因为不配合他人游戏被踢出游戏")
             pause 2.0
             hide screen chat with dissolve
