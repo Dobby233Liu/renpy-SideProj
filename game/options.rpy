@@ -28,8 +28,10 @@ define config.version = "1.3"
 
 define gui.about = _p("""游戏规则：你可以扮演小孩（修机子，获得胜利），也可以扮演伏拉夫（抓小孩）。
 
-音频来源：
+本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，基本使用 MIT 许可证，请不要倒卖本游戏。
+""")
 
+define gui.credits = _("""音频来源：
 china2、c2g：Sand - China-2\n
 poke_mus_battle27、pokerg_mus_win：pokeemerald/sound/songs/midi/mus_battle27.mid、pokeemerald/sound/songs/midi/mus_rg_win_yasei.mid\n
 win：张秀华 - 我爱中国\n
@@ -39,15 +41,10 @@ haoci：伏拉夫的抖音视频（《火锅包子》）\n
 dizzy、dizzypt2、run、punchs：自制\n
 child_faint: {a=http://www.9ku.com/play/900092.htm}九酷音乐{/a}（疑似来源于{a=http://sc.chinaz.com}站长之家{/a}）\n
 child_cry：{a=http://www.yisell.com/sound/TiO5TuuPIEJJnPM=.html}音笑网{/a}
-
 技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度经验{/a}。
 技能“我是黑拉夫”的贴图 P 图自 {a=https://www.bilibili.com/video/BV1Fi4y1g7mv}bilibili 上某个视频的封面{/a}。
-
 Pokémon © Nintendo, Game Freak, The Pokémon Company
-
 游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由 我是内存条/游戏试毒菌 制作。
-
-本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，基本使用 MIT 许可证，请不要倒卖本游戏。
 """)
 
 
@@ -91,26 +88,29 @@ define config.main_menu_music = audio.china2
 
 define config.enter_transition = dissolve
 define config.exit_transition = dissolve
-
+define config.game_main_transition = Dissolve(0.5)
+define config.main_game_transition = Dissolve(0.5)
+define config.end_splash_transition = dissolve
 
 ## 各个游戏菜单之间的转场。
 
 define config.intra_transition = dissolve
-
+define config.window_show_transition = Dissolve(0.5)
+define config.window_hide_transition = Dissolve(0.5)
+define config.enter_yesno_transition = Dissolve(0.1)
+define config.exit_yesno_transition = Dissolve(0.1)
 
 ## 载入游戏后使用的转场。
 
 define config.after_load_transition = dissolve
-
+define config.enter_replay_transition = dissolve
 
 ## 在游戏结束之后进入主菜单时使用的转场。
 
 define config.end_game_transition = dissolve
 
-
 ## 用于控制在游戏开始标签不存在时转场的变量。作为替代，在显示初始化场景后使用
 ## with 声明。
-
 
 ## 窗口管理 ########################################################################
 ##

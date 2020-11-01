@@ -1,14 +1,15 @@
+image game_menu_ow = "gui/overlay/game_menu.png"
 label story_fulafu_simulator:
-    scene bg_sunny_outside with dissolve
     if persistent.introduced_sim_character_fulafu:
         jump flfsim_choose_type
+    scene game_menu_ow with dissolve
     show fulafu_overworld with dissolve
     "你是伏拉夫，抖音上的一个俄罗斯博主。"
-    "你以前在优酷和线下代言红酒、开包子店等等。"
+    "你以前在优酷和线下苦苦代言红酒、开包子店等等，可是却没有生意。"
     if not persistent.bad_fund:
-        $ persistent.bad_fund = renpy.random.choose("做起了吃播", "恰烂钱")
+        $ persistent.bad_fund = renpy.random.choice(["做起了吃播", "恰烂钱"])
     $ bad_fund = persistent.bad_fund # have fulafu remember his passion (for boredom)
-    "但是自从加入了抖音，并在某个火锅店吃了火锅并去了火锅气味之后，你开始[bad_fund]。"
+    "但是自从加入了抖音，并在某个火锅店吃了火锅，去了火锅气味之后，你开始[bad_fund]。"
     "中国的火锅如此好吃，中国的技术如此好，使你爱起中国，现在又变成了一名正式的中国人。"
     # be aware about some strange glitch that change the music
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
@@ -23,10 +24,14 @@ label story_fulafu_simulator:
         play music "<from " + str(old_pos) + " " + audio.china2[1:]
         hide fulafu_overworld_jumpscare
         show fulafu_overworld
+    scene bg_sunny_outside with dissolve
+    show fulafu_overworld with dissolve
     "这一天，你一时兴起，想拍一个作品上传到抖音和西瓜视频。"
     hide fulafu_overworld with dissolve
     $ persistent.introduced_sim_character_fulafu = True
 label flfsim_choose_type:
+    if persistent.introduced_sim_character_fulafu:
+        scene bg_sunny_outside with dissolve
     menu:
         with dissolve
         "那么，要拍什么类型的作品呢？"
@@ -36,21 +41,21 @@ label flfsim_choose_type:
             scene black with dissolve
             "...{p=1.0}{nw}"
             "之后，你被喷子们喷了一顿。"
-            $ this_is = renpy.random.choose("这里是", "我是", "我素", "这是", "")
-            $ postfix = renpy.random.choose("★_", "★", "_", "_★", "★_★", "")
-            $ feed = renpy.random.choose(" 不要投喂", "，不要投喂！", "")
-            $ inm_ref = renpy.random.choose("CoCo", "coco", "Coco", "COCO", "CO2", "kekker", "")
+            $ this_is = renpy.random.choice(["这里是", "我是", "我素", "这是", ""])
+            $ postfix = renpy.random.choice(["★_", "★", "_", "_★", "★_★", ""])
+            $ feed = renpy.random.choice([" 不要投喂", "，不要投喂！", ""])
+            $ inm_ref = renpy.random.choice(["CoCo", "coco", "Coco", "COCO", "CO2", "kekker", ""])
             "[this_is]可可[inm_ref][postfix]" "文明观猴[feed]"
-            $ blackened = renpy.random.choose("丶", "丶（已黑化）", "（已黑化）", "")
+            $ blackened = renpy.random.choice(["丶", "丶（已黑化）", "（已黑化）", ""])
             "微雨的温柔[blackened]" "这不是我们中国的知名猴戏🐒"
-            $ pls_no = renpy.random.choose("你是藏不住你取款的意图的1111", "我爱中国的Q", "你以为我们大家不知道你又要恰烂钱？", "我们的常客这次加密拿钱了！11", "帐号正确，密码错误")
+            $ pls_no = renpy.random.choice(["你是藏不住你取款的意图的1111", "我爱中国的Q", "你以为我们大家不知道你又要恰烂钱？", "我们的常客这次加密拿钱了！11", "帐号正确，密码错误"])
             "用户1145141919" "[pls_no]"
             $ recall_methodlogy = "骗人的把戏"
             $ oneninethreefour = "1934"
             if persistent.bad_fund == "恰烂钱":
-                $ recall_methodlogy = renpy.random.choose("恰烂钱", "赚钱") + "的手法"
+                $ recall_methodlogy = renpy.random.choice(["恰烂钱", "赚钱"]) + "的手法"
                 $ oneninethreefour = "2016"
-            $ fake_user_pfx = renpy.random.choose("火山", "西瓜", "头条", "")
+            $ fake_user_pfx = renpy.random.choice(["火山", "西瓜", "头条", ""])
             "[fake_user_pfx]用户810234[oneninethreefour]" "这[recall_methodlogy]，是个人都看得出来吧"
             "于是，你伤心地退抖了..."
             stop music
@@ -195,6 +200,7 @@ label story_char_1_pre2:
             pause 1.0
             window hide dissolve
             scene dead with dissolve
+            stop music
             play sound gameover
             show screen reload_prompt("你打不过伏拉夫，“昏倒”了！") with dissolve
             pause
@@ -217,9 +223,10 @@ label story_char_1_pre2:
             play music china2 fadein 2.0
             "xxs 胜利了！"
             "你的平底锅被销毁，同时你得到了 10 经验的补偿。"
+            $ quick_menu = True
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "从 伏拉夫 身上掉落一把 钥匙。"
-    "你找到了 钥匙！" nointeract
+    "你得到了 钥匙！" nointeract
     pause 0.5
     window hide dissolve
     hide screen spell_showcase with dissolve
@@ -240,7 +247,7 @@ label story_char_1_pre2:
             $ _history_list.pop()
             "...{w=1.0}{nw}"
             $ _history_list.pop()
-            call story_char_1_pre2_end("之后，你找到了最后一把钥匙！", "win", "win.mp3")
+            call story_char_1_pre2_end("之后，你找到了最后一把钥匙！", "win", audio.win)
         "去挖地道":
             $ _history_list.pop()
             $ quick_menu = False
@@ -255,9 +262,9 @@ label story_char_1_pre2:
         "去打猎别的伏拉夫":
             $ _history_list.pop()
             $ quick_menu = False
-            scene black with dissolve
-            "额...我觉得...{w=0.25}{nw}"
+            "额...我觉得还是-{w=0.25}{nw}"
             play sound run
+            scene bg_sunny_outside with dissolve
             "诶诶诶，锁还没开呢！{p=0.5}{nw}"
             "你这是去干嘛！{p=0.8}{nw}"
             call story_char_1_pre2_end
@@ -265,13 +272,15 @@ label story_char_1_pre2:
             $ _history_list.pop()
             call story_char_1_pre2_end
     jump endgame
-label story_char_1_pre2_end(content="你背叛了你的队友！", scrn="fail", mus="gameover.ogg"):
+label story_char_1_pre2_end(content="你背叛了你的队友！", scrn="fail", mus=audio.gameover):
+    $ quick_menu = False
     window hide dissolve
     stop music
-    $ renpy.scene()
-    $ renpy.show(scrn, at_list=[Dissolve(1.0)])
-    $ audio._mus = "audio/" + mus
-    play sound _mus
+    if scrn == "win":
+        scene win with dissolve
+    else:
+        scene fail with dissolve
+    play sound mus
     show screen reload_prompt(content) with dissolve
     pause
     stop sound

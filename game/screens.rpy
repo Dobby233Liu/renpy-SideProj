@@ -546,6 +546,13 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
+            null height gui.pref_spacing
+
+            if gui.credits:
+                textbutton _("感谢名单") action ShowTransient("credits_paper", transition=Dissolve(0.5), text=gui.credits)
+
+            null height gui.pref_spacing
+
             text _("基于 {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 
@@ -571,17 +578,15 @@ screen music_room():
         style_prefix "about"
 
         vbox:
-            text _("以下是本次需要测试的音频。")
+            text _("来听点音乐呗。")
             text _("（内置的 Music Room 功能好垃圾啊...）")
 
             null height 20
 
-            # 每条音轨的播放按钮。
-            textbutton _("绿宝石疑似野生战斗") action Play("music", audio.poke_mus_battle27)
-            textbutton _("火红叶绿野生战斗胜利") action Play("music", audio.pokerg_mus_win)
+            text _("(todo)")
 
         # 离开时恢复主菜单的音乐。
-        # on "replaced" action Play("music", config.main_menu_music)
+        on "replaced" action Play("music", config.main_menu_music)
 
 style about_label is gui_label
 style about_label_text is gui_label_text
@@ -623,6 +628,10 @@ screen preferences():
                     textbutton _("左侧") action Preference("rollback side", "left")
                     textbutton _("右侧") action Preference("rollback side", "right")
 
+                vbox:
+                    style_prefix "check"
+                    label _("其他")
+                    textbutton _("旧版本内容") action ToggleVariable("persistent.old_version_content")
                 ## 可以在此处添加类型为“radio_pref”或“check_pref”的其他“vbox”，
                 ## 以添加其他创建者定义的首选项设置。
 
@@ -1032,7 +1041,8 @@ screen confirm(message, yes_action, no_action):
 
 ## 弹窗 ########################################################################
 ##
-## 当需要提醒用户时，请使用此屏幕。
+## 当 Ren'Py 需要提醒用户时，会调用此屏幕。
+##
 ## 暂不使用。
 
 screen prompt(message, action):
@@ -1170,14 +1180,12 @@ screen notify(message):
 
     timer 3.25 action Hide('notify')
 
-
 transform notify_appear:
     on show:
         alpha 0
         linear .25 alpha 1.0
     on hide:
         linear .5 alpha 0.0
-
 
 style notify_frame is empty
 style notify_text is gui_text
@@ -1190,123 +1198,6 @@ style notify_frame:
 
 style notify_text:
     properties gui.text_properties("notify")
-
-
-## NVL 模式屏幕 ####################################################################
-##
-## 此屏幕用于 NVL 模式的对话和菜单。
-##
-## https://www.renpy.org/doc/html/screen_special.html#nvl
-
-
-screen nvl(dialogue, items=None):
-
-    window:
-        style "nvl_window"
-
-        has vbox:
-            spacing gui.nvl_spacing
-
-        ## 在“vpgrid”或“vbox”中显示对话框。
-        if gui.nvl_height:
-
-            vpgrid:
-                cols 1
-                yinitial 1.0
-
-                use nvl_dialogue(dialogue)
-
-        else:
-
-            use nvl_dialogue(dialogue)
-
-        ## 如果给定，则显示“menu”。 如果“config.narrator_menu”设置为“True”，
-        ## 则“menu”可能显示不正确，如前述。
-        for i in items:
-
-            textbutton i.caption:
-                action i.action
-                style "nvl_button"
-
-    add SideImage() xalign 0.0 yalign 1.0
-
-
-screen nvl_dialogue(dialogue):
-
-    for d in dialogue:
-
-        window:
-            id d.window_id
-
-            fixed:
-                yfit gui.nvl_height is None
-
-                if d.who is not None:
-
-                    text d.who:
-                        id d.who_id
-
-                text d.what:
-                    id d.what_id
-
-
-## 此代码控制一次可以显示的最大 NVL 模式条目数。
-define config.nvl_list_length = gui.nvl_list_length
-
-style nvl_window is default
-style nvl_entry is default
-
-style nvl_label is say_label
-style nvl_dialogue is say_dialogue
-
-style nvl_button is button
-style nvl_button_text is button_text
-
-style nvl_window:
-    xfill True
-    yfill True
-
-    background "gui/nvl.png"
-    padding gui.nvl_borders.padding
-
-style nvl_entry:
-    xfill True
-    ysize gui.nvl_height
-
-style nvl_label:
-    xpos gui.nvl_name_xpos
-    xanchor gui.nvl_name_xalign
-    ypos gui.nvl_name_ypos
-    yanchor 0.0
-    xsize gui.nvl_name_width
-    min_width gui.nvl_name_width
-    text_align gui.nvl_name_xalign
-
-style nvl_dialogue:
-    xpos gui.nvl_text_xpos
-    xanchor gui.nvl_text_xalign
-    ypos gui.nvl_text_ypos
-    xsize gui.nvl_text_width
-    min_width gui.nvl_text_width
-    text_align gui.nvl_text_xalign
-    layout ("subtitle" if gui.nvl_text_xalign else "tex")
-
-style nvl_thought:
-    xpos gui.nvl_thought_xpos
-    xanchor gui.nvl_thought_xalign
-    ypos gui.nvl_thought_ypos
-    xsize gui.nvl_thought_width
-    min_width gui.nvl_thought_width
-    text_align gui.nvl_thought_xalign
-    layout ("subtitle" if gui.nvl_text_xalign else "tex")
-
-style nvl_button:
-    properties gui.button_properties("nvl_button")
-    xpos gui.nvl_button_xpos
-    xanchor gui.nvl_button_xalign
-
-style nvl_button_text:
-    properties gui.button_text_properties("nvl_button")
 
 # ~~~
 
@@ -1325,14 +1216,6 @@ screen reload_prompt(my_text):
         yalign 0.5
 
         text my_text size 36
-
-screen battle_status(my_text):
-
-    hbox:
-        xalign 0.5
-        yalign 0
-
-        text my_text size 24
 
 screen chat(my_text):
 
@@ -1367,75 +1250,18 @@ screen spell_showcase(spell_sprite, scale_factor=1, yalign_diff=0):
     $ yalign_calc = 0.25 + yalign_diff
     add scaled_spell_sprite xalign 0.5 yalign yalign_calc at blink()
 
-init python hide:
-
-    class KonamiListener(renpy.Displayable):
-
-        def __init__(self, target):
-
-            renpy.Displayable.__init__(self)
-
-            import pygame
-            
-            # The label we jump to when the code is entered.
-            self.target = target
-
-            # This is the index (in self.code) of the key we're
-            # expecting.
-            self.state = 0
-
-            # The code itself.
-            self.code = [
-                pygame.K_UP,
-                pygame.K_UP,
-                pygame.K_DOWN,
-                pygame.K_DOWN,
-                pygame.K_DOWN,
-                pygame.K_UP,
-                pygame.K_UP,
-                pygame.K_UP,
-                pygame.K_x,
-                pygame.K_z,
-                ]
-
-        # This function listens for events.
-        def event(self, ev, x, y, st):
-            import pygame
-
-            if persistent.old_version_content:
-                return
-
-            # We only care about keydown events.
-            if ev.type != pygame.KEYDOWN:
-                return
-
-            # If it's not the key we want, go back to the start of the statem
-            # machine.
-            if ev.key != self.code[self.state]:
-                self.state = 0
-                return
-
-            # Otherwise, go to the next state.
-            self.state += 1
-
-            # If we are at the end of the code, then call the target label in
-            # the new context. (After we reset the state machine.)
-            if self.state == len(self.code):
-                self.state = 0
-                persistent.old_version_content = True
-
-            return
-
-        # Return a small empty render, so we get events.
-        def render(self, width, height, st, at):
-            return renpy.Render(1, 1)
-
-
-    # Create a KonamiListener to actually listen for the code.
-    store.konami_listener = KonamiListener('konami_code')
-
-    # This adds konami_listener to each interaction.
-    def konami_overlay():
-        ui.add(store.konami_listener)
-
-    config.overlay_functions.append(konami_overlay)
+screen credits_paper(text=gui.credits):
+    modal True
+    style_prefix "confirm"
+    frame:
+       vbox:
+           xalign .5
+           yalign .5
+           spacing 30
+           label text:
+                style "confirm_prompt"
+                xalign 0.5
+           hbox:
+                xalign 0.5
+                spacing 100
+                textbutton _("确定") action ToggleScreen("credits_paper", transition=Dissolve(0.1))

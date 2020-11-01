@@ -31,7 +31,7 @@ define gui.idle_color = '#cccccc'
 define gui.idle_small_color = '#888888'
 
 ## 用于悬停的按钮和滑条的颜色。
-define gui.hover_color = '#bccbc8'
+define gui.hover_color = '#deedf0'
 
 ## 用于选中但非焦点的文本按钮的颜色。当一个按钮为当前屏幕或设置选项值时，会处于
 ## 选中状态。
