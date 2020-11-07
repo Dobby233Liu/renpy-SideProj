@@ -26,9 +26,9 @@ define config.version = "1.3"
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
 
-define gui.about = _p("""游戏规则：你可以扮演小孩（修机子，获得胜利），也可以扮演伏拉夫（抓小孩）。
+define gui.about = _p("""游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由 我是内存条/游戏试毒菌 制作。
 
-本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，基本使用 MIT 许可证，请不要倒卖本游戏。
+本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，使用 MIT 许可证。请不要倒卖本游戏。
 """)
 
 define gui.credits = _("""音频来源：
@@ -41,10 +41,12 @@ haoci：伏拉夫的抖音视频（《火锅包子》）\n
 dizzy、dizzypt2、run、punchs：自制\n
 child_faint: {a=http://www.9ku.com/play/900092.htm}九酷音乐{/a}（疑似来源于{a=http://sc.chinaz.com}站长之家{/a}）\n
 child_cry：{a=http://www.yisell.com/sound/TiO5TuuPIEJJnPM=.html}音笑网{/a}
+
 技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度经验{/a}。
+
 技能“我是黑拉夫”的贴图 P 图自 {a=https://www.bilibili.com/video/BV1Fi4y1g7mv}bilibili 上某个视频的封面{/a}。
+
 Pokémon © Nintendo, Game Freak, The Pokémon Company
-游戏作者为 {a=https://space.bilibili.com/35369344}lwysp12{/a}，原版由 我是内存条/游戏试毒菌 制作。
 """)
 
 

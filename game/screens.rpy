@@ -1209,13 +1209,19 @@ screen fake_search(my_text):
 
         text my_text at blink() size 36
 
-screen reload_prompt(my_text):
+init python:
+    persistent.black_bg = False
+screen reload_prompt(my_text, _black_bg=False):
 
-    hbox:
+    $ persistent.black_bg = _black_bg
+    frame:
+        padding (10000000000,1000000000)
+        maximum (9999999999,9999999999999)
         xalign 0.5
         yalign 0.5
-
-        text my_text size 36
+        background ConditionSwitch("persistent.black_bg", Solid("#000"), "True", Null())
+        hbox:
+            text my_text size 36
 
 screen chat(my_text):
 
@@ -1258,7 +1264,7 @@ screen credits_paper(text=gui.credits):
            xalign .5
            yalign .5
            spacing 30
-           label text:
+           text text:
                 style "confirm_prompt"
                 xalign 0.5
            hbox:

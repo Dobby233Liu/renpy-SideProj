@@ -164,15 +164,11 @@ label story_char_1_pre2:
     pause 2.5
     hide black
     # be aware about some strange glitch that change the music
-    if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
-        # lolol ddlc reference
-        $ old_pos = safe_get_pos()
-        #$ print(str(old_pos))
-        play music "<from " + str(old_pos) + " " + audio.china2[1:21] + ">audio/c2g.ogg"
+    if renpy.random.randint(0,3) == 1:
+        # "glitch out"
+        play music c2g
         show fulafu_overworld_jumpscare
         pause 0.5
-        stop music
-        play music "<from " + str(old_pos) + " " + audio.china2[1:]
         hide fulafu_overworld_jumpscare
         show fulafu_overworld
     else:

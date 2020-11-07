@@ -1,4 +1,4 @@
-python:
+init python:
     def safe_get_pos():
         pos = renpy.music.get_pos(channel="music")
         if pos: return pos

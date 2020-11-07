@@ -1,9 +1,6 @@
 label story_char_0:
-    # "技能：{w=1.0}{nw}"
-    # $ _history_list.pop()
-    # show screen spell_showcase("images/spell_publish_bs.png", 0.5) with dissolve
-    # "发布作品：又叫“我爱中国”，使忠粉攻击小孩，以使小孩眩晕 10 秒。"
-    # hide screen spell_showcase with dissolve
+    $ brainfucked_run = False
+    $ myround_no_fade = 1
 label story_char_0_true:
     $ quick_menu = False
     window hide dissolve
@@ -14,13 +11,13 @@ label story_char_0_true:
     window show dissolve
 label story_char_0_intro:
     scene bg_sunny_outside with dissolve
-    # jump story_char_0_legacy_battle
+
     flying_chicken "这是什么神仙画技？？？"
     flying_chicken "算了"
     flying_chicken "从这个房间开始吧"
     show child_with_pan with blinds
     child_lead "这是什么地方"
-    child_lead "等会"
+    child_lead "等等"
     child_lead "伏拉夫已经来了？？？"
     flying_chicken "！！！"
 
@@ -34,7 +31,6 @@ label story_char_0_battle_intro:
     hide black
     scene black with blinds
 label story_char_0_battle_appear:
-    $ renpy.change_language("poke") # gui changes (FIXME houyiz to other playthroughs)
     $ quick_menu = True
     scene fake_battle with dissolve
     show fulafu_battle_normal with easeinright:
@@ -50,24 +46,25 @@ label story_char_0_battle_appear:
     "小孩♂ xxs 出现了！"
 label story_char_0_battle_myround:
     menu:
-        with dissolve
+        with Dissolve(1.0 * myround_no_fade)
         "要做点什么呢？"
         "攻击":
             menu:
                 with dissolve
                 "要使用哪个招数？"
                 "很快就到你那里":
+                    $ quick_menu = False
                     "会飞的鸡 使用了 很快就到你那里！" nointeract
                     hide fulafu_battle_normal with squares
                     play sound run
                     show fulafu_battle_cast with easeinright:
                         xalign 0.8
-                        yalign 0.19
+                        yalign 0.15
                     pause 1.0
                     show danger at blink:
                         truecenter
                         zoom 2.0
-                        alpha .25
+                        alpha .15
                     play sound dizzy
                     play sound punchs
                     with vpunch
@@ -88,35 +85,38 @@ label story_char_0_battle_myround:
                     "小孩♂ xxs 被击倒了！"
                     "你胜利了！"
                     "获得了 0 GOLD！"
+                    $ quick_menu = True
                     child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我要被做成火锅了啊！！！"
                 "发布作品": # maybe FIXME：引战
+                    $ quick_menu = False
                     "会飞的鸡 使用了 发布作品！" nointeract
                     pause 1.0
                     hide fulafu_battle_normal
                     show fulafu_battle_cast:
                         xalign 0.2
-                        yalign 0.22
+                        yalign 0.2
                     show comment_stream_spelling with easeinleft:
-                        xalign 0.9
-                        yalign 0.5
+                        xalign 1.99
+                        yalign 0.15
                     with hpunch
                     play sound dizzypt2
                     show comment_stream_bottom with easeintop:
-                        xalign 0.9
-                        yalign 0.9
+                        xalign 0.85
+                        yalign 1.9
                     with hpunch
                     pause 0.5
                     show comment_stream_right with easeinleft:
-                        xalign 0.9
+                        xalign 1.5
                         yalign 0.15
                     with vpunch
-                    hide fulafu_battle_cast with squares
+                    hide fulafu_battle_cast
                     show fulafu_battle_normal:
                         xalign 0.2
                         yalign 0.2
-                    hide comment_stream_spelling with blinds
-                    hide comment_stream_bottom with blinds
-                    hide comment_stream_right with blinds
+                    # objects are offscreen, no translations needed. amrite?
+                    hide comment_stream_spelling
+                    hide comment_stream_bottom
+                    hide comment_stream_right
                     hide child_with_pan with easeoutright
                     play sound child_faint
                     pause 0.5
@@ -128,15 +128,17 @@ label story_char_0_battle_myround:
                     "小孩♂ xxs 被击倒了！"
                     "你胜利了！"
                     "获得了 0 GOLD！"
-                    child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我要被做成火锅了啊！！！"
+                    $ quick_menu = True
+                    child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我上电视了啊啊！！！"
                 "眩晕":
+                    $ quick_menu = False
                     "会飞的鸡 使用了 眩晕！" nointeract
                     hide fulafu_battle_normal
                     show fulafu_battle_cast:
                         xalign 0.2
                         yalign 0.22
                     play sound dizzy
-                    show circle with dissolve:
+                    show circle with pixellate:
                         xalign 0.9
                         yalign 0.15
                     pause 0.5
@@ -174,24 +176,37 @@ label story_char_0_battle_myround:
                         play music pokerg_mus_win
                         "你胜利了！"
                         "获得了 0 GOLD！"
-        "逃跑":
+                    $ quick_menu = True
+        "逃跑" if not brainfucked_run:
             if renpy.random.randint(0,3) == 2:
-                flying_chicken "我赶快逃—" nointeract
+                $ brainfucked_run = True
+                flying_chicken "（我还是逃吧！）" nointeract
+                pause 0.5
+                hide fulafu_battle_normal with easeoutleft
                 play sound run
                 pause 0.08
-                window hide
-                show black
+                window hide(None)
+                show black zorder 5
                 stop sound
-                show fulafu_overworld_jumpscare
+                $ renpy.music.set_pause(True)
+                $ quick_menu = False
+                show fulafu_overworld_jumpscare zorder 999
                 play sound dizzypt2
+                $ renpy.pause(0.5, hard=True)
                 with vpunch
                 with hpunch
                 play sound run
                 hide fulafu_overworld_jumpscare
-                pause 0.08
-                window show
-                "不，你不想！"
-                hide black
+                window show(None) # oh
+                "oaisdjsoijgodjin4e7cbvb hfthfcgf{nw}"
+                hide black with None
+                $ renpy.music.set_pause(False)
+                $ quick_menu = True
+                show fulafu_battle_normal:
+                    xalign 0.2
+                    yalign 0.2
+                $ myround_no_fade = 0
+                jump story_char_0_battle_myround
             else:
                 play sound run
                 hide fulafu_battle_normal with easeoutleft
@@ -205,13 +220,37 @@ label story_char_0_battle_myround:
                 window show dissolve
                 child_lead "？？？"
                 child_lead "伏拉夫不是要吃小孩火锅吗"
-                child_lead "怎么又跑了"
+                child_lead "怎么跑了"
+        "gdv攻ghjghhgfffd跑pgh" if brainfucked_run:
+             window hide(None)
+             stop sound
+             play music dizzypt2
+             scene dead
+             show fulafu_overworld_jumpscare onlayer transient
+             $ quick_menu = False
+             $ renpy.pause(6.66, hard=True)
+             scene black
+             hide fulafu_overworld_jumpscare
+             stop music
+             window show(None)
+             show screen reload_prompt("Saving game...")
+             $ renpy.pause(0.37, hard=True)
+             hide screen reload_prompt
+             show screen reload_prompt("Reloading script...")
+             $ renpy.pause(1.53, hard=True)
+             hide screen reload_prompt
+             window hide(None)
+             scene dead
+             show screen reload_prompt("Reloading game...", True)
+             $ renpy.pause(0.33, hard=True)
+             hide screen reload_prompt with dissolve
+             $ quick_menu = False
+             "{cps=*12}{space=30}{/cps}{k=.5}{size=+36}GAME OVER.{/size}{/k}{fast}" # pokemon creepypasta reference
+             return
     stop music fadeout 0.5
     $ quick_menu = False
     window hide dissolve
     scene black with dissolve
-    $ renpy.change_language(None)
+    $ quick_menu = True
     return
 # dumb pokemon ripoff end
-
-# legacy_battle - goodbye everyone
