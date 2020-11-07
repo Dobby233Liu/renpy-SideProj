@@ -1209,19 +1209,11 @@ screen fake_search(my_text):
 
         text my_text at blink() size 36
 
-init python:
-    persistent.black_bg = False
-screen reload_prompt(my_text, _black_bg=False):
-
-    $ persistent.black_bg = _black_bg
-    frame:
-        padding (10000000000,1000000000)
-        maximum (9999999999,9999999999999)
+screen reload_prompt(my_text):
+    hbox:
         xalign 0.5
         yalign 0.5
-        background ConditionSwitch("persistent.black_bg", Solid("#000"), "True", Null())
-        hbox:
-            text my_text size 36
+        text my_text size 32
 
 screen chat(my_text):
 

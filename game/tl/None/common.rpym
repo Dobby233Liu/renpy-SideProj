@@ -467,7 +467,7 @@ translate None strings:
 
     # renpy/common/00library.rpy:281
     old "This program contains free software under a number of licenses, including the MIT License and GNU Lesser General Public License. A complete list of software, including links to full source code, can be found {a=https://www.renpy.org/l/license}here{/a}."
-    new "本程序包含了由数个许可证授权的免费软件，包括 MIT 许可证和 GNU 宽松通用公共许可证。完整软件列表及源代码链接，请{a=https://www.renpy.org/l/license}访问此处{/a}。"
+    new "Ren'Py 包含了由数个许可证授权的自由软件，包括 MIT 许可证和 GNU 宽松通用公共许可证。完整软件列表及源代码链接，请{a=https://www.renpy.org/l/license}访问此处{/a}。"
 
     # renpy/common/00preferences.rpy:233
     old "display"
@@ -811,7 +811,7 @@ translate None strings:
 
     # renpy/common/00updater.rpy:375
     old "The Ren'Py Updater is not supported on mobile devices."
-    new "Py 更新器尚不支持移动设备。"
+    new "Ren'Py 更新器尚不支持移动设备。"
 
     # renpy/common/00updater.rpy:494
     old "An error is being simulated."
@@ -1167,11 +1167,11 @@ translate None strings:
 
     # renpy/common/00console.rpy:277
     old "Ren'Py script enabled."
-    new "Ren'Py 脚本已开启。"
+    new "Ren'Py 脚本已启用。"
 
     # renpy/common/00console.rpy:279
     old "Ren'Py script disabled."
-    new "Ren'Py 脚本已关闭。"
+    new "Ren'Py 脚本已禁用。"
 
     # renpy/common/00console.rpy:526
     old "help: show this help"

@@ -229,23 +229,36 @@ label story_char_0_battle_myround:
              show fulafu_overworld_jumpscare onlayer transient
              $ quick_menu = False
              $ renpy.pause(6.66, hard=True)
-             scene black
              hide fulafu_overworld_jumpscare
-             stop music
-             window show(None)
-             show screen reload_prompt("Saving game...")
-             $ renpy.pause(0.37, hard=True)
-             hide screen reload_prompt
-             show screen reload_prompt("Reloading script...")
-             $ renpy.pause(1.53, hard=True)
-             hide screen reload_prompt
-             window hide(None)
-             scene dead
-             show screen reload_prompt("Reloading game...", True)
-             $ renpy.pause(0.33, hard=True)
-             hide screen reload_prompt with dissolve
+             scene black
+             label story_char_0_battle_run_reload: # very solid restoration of reloading
              $ quick_menu = False
-             "{cps=*12}{space=30}{/cps}{k=.5}{size=+36}GAME OVER.{/size}{/k}{fast}" # pokemon creepypasta reference
+             window show(None)
+             python hide:
+                 renpy.music.stop()
+                 ui.add(Solid((0, 0, 0, 255)))
+                 ui.text("Saving game...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
+
+                 renpy.pause(0.37, hard=True)
+
+                 ui.add(Solid((0, 0, 0, 255)))
+                 ui.text("Reloading script...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
+
+                 renpy.pause(1.53, hard=True)
+
+             window hide(None)
+             python hide:
+                 ui.add(Solid((0, 0, 0, 255)))
+                 ui.text("Reloading game...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
+
+                 renpy.pause(0.33, hard=True)
+                 ui.pausebehavior(0)
+                 ui.interact(suppress_underlay=True, suppress_overlay=True)
+                 renpy.transition(config.after_load_transition, force=True)
+             scene dead
+             window show(None)
+             $ quick_menu = False
+             "{cps=*12}{space=30}{/cps}{k=.5}{size=+36}GAME OVER.{/size}{/k}{fast}"
              return
     stop music fadeout 0.5
     $ quick_menu = False
