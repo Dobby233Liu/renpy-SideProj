@@ -102,10 +102,10 @@ label story_char_4_start:
             $ quick_menu = True
             jump endgame
         "呼叫队友":
-            "跳绳小妞" "有谁可以来帮忙一下？"
-            "跳绳小妞" "我的绳子太短了"
-            child_lead "在哪里"
-            "跳绳小妞" "伏拉夫的屋子里面"
+            "跳绳小妞" "谁帮忙一下"
+            "跳绳小妞" "绳子太短"
+            child_lead "哪里"
+            "跳绳小妞" "伏拉夫的屋子"
             "...{w=1.0}{nw}"
             play sound run
             show child_with_pan with easeinbottom

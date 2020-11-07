@@ -210,8 +210,11 @@ label story_char_1_pre2:
             play sound dizzy
             pause 0.25
             play sound pong
+            pause 0.1
             play sound pong
+            pause 0.1
             play sound pong
+            pause 0.1
             with vpunch
             pause 0.25
             play voice fulafu_faint fadeout 0.125

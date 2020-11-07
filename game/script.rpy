@@ -58,12 +58,6 @@ label search:
     jump expression jump_to_label
     jump endgame
 
-# see story-char-0.rpy
-
-# see story-char-1.rpy
-
-# see story-heimankun.rpy
-
 label endgame:
     window hide dissolve
     return

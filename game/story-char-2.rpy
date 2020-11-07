@@ -70,7 +70,8 @@ label story_char_2_start:
             scene black with dissolve
             "奥利给，干了！" nointeract
             pause 1.0
-            play sound dizzypt2
+            play sound dizzy
+            pause 0.15
             play sound punchs
             "呕呕呕呕呕呕呕呕呕呕呕呕呕呕" nointeract
             pause 2.0
