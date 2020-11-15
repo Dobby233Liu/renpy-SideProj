@@ -3,7 +3,7 @@
 define player_character = 0 # 0: fulafu, 1: child, 2: laoba, 3: laoqi, 4: ropejumper
 
 label start:
-    scene black
+    scene black with dissolve
 
     window show dissolve
     menu:

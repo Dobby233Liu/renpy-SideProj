@@ -1140,11 +1140,14 @@ transform blink():
         linear .25 alpha 0.0
         repeat
 
-transform i_can_spin():
+init python:
+    def constant_rot(t, st, at):
+        t.rotate += 10
+        return 0.00001
+transform spin_and_fly():
     rotate 0
     block:
-        linear .25 rotate 360
-        linear .25 rotate 0
+        function constant_rot
         repeat
 
 style skip_frame is empty

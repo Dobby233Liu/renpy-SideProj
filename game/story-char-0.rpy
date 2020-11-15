@@ -1,6 +1,10 @@
+default brainfucked_run = False
+default myround_no_fade = 1
+default xxs_slept = False
 label story_char_0:
     $ brainfucked_run = False
     $ myround_no_fade = 1
+    $ xxs_slept = False
 label story_char_0_true:
     $ quick_menu = False
     window hide dissolve
@@ -90,7 +94,7 @@ label story_char_0_battle_myround:
                 "发布作品": # maybe FIXME：引战
                     $ quick_menu = False
                     "会飞的鸡 使用了 发布作品！" nointeract
-                    pause 1.0
+                    pause 0.5
                     hide fulafu_battle_normal
                     show fulafu_battle_cast:
                         xalign 0.2
@@ -138,15 +142,41 @@ label story_char_0_battle_myround:
                         xalign 0.2
                         yalign 0.22
                     play sound dizzy
-                    show circle with pixellate:
-                        xalign 0.9
-                        yalign 0.15
+                    if brainfucked_run:
+                        show fulafu_overworld_jumpscare2:
+                            xalign 0.9
+                            yalign 0.15
+                    else:
+                        show circle with pixellate:
+                            xalign 0.9
+                            yalign 0.15
                     pause 0.5
+                    if brainfucked_run:
+                        play music dizzypt2
+                        $ renpy.pause(2, hard=True)
+                        hide fulafu_overworld_jumpscare2
+                        stop music
+                        label report_error_test:
+                        python:
+                            try:
+                                short, full, traceback_fn = sys.modules["renpy.error"].report_exception("马上就到你家门口", False) # this gives a random error, but why not
+                                sys.modules["renpy.display.error"].report_exception(short, full, traceback_fn)
+                                brainfucked_run = False
+                                myround_no_fade = 1
+                                renpy.jump("story_char_0_battle_myround")
+                            except Exception as e:
+                                sys.modules["renpy.error"].report_exception(e, False)
+                                quick_menu = True
+                                renpy.full_restart(label="story_char_0_intro") # better approach too
                     hide circle with blinds
                     hide fulafu_battle_cast
                     show fulafu_battle_normal:
                         xalign 0.2
                         yalign 0.2
+                    if xxs_slept:
+                        "但是 小孩♂ xxs 对攻击免疫！"
+                        jump story_char_0_battle_opround
+                    $ xxs_slept = True
                     child_lead "zzzzzzzzzz"
                     "3..." nointeract
                     pause 1.0
@@ -157,7 +187,7 @@ label story_char_0_battle_myround:
                         child_lead "啊啊啊啊啊啊啊啊啊啊"
                         "小孩♂ xxs 做了个噩梦，又醒来了！"
                         "攻击不是很有效果..."
-                        jump story_char_0_battle_myround
+                        jump story_char_0_battle_opround
                     else:
                         child_lead "zzzzzzzzzz"
                         "1..." nointeract
@@ -180,10 +210,8 @@ label story_char_0_battle_myround:
         "逃跑" if not brainfucked_run:
             if renpy.random.randint(0,3) == 2:
                 $ brainfucked_run = True
-                flying_chicken "（我还是逃吧！）" nointeract
-                pause 0.5
-                hide fulafu_battle_normal with easeoutleft
                 play sound run
+                hide fulafu_battle_normal with easeoutleft
                 pause 0.08
                 window hide(None)
                 show black zorder 5
@@ -195,7 +223,6 @@ label story_char_0_battle_myround:
                 $ renpy.pause(0.5, hard=True)
                 with vpunch
                 with hpunch
-                play sound run
                 hide fulafu_overworld_jumpscare
                 window show(None) # oh
                 "oaisdjsoijgodjin4e7cbvb hfthfcgf{nw}"
@@ -225,11 +252,11 @@ label story_char_0_battle_myround:
              window hide(None)
              stop sound
              play music dizzypt2
-             scene dead
-             show fulafu_overworld_jumpscare onlayer transient
+             scene dead2
+             show fulafu_overworld_jumpscare2 onlayer transient
              $ quick_menu = False
              $ renpy.pause(6.66, hard=True)
-             hide fulafu_overworld_jumpscare
+             hide fulafu_overworld_jumpscare2
              scene black
              label story_char_0_battle_run_reload: # very solid restoration of reloading
              $ quick_menu = False
@@ -260,10 +287,74 @@ label story_char_0_battle_myround:
              $ quick_menu = False
              "{cps=*12}{space=30}{/cps}{k=.5}{size=+36}GAME OVER.{/size}{/k}{fast}"
              return
+label story_char_0_end:
     stop music fadeout 0.5
     $ quick_menu = False
     window hide dissolve
     scene black with dissolve
     $ quick_menu = True
+    return
+
+define story_o_round_attack_PAN = "平底锅"
+define story_o_round_attack_TACKLE = "撞击"
+label story_char_0_battle_opround:
+    # AI of some sort
+    $ use_attack = story_o_round_attack_PAN
+    if xxs_slept:
+        $ use_attack = story_o_round_attack_TACKLE
+
+    $ quick_menu = False
+    "小孩♂ xxs 使用了 [use_attack]！" nointeract
+    pause 0.5
+
+    if use_attack == story_o_round_attack_PAN:
+        hide child_with_pan
+        show child:
+            zoom 0.5
+            xalign 0.9
+            yalign 0.15
+        show pan at spin_and_fly with easeinright:
+            xalign 0.2
+            yalign 0.2
+            zoom 1
+        hide pan
+        show pan:
+            xalign 0.2
+            yalign 0.2
+            zoom 1
+            rotate -15
+        pause 1
+        hide pan with dissolve
+    else:
+        hide child_with_pan with squares
+        play sound punchs
+        show child_with_pan with easeinleft:
+            zoom 0.5
+            xalign 0.23
+            yalign 0.25
+        show danger at blink:
+            truecenter
+            zoom 2.0
+            alpha .15
+        with vpunch
+        with hpunch
+        hide danger with dissolve
+
+    hide fulafu_battle_normal with blinds
+    if use_attack == story_o_round_attack_PAN:
+        hide child
+        show child_with_pan:
+            zoom 0.5
+            xalign 0.9
+            yalign 0.15
+    else:
+        hide child_with_pan
+        show child_with_pan with squares:
+            zoom 0.5
+            xalign 0.9
+            yalign 0.15
+    play sound fulafu_faint
+    "会飞的鸡 晕倒了！"
+    jump story_char_0_end # why not
     return
 # dumb pokemon ripoff end
