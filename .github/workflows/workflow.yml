@@ -18,6 +18,11 @@ jobs:
         with:
           submodules: true
 
+      - name: 满足代码需求
+        run: |
+          sudo apt update
+          sudo apt install libgl1-mesa-glx
+
       # 确保代码可行
       - name: 检查脚本
         uses: ProjectAliceDev/renpy-lint-action@master
