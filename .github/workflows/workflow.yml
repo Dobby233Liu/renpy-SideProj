@@ -46,7 +46,7 @@ jobs:
       - name: 上传生成的 zip 到 GitHub Actions
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ steps.result.outputs.dir }}
+          name: ${{ steps.results.outputs.dir }}
           path: ${{ format('{0}/{1}-market.zip', steps.results.outputs.dir, steps.results.outputs.version) }}
 
       # 将生成的 zip 上传到一个刚创建的 Release 里
