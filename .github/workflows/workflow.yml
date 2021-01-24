@@ -1,24 +1,24 @@
 name: Ren'Py 生成
 
-# 在这里定义触发工作流程的事件组
+# 触发工作流程的事件组
 on:
   push:
   pull_request:
   release:
 
-# 定义作业和它的步骤
+# 作业和其步骤
 jobs:
   build:
     name: 使用 Ren'Py SDK 生成
     runs-on: ubuntu-latest
 
     steps:
-      - name: 克隆 repo
+      - name: 克隆仓库
         uses: actions/checkout@v1
         with:
           submodules: true
 
-      # 代码初次检查，是否没有语法等可检测的错误
+      # 代码初轮检查，是否没有语法等可检测的错误
       - name: 检查脚本
         uses: ProjectAliceDev/renpy-lint-action@master
         with:
@@ -33,7 +33,7 @@ jobs:
       - name: 生成 VN
         uses: Dobby233Liu/renpy-build-action@master
         # 定义一个 ID 以便之后使用
-        id: buildseq
+        id: results
         with:
           sdk-version: '7.4.1'
           project-dir: .
@@ -46,8 +46,8 @@ jobs:
       - name: 上传生成的 zip 到 GitHub Actions
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ steps.buildseq.outputs.dir }}
-          path: ${{ format('{0}/{1}-market.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
+          name: ${{ steps.result.outputs.dir }}
+          path: ${{ format('{0}/{1}-market.zip', steps.results.outputs.dir, steps.results.outputs.version) }}
 
       # 将生成的 zip 上传到一个刚创建的 Release 里
       - name: 上传生成的 zip 到 Release
@@ -56,4 +56,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: ${{ format('{0}/{1}-market.zip', steps.buildseq.outputs.dir, steps.buildseq.outputs.version) }}
+          args: ${{ format('{0}/{1}-market.zip', steps.results.outputs.dir, steps.results.outputs.version) }}
