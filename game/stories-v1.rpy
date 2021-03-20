@@ -13,7 +13,7 @@ label story_fulafu_simulator:
     $ r = "突然想到了一条财富之路" if bad_fund == "恰烂钱" else "感觉很好吃"
     "但是自从加入了抖音，并在某个火锅店［zzz]之后，[r]，就开始[bad_fund]了。"
     $ ugh = "天上还真会掉馅饼" if bad_fund == "恰烂钱" else "这里的火锅还挺好吃的"
-    "中国各个方面都很好，而且[ugh]，使你爱起中国，现在又变成了一名正式的中国人。"
+    "中国各个方面都很好，而且[ugh]，使你爱起中国，入了中国国籍。"
     # be aware about some strange glitch that changes the music
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference
@@ -30,7 +30,7 @@ label story_fulafu_simulator:
 label flfsim_choose_type:
     scene bg_sunny_outside with dissolve
     show fulafu_overworld with dissolve
-    "这天，你又想拍一个作品上传到抖音和西瓜视频了。"
+    "这天，你又想拍一个作品上传到抖音和西瓜视频。"
     hide fulafu_overworld with dissolve
     $ persistent.introduced_sim_character_fulafu = True
 #label flfsim_choose_type:
@@ -87,16 +87,16 @@ label flfsim_choose_type:
             stop sound with fadeout 1.0
             scene black with dissolve
             window show with dissolve
-            "已经给人留下了不好的印象了..."
+            "你早就给人留下了不好的印象了..."
             "再想怎样挽救，也已经无济于事了..."
             $ quick_menu = True
             jump endgame
-    "你录了一段作品，发出去了。"
-    "现在，只需要睡个午觉..."
+    "你录了一段作品。"
+    "现在，只要睡个午觉..."
     scene black with dissolve
     "...{p=1.0}{nw}"
     scene fix_house with dissolve
-    "就可以看到喷子们在云观猴了。"
+    "就可以看到喷子们在评论区云观猴了。"
     "(此处省略1w+的观猴评论。)"
     label start_the_buyaolian:
     menu:
