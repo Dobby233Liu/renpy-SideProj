@@ -22,7 +22,7 @@ label story_char_1:
         hide dew_bottle with easeoutright
         $ persistent.dew_bottle = 1
         pause
-    elseif persistent.dew_bottle == 1:
+    elif persistent.dew_bottle == 1:
         $ persistent.dew_bottle = 2
         "对了，你吸取了上次的教训，这次没手贱去捡垃圾。"
     menu:
