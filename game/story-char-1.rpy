@@ -22,7 +22,7 @@ label story_char_1:
         hide dew_bottle with easeoutright
         $ persistent.dew_bottle = 1
         pause
-    else if persistent.dew_bottle == 1:
+    elseif persistent.dew_bottle == 1:
         $ persistent.dew_bottle = 2
         "对了，你吸取了上次的教训，这次没手贱去捡垃圾。"
     menu:
@@ -120,13 +120,15 @@ label story_char_1:
                 pause 0.5
                 play music punchs fadein 0.125
                 "...洞穴要塌了...!" nointeract
-                for i in range(5):
+                $ i = 0
+                while i < 5:
                     play voice punchs
                     with vshake nointeract
                     with hshake nointeract
                     $ renpy.pause(0.1, hard=True)
+                    $ i += 1
                 stop music
-                stop voice fadeout 0.01
+                stop voice fadeout 0.05
                 window hide(None)
                 $ renpy.pause(1, hard=True)
                 #$ quick_menu = False
