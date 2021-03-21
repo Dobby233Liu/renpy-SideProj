@@ -101,8 +101,7 @@ label story_char_1:
                 $ _history_list.pop()
                 scene black with dissolve
                 "你来到洞穴里。"
-                "这里看起来不太宽敞，不过还行。"
-                #$ quick_menu = false
+                "这里看起来不太宽敞，不过还可以。"
                 stop music fadeout 0.5
                 "..." nointeract
                 pause 1
