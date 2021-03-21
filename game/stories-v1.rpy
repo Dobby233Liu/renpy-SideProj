@@ -65,7 +65,7 @@ label flfsim_choose_type:
             $ fake_user_pfx = renpy.random.choice(["火山", "西瓜", "头条", ""])
             "[fake_user_pfx]用户810234[oneninethreefour]" "这[recall_methodlogy]，智力没有问题的都看得出来吧"
             if bad_fund == "恰烂钱":
-            	scene fix_house with pixelate
+                scene fix_house with pixelate
                 jump start_the_buyaolian
             stop music fadeout 1.0
             with vshake
