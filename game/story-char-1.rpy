@@ -6,7 +6,8 @@ label story_char_1:
     hide screen race_prepare with dissolve
     $ quick_menu = True
     window show dissolve
-    "..."
+    "..." nointeract
+    pause 0.5
     scene fix_house with dissolve
     show car_fixing with dissolve
     "直奔主题，你又在修车。"
@@ -115,13 +116,13 @@ label story_char_1:
                 stop music
                 stop sound fadeout 0.0625
                 play sound pong
-                "你听见一声巨响..." nointeract
-                pause 0.125
+                "突然，你听见一声巨响..." nointeract
+                pause 0.5
                 play music punchs fadein 0.125
                 "...洞穴要塌了...!" nointeract
                 for i in range(5):
-                	play voice punchs
-                	with vshake nointeract
+                    play voice punchs
+                    with vshake nointeract
                     with hshake nointeract
                     $ renpy.pause(0.1, hard=True)
                 stop music
