@@ -31,7 +31,8 @@ label story_char_4_start:
             pause 0.25
             play voice haoci
             pause 0.5
-            "...等会？怎么有股狗剩的味道——"
+            "...等会？怎么有股狗剩的味道——" nointeract
+            pause 1
             scene dead with dissolve
             play sound gameover
             show screen reload_prompt("你被毒死了！")
@@ -39,7 +40,7 @@ label story_char_4_start:
             stop sound
             $ quick_menu = True
             jump endgame
-        "否。丢掉。":
+        "否":
             pass
     hide screen spell_showcase with dissolve
     scene fix_house with dissolve
@@ -66,15 +67,15 @@ label story_char_4_start:
         hide car_fixing with dissolve
         show fulafu_overworld with dissolve
     "突然，伏拉夫来了！"
-    "你必须用绳子绑住伏拉夫。"
+    "你用绳子绑住伏拉夫。"
     show black with dissolve
-    ".{w=1.0}{nw}"
-    "..{w=1.0}{nw}"
-    "...{w=1.0}{nw}"
+    ".{w=0.25}{nw}"
+    "..{w=0.25}{nw}"
+    "...{w=0.25}{nw}"
     hide fulafu_overworld
     hide black with dissolve
     show fulafu_overworld_bundled_just_yet with dissolve
-    "就差那么一点点就绑好了。可是，绳子太短了，伏拉夫又准备打死你。"
+    "就差一点就绑好了，可是绳子太短了，不快点命就没了。"
     menu:
         with dissolve
         "怎么办？"
@@ -103,9 +104,9 @@ label story_char_4_start:
             jump endgame
         "呼叫队友":
             "跳绳小妞" "谁帮忙一下"
-            "跳绳小妞" "绳子太短"
-            child_lead "哪里"
-            "跳绳小妞" "伏拉夫的屋子"
+            "跳绳小妞" "绑伏拉夫 绳子太短了"
+            child_lead "你在哪里"
+            "跳绳小妞" "伏拉夫的屋子里"
             "...{w=1.0}{nw}"
             play sound run
             show child_with_pan with easeinbottom
@@ -160,7 +161,7 @@ label story_char_4_start:
             stop music
             scene win with dissolve
             play sound win
-            show screen reload_prompt("你胜利了！")
+            show screen reload_prompt("游戏正好结束了！")
             pause
             stop sound
             $ quick_menu = True
