@@ -84,9 +84,9 @@ label flfsim_choose_type:
             play sound gameover
             show screen reload_prompt("你伤心地退抖了...")
             pause
-            stop sound with fadeout 1.0
+            stop sound fadeout 1.0
             scene black with dissolve
-            window show with dissolve
+            window show dissolve
             "你早就给人留下了不好的印象了..."
             "再想怎样挽救，也已经无济于事了..."
             $ quick_menu = True
