@@ -135,7 +135,7 @@ label flfsim_choose_type:
     "而是你实际上寥寥无几的真粉，还有那些喷子们。"
     "没有了这些，你又是个什么东西呢..."
     window hide dissolve
-	$ quick_menu = True
+    $ quick_menu = True
     jump endgame
 
 # ~~~
@@ -143,6 +143,7 @@ label flfsim_choose_type:
 label story_char_1_pre2:
     window hide dissolve
     $ quick_menu = False
+    # editme: whatthefuck is this
     show screen race_prepare("伏拉夫\n会飞的猪\n{i}sysmsg{/i}\n{i}还有两个...{/i}", "小孩\nxxs\n抖音小雨\n可可里加巧克力") with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
