@@ -123,9 +123,9 @@ label story_char_1:
                 $ i = 0
                 while i < 5:
                     play voice punchs
-                    with vshake nointeract
-                    with hshake nointeract
-                    $ renpy.pause(0.1, hard=True)
+                    with vshake
+                    with hshake
+                    #$ renpy.pause(0.1, hard=True)
                     $ i += 1
                 stop music
                 stop voice fadeout 0.05
