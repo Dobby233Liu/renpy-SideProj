@@ -22,7 +22,7 @@ jobs:
       - name: 检查脚本
         uses: ProjectAliceDev/renpy-lint-action@master
         with:
-          sdk-version: '7.4.1'
+          sdk-version: '7.4.4'
           project-dir: .
         env:
           # GitHub Actions 环境下没有 GUI
@@ -35,7 +35,7 @@ jobs:
         # 定义一个 ID 以便之后使用
         id: results
         with:
-          sdk-version: '7.4.1'
+          sdk-version: '7.4.4'
           project-dir: .
           extra-options: '--package market'
         env:
