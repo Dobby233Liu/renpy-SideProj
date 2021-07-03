@@ -12,6 +12,9 @@ jobs:
     name: 使用 Ren'Py SDK 生成
     runs-on: ubuntu-latest
 
+    env:
+      RENPY_SDK: 7.4.6
+
     steps:
       - name: 克隆仓库
         uses: actions/checkout@v1
@@ -22,7 +25,7 @@ jobs:
       - name: 检查脚本
         uses: ProjectAliceDev/renpy-lint-action@master
         with:
-          sdk-version: '7.4.4'
+          sdk-version: ${{ env.RENPY_SDK }}
           project-dir: .
         env:
           # GitHub Actions 环境下没有 GUI
@@ -35,7 +38,7 @@ jobs:
         # 定义一个 ID 以便之后使用
         id: results
         with:
-          sdk-version: '7.4.4'
+          sdk-version: ${{ env.RENPY_SDK }}
           project-dir: .
           extra-options: '--package market'
         env:
