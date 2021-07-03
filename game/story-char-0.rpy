@@ -326,16 +326,16 @@ label story_char_0_battle_opround:
         pause 1
         hide pan with dissolve
     else:
-        hide child_with_pan with squares
-        play sound punchs
-        show child_with_pan with easeinleft:
-            zoom 0.5
-            xalign 0.23
-            yalign 0.25
         show danger at blink:
             truecenter
             zoom 2.0
             alpha .15
+        hide child_with_pan with squares
+        show child_with_pan with easeinleft:
+            zoom 0.5
+            xalign 0.23
+            yalign 0.25
+        play sound punchs
         with vpunch
         with hpunch
         hide danger with dissolve
