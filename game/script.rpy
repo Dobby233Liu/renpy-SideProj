@@ -1,8 +1,11 @@
-﻿# 游戏在此开始。
+# 游戏在此开始。
 
-define player_character = 0 # 0: fulafu, 1: child, 2: laoba, 3: laoqi, 4: ropejumper
+define player_character = 0
+default persistent.dew_bottle = 0
 
 label start:
+    $ player_character = 0
+
     scene black with dissolve
 
     window show dissolve
