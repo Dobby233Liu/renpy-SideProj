@@ -11,8 +11,7 @@ label story_char_1:
     scene fix_house with dissolve
     show car_fixing with dissolve
     "直奔主题，你又在修车。"
-    if not persistent.dew_bottle or persistent.dew_bottle == 0:
-        $ persistent.dew_bottle = 0
+    if persistent.dew_bottle == 0:
         show dew_bottle with dissolve
         "无聊的你从背包里拿出一瓶香水。"
         "攻略里说，它能有效驱赶头顶上的苍蝇。"
@@ -23,7 +22,7 @@ label story_char_1:
         $ persistent.dew_bottle = 1
         pause
     elif persistent.dew_bottle == 1:
-        $ persistent.dew_bottle = 2
+        $ persistent.dew_bottle = -1
         "对了，你吸取了上次的教训，这次没手贱去捡垃圾。"
     menu:
         with dissolve
@@ -102,7 +101,7 @@ label story_char_1:
                 $ _history_list.pop()
                 scene black with dissolve
                 "你来到洞穴里。"
-                "这里看起来不太宽敞，不过还可以。"
+                "这里看起来不太宽敞，不过毕竟紧急时刻，也还可以。"
                 stop music fadeout 0.5
                 "..." nointeract
                 pause 1
@@ -116,33 +115,36 @@ label story_char_1:
                 stop music
                 stop sound fadeout 0.0625
                 play sound pong
-                "突然，你听见一声巨响..." nointeract
+                "那是什么声音？..." nointeract
                 pause 0.5
-                play music punchs fadein 0.125
+                play music punchs fadein 0.25
                 "...洞穴要塌了...!" nointeract
+                pause 0.15
+                window hide(None)
                 $ i = 0
-                while i < 5:
+                while i < 51:
                     play voice punchs
                     with vshake
                     with hshake
-                    #$ renpy.pause(0.1, hard=True)
+                    $ renpy.pause(0.01, hard=True)
                     $ i += 1
                 stop music
                 stop voice fadeout 0.05
-                window hide(None)
+                #window hide(None)
                 $ renpy.pause(1, hard=True)
-                #$ quick_menu = False
+                $ quick_menu = False
                 #window hide dissolve
                 #stop music
                 scene fail with dissolve
                 play sound gameover
-                show screen reload_prompt("机子没人修，也就只能挤在一起，洞穴就这样崩了！")
+                show screen reload_prompt("机子没人修，人也只能挤在一起，洞穴就这样崩了！")
                 pause
                 stop sound
                 $ quick_menu = True
-            "请给我提示！":
+            "给我提示！":
                 $ _history_list.pop()
                 show screen notify("洞穴nx") with dissolve
+                "你真菜。"
                 jump story_char_1_contiune
             "死掉":
                 $ _history_list.pop()
