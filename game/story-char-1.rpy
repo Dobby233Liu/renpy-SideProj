@@ -6,15 +6,13 @@ label story_char_1:
     hide screen race_prepare with dissolve
     $ quick_menu = True
     window show dissolve
-    "..." nointeract
-    pause 0.5
     scene fix_house with dissolve
     show car_fixing with dissolve
-    "直奔主题，你又在修车。"
+    "直奔主题，开局又要修车。"
     if persistent.dew_bottle == 0:
         show dew_bottle with dissolve
-        "无聊的你从背包里拿出一瓶香水。"
-        "攻略里说，它能有效驱赶头顶上的苍蝇。"
+        "无聊的你从背包里拿出一瓶开局就有的香水。"
+        "攻略里说它能有效驱赶头顶上的苍蝇。"
         "但是游戏里却说它只是个装饰性物品，没有用。"
         "就算真如攻略所言，这里也没有苍蝇。"
         "果然攻略不可信，丢了丢了。" nointeract
@@ -27,7 +25,7 @@ label story_char_1:
     menu:
         with dissolve
         "接下来要修哪台机子？"
-        "第一个":
+        "第一台":
             $ _history_list.pop()
             pause 1.0
             hide car_fixing with dissolve
@@ -80,7 +78,7 @@ label story_char_1:
     show car_fixing with dissolve
     pause 1.0
     hide car_fixing with dissolve
-    "已经修好了第二台机子，并解决了乌鸦，还剩 1 台。"
+    "已经修好了第二台机子，也解决了乌鸦。只剩 1 台。"
     label story_char_1_contiune:
         menu:
             with dissolve
@@ -92,46 +90,46 @@ label story_char_1:
                 stop music
                 scene win with dissolve
                 play sound win
-                show screen reload_prompt("你修好了第三台机子。你赢了！")
+                show screen reload_prompt("你修好了第三台机子。你们赢了！")
                 pause
                 stop sound
                 $ quick_menu = True
                 jump endgame
             "去洞穴":
                 $ _history_list.pop()
-                scene black with dissolve
+                scene cave with dissolve
                 "你来到洞穴里。"
                 "这里看起来不太宽敞，不过毕竟紧急时刻，也还可以。"
                 stop music fadeout 0.5
                 "..." nointeract
-                pause 1
+                pause 4
                 $ quick_menu = False
                 play music run fadein 0.125
                 "突然，你发现成群的人正在冲进洞穴里。" nointeract
-                $ renpy.pause(0.5, hard=True)
+                $ renpy.pause(0.5*8, hard=True)
                 play sound run loop
                 "你的队友，还有发现洞穴的敌人。" nointeract
-                $ renpy.pause(0.25, hard=True)
+                $ renpy.pause(0.25*8, hard=True)
                 stop music
                 stop sound fadeout 0.0625
                 play sound pong
                 "那是什么声音？..." nointeract
-                pause 0.5
+                pause 4
                 play music punchs fadein 0.25
                 "...洞穴要塌了...!" nointeract
-                pause 0.15
+                pause 1.2
                 window hide(None)
                 $ i = 0
-                while i < 51:
+                while i < 16:
                     play voice punchs
-                    with vshake
-                    with hshake
+                    with vpunch
+                    with hpunch
                     $ renpy.pause(0.01, hard=True)
                     $ i += 1
                 stop music
                 stop voice fadeout 0.05
                 #window hide(None)
-                $ renpy.pause(1, hard=True)
+                $ renpy.pause(4, hard=True)
                 $ quick_menu = False
                 #window hide dissolve
                 #stop music
