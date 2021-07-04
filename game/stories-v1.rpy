@@ -11,7 +11,7 @@ label story_fulafu_simulator:
     $ bad_fund = persistent.bad_fund # have fulafu remember his passion (for boredom)
     $ zzz = "去了火锅气味" if bad_fund == "恰烂钱" else "吃了火锅"
     $ r = "突然想到了一条财富之路" if bad_fund == "恰烂钱" else "感觉很好吃"
-    "但是自从加入了抖音，并在某个火锅店［zzz]之后，[r]，就开始[bad_fund]了。"
+    "但是自从加入了抖音，并在某个火锅店[zzz]之后，[r]，就开始[bad_fund]了。"
     $ ugh = "天上还真会掉馅饼" if bad_fund == "恰烂钱" else "这里的火锅还挺好吃的"
     "中国各个方面都很好，而且[ugh]，使你爱起中国，入了中国国籍。"
     # be aware about some strange glitch that changes the music
