@@ -4,7 +4,6 @@
 
 init offset = -1
 
-
 ################################################################################
 ## 样式
 ################################################################################
@@ -24,7 +23,6 @@ style hyperlink_text:
 style gui_text:
     properties gui.text_properties("interface")
 
-
 style button:
     properties gui.button_properties("button")
 
@@ -32,13 +30,11 @@ style button_text is gui_text:
     properties gui.text_properties("button")
     yalign 0.5
 
-
 style label_text is gui_text:
     properties gui.text_properties("label", accent=True)
 
 style prompt_text is gui_text:
     properties gui.text_properties("prompt")
-
 
 style bar:
     ysize gui.bar_size
@@ -74,8 +70,6 @@ style vslider:
 style frame:
     padding gui.frame_borders.padding
     background Frame("gui/frame.png", gui.frame_borders, tile=gui.frame_tile)
-
-
 
 ################################################################################
 ## 游戏内屏幕
@@ -126,7 +120,6 @@ style say_thought is say_dialogue
 style namebox is default
 style namebox_label is say_label
 
-
 style window:
     xalign 0.5
     xfill True
@@ -156,7 +149,6 @@ style say_dialogue:
     xpos gui.dialogue_xpos
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
-
 
 ## 输入屏幕 ########################################################################
 ##
@@ -849,7 +841,6 @@ style history_label:
 style history_label_text:
     xalign 0.5
 
-
 ## 帮助屏幕 ########################################################################
 ##
 ## 提供有关键盘和鼠标映射信息的屏幕。它使用其它屏幕
@@ -868,21 +859,7 @@ screen help():
         vbox:
             spacing 15
 
-            hbox:
-
-                textbutton _("键盘") action SetScreenVariable("device", "keyboard")
-                textbutton _("鼠标") action SetScreenVariable("device", "mouse")
-
-                if GamepadExists():
-                    textbutton _("手柄") action SetScreenVariable("device", "gamepad")
-
-            if device == "keyboard":
-                use keyboard_help
-            elif device == "mouse":
-                use mouse_help
-            elif device == "gamepad":
-                use gamepad_help
-
+            null height 15
 
 screen keyboard_help():
 
@@ -956,7 +933,6 @@ screen gamepad_help():
         label _("右肩键")
         text _("向前至之后的对话。")
 
-
     hbox:
         label _("十字键，摇杆")
         text _("导航界面。")
@@ -970,7 +946,6 @@ screen gamepad_help():
         text _("隐藏用户界面。")
 
     textbutton _("校准") action GamepadCalibrate()
-
 
 style help_button is gui_button
 style help_button_text is gui_button_text
@@ -994,12 +969,9 @@ style help_label_text:
     xalign 1.0
     text_align 1.0
 
-
-
 ################################################################################
 ## 其他屏幕
 ################################################################################
-
 
 ## 确认屏幕 ########################################################################
 ##
@@ -1118,7 +1090,6 @@ screen skip_indicator():
             text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
             text "▸" at delayed_blink(0.4, 1.0) style "skip_triangle"
 
-
 ## 此变换用于一个接一个地闪烁箭头。
 transform delayed_blink(delay, cycle):
     alpha .5
@@ -1130,24 +1101,6 @@ transform delayed_blink(delay, cycle):
         pause .2
         linear .2 alpha 0.5
         pause (cycle - .4)
-        repeat
-
-transform blink():
-    alpha .0
-
-    block:
-        linear .25 alpha 1.0
-        linear .25 alpha 0.0
-        repeat
-
-init python:
-    def constant_rot(t, st, at):
-        t.rotate += 10
-        return 0.00001
-transform spin_and_fly():
-    rotate 0
-    block:
-        function constant_rot
         repeat
 
 style skip_frame is empty
@@ -1165,7 +1118,6 @@ style skip_text:
 style skip_triangle:
     ## 我们必须使用包含“BLACK RIGHT-POINTING SMALL TRIANGLE”字形的字体。
     font "DejaVuSans.ttf"
-
 
 ## 通知屏幕 ########################################################################
 ##
@@ -1203,6 +1155,24 @@ style notify_text:
     properties gui.text_properties("notify")
 
 # ~~~
+
+transform blink():
+    alpha .0
+
+    block:
+        linear .25 alpha 1.0
+        linear .25 alpha 0.0
+        repeat
+
+init python:
+    def constant_rot(t, st, at):
+        t.rotate += 10
+        return 0.00001
+transform spin_and_fly():
+    rotate 0
+    block:
+        function constant_rot
+        repeat
 
 screen fake_search(my_text):
 
