@@ -5,6 +5,7 @@ label story_char_0:
     $ brainfucked_run = False
     $ myround_no_fade = 1
     $ xxs_slept = False
+
 label story_char_0_true:
     $ quick_menu = False
     window hide dissolve
@@ -15,7 +16,6 @@ label story_char_0_true:
     window show dissolve
 label story_char_0_intro:
     scene bg_sunny_outside with dissolve
-
     flying_chicken "这是什么神仙画技？？？"
     flying_chicken "算了"
     flying_chicken "从这个房间开始吧"
@@ -28,7 +28,7 @@ label story_char_0_intro:
 # dumb pokemon ripoff start
 label story_char_0_battle_intro:
     $ quick_menu = False
-    window hide
+    window hide dissolve
     play music poke_mus_battle27
     show black at blink
     pause 2.5
@@ -40,13 +40,15 @@ label story_char_0_battle_appear:
     show fulafu_battle_normal with easeinright:
         xalign 0.2
         yalign 0.2
-    show child_with_pan with squares:
+    play sound fulafu_cry
+    pause 0.5
+    show child_with_pan with easeinleft:
         zoom 0.5
         xalign 0.9
         yalign 0.15
-    window show dissolve
     play sound child_cry
     pause 0.5
+    window show dissolve
     "小孩♂ xxs 出现了！"
 label story_char_0_battle_myround:
     menu:
@@ -59,17 +61,17 @@ label story_char_0_battle_myround:
                 "很快就到你那里":
                     $ quick_menu = False
                     "会飞的鸡 使用了 很快就到你那里！" nointeract
+                    pause 0.5
                     hide fulafu_battle_normal with squares
-                    play sound run
+                    play sound dizzy
                     show fulafu_battle_cast with easeinright:
                         xalign 0.8
                         yalign 0.15
-                    pause 1.0
                     show danger at blink:
                         truecenter
                         zoom 2.0
                         alpha .15
-                    play sound dizzy
+                    pause 0.25
                     play sound punchs
                     with vpunch
                     with hpunch
@@ -99,20 +101,26 @@ label story_char_0_battle_myround:
                     show fulafu_battle_cast:
                         xalign 0.2
                         yalign 0.2
+                    play sound punchs
                     show comment_stream_spelling with easeinleft:
                         xalign 1.99
                         yalign 0.15
                     with hpunch
-                    play sound dizzypt2
+                    stop sound
+                    play sound punchs
                     show comment_stream_bottom with easeintop:
                         xalign 0.85
                         yalign 1.9
                     with hpunch
-                    pause 0.5
+                    stop sound
+                    play sound punchs
                     show comment_stream_right with easeinleft:
                         xalign 1.5
                         yalign 0.15
                     with vpunch
+                    stop sound
+                    play sound punchs
+                    pause 0.5
                     hide fulafu_battle_cast
                     show fulafu_battle_normal:
                         xalign 0.2
@@ -125,7 +133,6 @@ label story_char_0_battle_myround:
                     play sound child_faint
                     pause 0.5
                     "致命一击！"
-                    # temp
                     stop music fadeout 1.0
                     pause 1.0
                     play music pokerg_mus_win
@@ -299,9 +306,7 @@ define story_o_round_attack_PAN = "平底锅"
 define story_o_round_attack_TACKLE = "撞击"
 label story_char_0_battle_opround:
     # AI of some sort
-    $ use_attack = story_o_round_attack_PAN
-    if xxs_slept:
-        $ use_attack = story_o_round_attack_TACKLE
+    $ use_attack = story_o_round_attack_TACKLE if xxs_slept else story_o_round_attack_PAN
 
     $ quick_menu = False
     "小孩♂ xxs 使用了 [use_attack]！" nointeract
@@ -326,11 +331,14 @@ label story_char_0_battle_opround:
         pause 1
         hide pan with dissolve
     else:
+        hide child_with_pan with easeoutright
+        play sound run loop
+        pause 0.5
+        stop sound
         show danger at blink:
             truecenter
             zoom 2.0
             alpha .15
-        hide child_with_pan with squares
         show child_with_pan with easeinleft:
             zoom 0.5
             xalign 0.23
@@ -340,21 +348,24 @@ label story_char_0_battle_opround:
         with hpunch
         hide danger with dissolve
 
-    hide fulafu_battle_normal with blinds
     if use_attack == story_o_round_attack_PAN:
+        hide fulafu_battle_normal with easeoutleft
         hide child
         show child_with_pan:
             zoom 0.5
             xalign 0.9
             yalign 0.15
     else:
-        hide child_with_pan
-        show child_with_pan with squares:
+        hide child_with_pan with easeoutright
+        show child_with_pan with easeinleft:
             zoom 0.5
             xalign 0.9
             yalign 0.15
+        "但是 会飞的鸡 对攻击免疫！"
+        jump story_char_0_myround
     play sound fulafu_faint
-    "会飞的鸡 晕倒了！"
+    pause 0.5
+    "会飞的鸡 被击倒了！"
     jump story_char_0_end # why not
     return
 # dumb pokemon ripoff end
