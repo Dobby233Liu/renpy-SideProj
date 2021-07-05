@@ -8,21 +8,15 @@
 
 ## 用户可读的游戏名称。此命令用来设置默认窗口标题，并且会在界面和错误报告中出
 ## 现。
-##
-## 带有 _() 的字符串表示其可被翻译。
-
+##  (带有 _() 的字符串表示其可被翻译。)
 define config.name = _("逃离伏拉夫")
 
-
 ## 决定上面给出的标题是否显示在主界面屏幕。设置为 False 来隐藏标题。
-
 define gui.show_name = True
-
 
 ## 游戏版本号。
 
-define config.version = "1.4"
-
+define config.version = "1.4-pre3"
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
 
@@ -30,7 +24,6 @@ define gui.about = _p("""游戏作者为 {a=https://space.bilibili.com/35369344}
 
 本游戏于 {a=https://github.com/Dobby233Liu/renpy-SideProj}GitHub{/a} 分布源代码，使用 MIT 许可证。请不要倒卖本游戏。
 """)
-
 define gui.credits = _("""音频来源：
 china2、c2g：Sand - China-2\n
 poke_mus_battle27、pokerg_mus_win：pokeemerald/sound/songs/midi/mus_battle27.mid、pokeemerald/sound/songs/midi/mus_rg_win_yasei.mid\n
@@ -49,25 +42,19 @@ child_cry：{a=http://www.yisell.com/sound/TiO5TuuPIEJJnPM=.html}音笑网{/a}
 Pokémon © Nintendo, Game Freak, The Pokémon Company
 """)
 
-
-## 在生成的发布版中，可执行文件和目录所使用的短名称。此处必须是仅 ASCII 字符，并
+## 在生成的发布版中，可执行文件和目录所使用的短名称。必须仅有 ASCII 字符，并
 ## 且不得包含空格、冒号和分号。
-
 define build.name = "EscapeFromFulafu"
-
 
 ## 音效和音乐 #######################################################################
 
 ## 这三个变量控制默认显示给用户的混音器。任一设置为 False 将隐藏对应的混音器。
-
 define config.has_sound = True
 define config.has_music = True
 define config.has_voice = True
 
-
-## 允许用户在音效或语音轨道上播放测试音频文件，将以下语句取消注释并设置样音就可
+## 允许用户在音效或语音轨道上播放测试音频文件，设置样音就可
 ## 以使用。
-
 define config.sample_sound = audio.dizzy
 define config.sample_voice = audio.haoci
 
@@ -79,7 +66,6 @@ define audio.pokerg_mus_win = "<loop 1.755 to 15.58>audio/pokerg_mus_win.ogg"
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
 define config.main_menu_music = audio.china2
-
 
 ## 转场 ##########################################################################
 ##
@@ -125,46 +111,35 @@ define config.end_game_transition = dissolve
 
 define config.window = "hide"
 
-
 ## 用于显示和隐藏对话框窗口的转场
 
 define config.window_show_transition = dissolve
 define config.window_hide_transition = dissolve
 
-
 ## 默认设置 ########################################################################
 
 ## 控制默认的文字显示速度。默认的 0 是瞬间，而其他数字则是每秒显示出的字符数。
-
 default preferences.text_cps = 0
 
-
 ## 默认的自动前进延迟。越大的数字会产生越长的等待，有效范围为 0 - 30。
-
 default preferences.afm_time = 15
-
 
 ## 存档目录 ########################################################################
 ##
 ## 控制 Ren'Py 为此游戏放置存档的，基于平台的特定目录。存档文件将放置在：
 ##
 ## Windows：%APPDATA\RenPy\<config.save_directory>
-##
 ## Macintosh：$HOME/Library/RenPy/<config.save_directory>
-##
 ## Linux：$HOME/.renpy/<config.save_directory>
 ##
-## 该命令一般不应变更，若要变更，应为有效字符串而不是表达式。
-
+## 目录名称一般不应变更，若要变更，应为有效字符串而不是表达式。
 define config.save_directory = "EscapeFulafu"
-
 
 ## 图标 ##########################################################################
 ##
 ## 在任务栏或 Dock 上显示的图标。
 
 define config.window_icon = "gui/window_icon.png"
-
 
 ## 生成配置 ########################################################################
 ##
@@ -185,7 +160,6 @@ init python:
     ##
     ## 例如，“*.txt”匹配基础目录中所有的 txt 文件，“game/**.ogg”匹配所有的游戏目
     ## 录或子目录中的 ogg 文件，“**.psd”匹配工程中任何位置的 psd 文件。
-
     ## 将文件列为 None 来使其从已生成的分发版中排除。
 
     build.classify('**~', None)
@@ -201,6 +175,10 @@ init python:
     build.documentation('*.html')
     build.documentation('*.txt')
 
-# ~~~
+## ~~~
+
 define config.has_autosave = False
-# define config.language = "poke" "poke" language is only ever used in battles, don't do it here
+define config.autosave_on_choice = False
+define config.autosave_on_quit = False
+define config.debug = config.developer
+define config.debug_text_overflow = config.debug
