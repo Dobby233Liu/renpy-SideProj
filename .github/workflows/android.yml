@@ -13,7 +13,7 @@ env:
 
 jobs:
   android:
-    name: Build
+    name: 使用 Ren'Py SDK 生成
     runs-on: ubuntu-latest
     steps:
       - name: 克隆仓库
