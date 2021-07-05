@@ -373,7 +373,7 @@ label story_char_0_battle_opround:
             xalign 0.9
             yalign 0.15
         "攻击不是很有效果..."
-        jump story_char_0_myround
+        jump story_char_0_battle_myround
     play sound fulafu_faint
     pause 0.5
     "会飞的鸡 被击倒了！"
