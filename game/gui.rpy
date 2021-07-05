@@ -77,7 +77,6 @@ define gui.notify_text_size = 16
 ## 游戏标题的大小。
 define gui.title_text_size = 50
 
-
 ## 标题和游戏菜单 #####################################################################
 
 ## 用于标题菜单和游戏菜单的图像。
@@ -404,10 +403,10 @@ init python:
     if renpy.variant("small"):
         ## Font sizes.
         gui.text_size = 24
-        gui.name_text_size = 36
+        gui.name_text_size = 30
         gui.notify_text_size = 25
         gui.interface_text_size = 36
-        gui.button_text_size = 34
+        gui.button_text_size = 40
         gui.label_text_size = 36
 
         ## Change the size and spacing of items in the game menu.
