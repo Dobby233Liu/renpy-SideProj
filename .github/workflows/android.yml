@@ -95,15 +95,24 @@ jobs:
           rapt.install_sdk.set_property("key.store", rapt.plat.path("android.keystore"))
           rapt.install_sdk.set_property("sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
 
-      - name: 安装 Android SDK
-        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+      - name: 准备 Android NDK 文件夹
         run: |
-          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --update
-          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses 1> /dev/null
-          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-29" "platform-tools"
-          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "ndk;21.3.6528147"
-          ln -s -f $ANDROID_SDK_ROOT/ndk/21.3.6528147 $ANDROID_NDK_ROOT
-          echo "$ANDROID_SDK_ROOT" > sdk.txt
+          sudo mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
+          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
+      - name: 缓存 NDK
+        id: ndk-cache
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/lib/android/sdk/ndk
+          key: ndk-cache-21.3.6528147-v1
+      - name: 安装 Android NDK
+        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+        run: yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "ndk;21.3.6528147"
+      - name: 写入 sdk.txt
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+        run: echo "$ANDROID_SDK_ROOT" > sdk.txt
 
       - name: 生成工程
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
