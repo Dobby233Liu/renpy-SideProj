@@ -111,11 +111,6 @@ define config.end_game_transition = dissolve
 
 define config.window = "hide"
 
-## 用于显示和隐藏对话框窗口的转场
-
-define config.window_show_transition = dissolve
-define config.window_hide_transition = dissolve
-
 ## 默认设置 ########################################################################
 
 ## 控制默认的文字显示速度。默认的 0 是瞬间，而其他数字则是每秒显示出的字符数。
