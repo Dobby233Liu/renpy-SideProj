@@ -51,6 +51,7 @@ label story_char_0_battle_appear:
     window show dissolve
     "小孩♂ xxs 出现了！"
 label story_char_0_battle_myround:
+    $ xxs_slept = False
     menu:
         with Dissolve(1.0 * myround_no_fade)
         "要做点什么呢？"
@@ -80,6 +81,9 @@ label story_char_0_battle_myround:
                     show fulafu_battle_normal:
                         xalign 0.2
                         yalign 0.2
+                    if renpy.random.randint(0,7) == 2:
+                        "攻击不是很有效果..."
+                        jump story_char_0_battle_opround
                     hide child_with_pan with easeoutright
                     play sound child_faint
                     pause 0.5
@@ -129,6 +133,9 @@ label story_char_0_battle_myround:
                     hide comment_stream_spelling
                     hide comment_stream_bottom
                     hide comment_stream_right
+                    if renpy.random.randint(0,15) == 2:
+                        "攻击不是很有效果..."
+                        jump story_char_0_battle_opround
                     hide child_with_pan with easeoutright
                     play sound child_faint
                     pause 0.5
