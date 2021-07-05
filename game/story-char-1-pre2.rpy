@@ -45,15 +45,18 @@ label story_char_1_pre2:
     hide screen spell_showcase with dissolve
     play voice pong # collect
     play voice haoci
-    pause 0.125
+    pause 0.25
     "还剩两把钥匙没有收集。"
+    "听说集满三把可以打开大门。"
+    scene kitchen with fade
+    "这时候也没有什么可做的，你继续找钥匙。{w=0.5}{nw}"
+    scene bg_sunny_outside with fade
     window hide
     stop music fadeout 0.25
     play music poke_mus_battle27
     show black at blink
     pause 2.5
     hide black
-    # be aware about some strange glitch that change the music
     if renpy.random.randint(0,3) == 1:
         # "glitch out"
         play music c2g
@@ -93,6 +96,20 @@ label story_char_1_pre2:
             stop sound
             $ quick_menu = True
             jump endgame
+        "放屁":
+            # this was in 1.0; forgive me
+            $ _history_list.pop()
+            $ quick_menu = False
+            "xxs 使用了 屁！" nointeract
+            play sound dizzy
+            pause 0.25
+            play sound dizzypt2
+            pause 0.25
+            play voice fulafu_faint fadeout 0.125
+            hide fulafu_overworld with squares
+            "伏拉夫 晕倒了！"
+            play music china2 fadein 2.0
+            $ quick_menu = True
         "平底锅":
             $ _history_list.pop()
             $ quick_menu = False
@@ -108,11 +125,36 @@ label story_char_1_pre2:
             with vpunch
             pause 0.25
             play voice fulafu_faint fadeout 0.125
-            hide fulafu_overworld with squares
+            hide fulafu_overworld with blinds
+            "伏拉夫 被击倒了！"
             play music china2 fadein 2.0
-            "xxs 胜利了！"
+            "胜利！"
             "你的平底锅损毁了。作为补偿，你得到了 10 经验。"
             $ quick_menu = True
+        "逃跑":
+            $ _history_list.pop()
+            $ quick_menu = False
+            window hide dissolve
+            scene black with dissolve
+            play music run
+            play sound run
+            pause 0.25
+            play sound run
+            pause 0.25
+            play sound run
+            pause 0.25
+            stop music fadeout 0.125
+            stop sound
+            play sound child_faint
+            pause 1.0
+            window hide dissolve
+            scene dead with dissolve
+            play sound gameover
+            show screen reload_prompt("你跑不过伏拉夫，被他抓走了！") with dissolve
+            pause
+            stop sound
+            $ quick_menu = True
+            jump endgame
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "从 伏拉夫 身上掉落一把 钥匙。"
     "你得到了 钥匙！" nointeract
@@ -122,11 +164,11 @@ label story_char_1_pre2:
     play sound pong # collect
     play voice haoci
     pause 0.125
-    "只剩一把钥匙没有收集。"
+    "只剩一把钥匙没有收集到。"
     # FIXME: fix pauses
     menu:
         with dissolve
-        "接下来要..."
+        "接下来要干什么呢？"
         "继续找钥匙":
             $ _history_list.pop()
             $ quick_menu = False
@@ -137,25 +179,17 @@ label story_char_1_pre2:
             $ _history_list.pop()
             "...{w=1.0}{nw}"
             $ _history_list.pop()
-            call story_char_1_pre2_end("之后你找到了最后一把钥匙！", "win", audio.win)
+            call story_char_1_pre2_end("最后你找到了最后一把钥匙，\n在伏拉夫靠近之前逃脱了！", "win", audio.win)
         "去挖地道":
-            $ _history_list.pop()
-            $ quick_menu = False
-            scene black with dissolve
-            ".{w=0.5}{nw}"
-            $ _history_list.pop()
-            "..{w=0.75}{nw}"
-            $ _history_list.pop()
-            "...{w=1.0}{nw}"
             $ _history_list.pop()
             call story_char_1_pre2_end
         "去打猎别的伏拉夫":
             $ _history_list.pop()
             $ quick_menu = False
-            "额...我觉得还是-{w=0.25}{nw}"
+            "额...我觉得还是-{w=0.5}{nw}"
             play sound run
             scene bg_sunny_outside with dissolve
-            "诶诶诶，锁还没开呢！{p=0.5}{nw}"
+            "诶诶诶，锁还没开呢！{p=0.75}{nw}"
             "你这是去干嘛！{p=0.8}{nw}"
             call story_char_1_pre2_end
         "当场去世":
