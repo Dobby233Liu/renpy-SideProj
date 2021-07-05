@@ -47,7 +47,7 @@ label flfsim_choose_type:
             scene fix_house with dissolve
             
             "然后，你就被喷子们喷了一顿。"
-            scene black with pixelate
+            scene black with pixellate
             $ this_is = renpy.random.choice(["这里是", "我是", "我素", "这是", ""])
             $ postfix = renpy.random.choice(["★_", "★", "_", "_★", "★_★", ""])
             $ feed = renpy.random.choice([" 不要投喂", "，不要投喂！", ""])
@@ -65,19 +65,19 @@ label flfsim_choose_type:
             $ fake_user_pfx = renpy.random.choice(["火山", "西瓜", "头条", ""])
             "[fake_user_pfx]用户810234[oneninethreefour]" "这[recall_methodlogy]，智力没有问题的都看得出来吧"
             if bad_fund == "恰烂钱":
-                scene fix_house with pixelate
+                scene fix_house with pixellate
                 jump start_the_buyaolian
             stop music fadeout 1.0
-            with vshake
+            with vpunch
             pause 1.0
-            with vshake
+            with vpunch
             pause 1.0
             "想好好再做一次真正的生意，却仍然被人矛头相对..."
             "..."
             "......" nointeract
             $ renpy.pause(0.25, interact=False)
             pause
-            ".........{w=0.25}这真的是让人想叹气连连啊..."
+            ".........{w=0.25}这真的是令人叹息啊..."
             $ quick_menu = False
             window hide dissolve
             scene fail with dissolve
