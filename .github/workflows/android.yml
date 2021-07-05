@@ -37,6 +37,8 @@ jobs:
         with:
           key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v2
           path: ${{ steps.cache-pos.outputs.prev }}/renpy-${{ env.RENPY_VERSION }}-sdk
+      - run: git fetch && git status
+        if: steps.sdk-cache.outputs.cache-hit == 'true'
       - name: 安装 Ren'Py SDK
         working-directory: ..
         if: steps.sdk-cache.outputs.cache-hit != 'true'
