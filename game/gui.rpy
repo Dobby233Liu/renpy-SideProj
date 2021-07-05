@@ -10,10 +10,8 @@ init offset = -2
 init python:
     gui.init(1280, 720)
 
-
-
 ################################################################################
-## GUI配置变量
+## GUI 配置变量
 ################################################################################
 
 
@@ -390,3 +388,65 @@ define gui.nvl_button_xalign = 0.0
 ## www.renpy.org/doc/html/style_properties.html#style-property-language
 
 define gui.language = "unicode"
+
+################################################################################
+## 移动设备
+################################################################################
+
+init python:
+
+    ## This increases the size of the quick buttons to make them easier to
+    ## touch on tablets and phones.
+    if renpy.variant("touch"):
+        gui.quick_button_borders = Borders(gui.scale(40), gui.scale(14), gui.scale(40), gui.scale(0))
+
+    ## This changes the size and spacing of various GUI elements to ensure
+    ## they are easily visible on phones.
+    if renpy.variant("small"):
+        ## Font sizes.
+        gui.text_size = gui.scale(30)
+        gui.name_text_size = gui.scale(36)
+        gui.notify_text_size = gui.scale(25)
+        gui.interface_text_size = gui.scale(30)
+        gui.button_text_size = gui.scale(30)
+        gui.label_text_size = gui.scale(34)
+
+        ## Adjust the location of the textbox.
+        gui.textbox_height = gui.scale(240)
+        gui.name_xpos = gui.scale(80)
+        gui.dialogue_xpos = gui.scale(90)
+        gui.dialogue_width = gui.scale(1100)
+
+        ## Change the size and spacing of various things.
+        gui.slider_size = gui.scale(36)
+
+        gui.choice_button_width = gui.scale(1240)
+        gui.choice_button_text_size = gui.scale(30)
+
+        gui.navigation_spacing = gui.scale(20)
+        gui.pref_button_spacing = gui.scale(10)
+
+        gui.history_height = gui.scale(190)
+        gui.history_text_width = gui.scale(690)
+
+        gui.quick_button_text_size = gui.scale(20)
+
+        ## File button layout.
+        gui.file_slot_cols = 2
+        gui.file_slot_rows = 2
+
+        ## NVL-mode.
+        gui.nvl_height = gui.scale(170)
+
+        gui.nvl_name_width = gui.scale(305)
+        gui.nvl_name_xpos = gui.scale(325)
+
+        gui.nvl_text_width = gui.scale(915)
+        gui.nvl_text_xpos = gui.scale(345)
+        gui.nvl_text_ypos = gui.scale(5)
+
+        gui.nvl_thought_width = gui.scale(1240)
+        gui.nvl_thought_xpos = gui.scale(20)
+
+        gui.nvl_button_width = gui.scale(1240)
+        gui.nvl_button_xpos = gui.scale(20)
