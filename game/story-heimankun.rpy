@@ -5,9 +5,9 @@ label story_heimankun:
     "很快就到你家门口：所有小孩全部眩晕 10 秒。"
     hide screen spell_showcase with dissolve
     show screen spell_showcase("images/spell_heilafu.png") with dissolve
-    "我是黑拉夫：附近倒地者死亡时间减少 10 秒（有概率直接秒死）。"
+    "大家好我是黑拉夫：附近倒地者死亡时间减少 10 秒（有概率直接秒死）。"
     hide screen spell_showcase with dissolve
-label heimankun_start:
+label story_heimankun_start:
     $ quick_menu = False
     window hide dissolve
     show screen race_prepare("黑曼君", "小孩") with dissolve
