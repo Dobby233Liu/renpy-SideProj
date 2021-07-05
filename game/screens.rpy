@@ -541,7 +541,7 @@ screen about():
             null height gui.pref_spacing
 
             if gui.credits:
-                textbutton _("感谢名单") action ShowTransient("credits_paper", transition=Dissolve(0.5), text=gui.credits)
+                textbutton _("感谢名单") action Show("prompt", message=gui.credits, action=Hide("prompt"))
 
             null height gui.pref_spacing
 
@@ -555,10 +555,8 @@ define gui.about = ""
 ##
 ## 仅供开发者使用。
 ##
-## 用于快速调试音频循环的 screen。
+## 用于快速调试音频循环的 screen
 
-
-# Step 3. 创建音乐空间界面。
 screen music_room():
 
     tag menu
@@ -799,7 +797,6 @@ screen history():
 ## 此代码决定了允许在历史记录屏幕上显示哪些标签。
 
 define gui.history_allow_tags = set()
-
 
 style history_window is empty
 
