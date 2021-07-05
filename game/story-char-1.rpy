@@ -28,12 +28,13 @@ label story_char_1:
         "第一台":
             pass
         "第二台":
+            "第二台在外面，所以你去杠回来。{w=1}{nw}"
             stop music fadeout 0.5
             hide car_fixing with dissolve
             play sound run
             pause 0.07
-            stop sound run
-            scene bg_sunny_outside with dissolve
+            stop sound
+            scene bg_sunny_outside with fade
             play sound run
             pause 0.053
             stop sound
@@ -44,7 +45,7 @@ label story_char_1:
             #stop music
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("还潜伏在第二台处的伏拉夫把你抓走了！")
+            show screen reload_prompt("潜伏在第二台处的伏拉夫把你抓走了！")
             pause
             stop sound
             $ quick_menu = True
@@ -150,6 +151,7 @@ label story_char_1:
                     $ i += 1
                 stop music
                 stop voice fadeout 0.05
+                scene black with blinds
                 #window hide(None)
                 $ renpy.pause(4, hard=True)
                 $ quick_menu = False
