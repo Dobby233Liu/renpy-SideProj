@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## 初始化
 ################################################################################
 
@@ -109,7 +109,7 @@ define gui.namebox_width = None
 define gui.namebox_height = None
 
 ## 包含角色名称的框的边界尺寸，以左、上、右、下顺序排列。
-define gui.namebox_borders = Borders(5, 5, 5, 5)
+define gui.namebox_borders = Borders(2, 1, 2, 1)
 
 ## 若为True，则名称框的背景将被平铺；若为False，则将缩放名称框的背景。
 define gui.namebox_tile = False
@@ -262,7 +262,6 @@ define gui.slot_spacing = 10
 ## 标题菜单文本的位置。
 define gui.main_menu_text_xalign = 1.0
 
-
 ## Frames ######################################################################
 ##
 ## These variables control the look of frames that can contain user interface
@@ -404,7 +403,7 @@ init python:
     ## are easily visible on phones.
     if renpy.variant("small"):
         ## Font sizes.
-        gui.text_size = 30
+        gui.text_size = 24
         gui.name_text_size = 36
         gui.notify_text_size = 25
         gui.interface_text_size = 36
