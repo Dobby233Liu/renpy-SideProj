@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: 克隆仓库
         uses: actions/checkout@v2
-        with:
-          repository: Dobby233Liu/renpy-SideProj
           
       - name: 安装 JDK
         uses: actions/setup-java@v2
