@@ -29,12 +29,16 @@ jobs:
       - name: 安装依赖
         run: sudo apt-get install --yes bzip2 wget libxext6 libllvm6.0 mesa-utils
 
+      - name: 获取 cache 位置
+        working-directory: ..
+        id: cache-pos
+        run: echo "::set-output name=prev::$(pwd)"
       - name: 缓存 Ren'Py SDK
         uses: actions/cache@v2
         id: sdk-cache
         with:
-          key: renpy-sdk-${{ env.RENPY_VERSION }}-v1
-          path: ../renpy-${{ env.RENPY_VERSION }}-sdk
+          key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v2
+          path: ${{ steps.cache-pos.outputs.prev }}/renpy-${{ env.RENPY_VERSION }}-sdk
       - name: 安装 Ren'Py SDK
         working-directory: ..
         if: steps.sdk-cache.outputs.cache-hit != 'true'
@@ -115,9 +119,8 @@ jobs:
       - name: 寻找 apk 文件
         id: apk
         if: github.event_name != 'release'
-        run: |
-          cd build
-          echo "::set-output name=filename::$(ls *-universal-release.apk)"
+        working-directory: build
+        run: echo "::set-output name=filename::$(ls *-universal-release.apk)"
       - name: 上传 apk 文件作为 artifact
         if: github.event_name != 'release'
         uses: actions/upload-artifact@v1
