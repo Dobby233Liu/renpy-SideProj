@@ -28,7 +28,7 @@ define gui.credits = _("""音频来源：
 china2、c2g：Sand - China-2\n
 poke_mus_battle27、pokerg_mus_win：pokeemerald/sound/songs/midi/mus_battle27.mid、pokeemerald/sound/songs/midi/mus_rg_win_yasei.mid\n
 win：张秀华 - 我爱中国\n
-gameover：Jun Senoue - Game Over（来自 Sonic 3D Blast）\n
+gameover：Jun Senoue - Game Over（Sonic 3D Blast）\n
 chomp、pong：Plants Vs Zombies/main.pak/sounds/bigchomp.ogg、Plants Vs Zombies/main.pak/sounds/shieldhit.ogg\n
 haoci：伏拉夫的抖音视频（《火锅包子》）\n
 dizzy、dizzypt2、run、punchs：自制\n
@@ -37,7 +37,7 @@ child_cry：{a=http://www.yisell.com/sound/TiO5TuuPIEJJnPM=.html}音笑网{/a}
 
 技能“发布作品”的贴图 P 图自{a=https://jingyan.baidu.com/article/ff411625e0f92b12e48237cc.html}百度经验{/a}。
 
-技能“我是黑拉夫”的贴图 P 图自 {a=https://www.bilibili.com/video/BV1Fi4y1g7mv}bilibili 上某个视频的封面{/a}。
+技能“我是黑拉夫”的贴图 P 图自原版 3.1 的 lv_0_20200503223644.mp4。
 
 Pokémon © Nintendo, Game Freak, The Pokémon Company
 """)
