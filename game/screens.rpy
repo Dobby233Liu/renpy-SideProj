@@ -1175,18 +1175,16 @@ transform spin_and_fly():
         repeat
 
 screen fake_search(my_text):
-
     hbox:
         xalign 0.5
         yalign 0.5
-
-        text my_text at blink() size 36
+        text my_text at blink() size gui.scale(32)
 
 screen reload_prompt(my_text):
     hbox:
         xalign 0.5
         yalign 0.5
-        text my_text size 32
+        text my_text size gui.scale(32)
 
 screen chat(my_text):
 
@@ -1194,7 +1192,7 @@ screen chat(my_text):
         xalign 0
         yalign 0.75
 
-        text my_text size 24
+        text my_text size gui.label_text_size
 
 screen race_prepare(positive, negative):
 
@@ -1202,19 +1200,19 @@ screen race_prepare(positive, negative):
         xalign 0.25
         yalign 0.5
 
-        text positive size 24
+        text positive size gui.label_text_size
 
     hbox:
         xalign 0.5
         yalign 0.5
 
-        text "VS" size 36
+        text "VS" size gui.name_text_size
 
     hbox:
         xalign 0.75
         yalign 0.5
 
-        text negative size 24
+        text negative size gui.label_text_size
 
 screen spell_showcase(spell_sprite, scale_factor=1, yalign_diff=0):
     $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor)
