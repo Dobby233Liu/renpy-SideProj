@@ -52,8 +52,8 @@ label search:
     $ quick_menu = False
     show screen fake_search("匹配中...") with dissolve
     pause 1.25
-    hide screen fake_search with dissolve
-    window show dissolve
+    hide screen fake_search
+    window show(None)
     "匹配成功。"
     $ _history_list.pop()
     $ jump_to_label = "story_char_" + str(player_character)
