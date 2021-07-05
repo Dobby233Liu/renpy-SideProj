@@ -60,8 +60,10 @@ label story_char_2_start:
         with dissolve
         "你又看见了另外两个小孩。要用哪个招式攻击？"
         "奥利给":
+            show screen notify("哈哈哈哈哈哈哈哈哈哈哈哈哈")
             pass
         "奥利给干了":
+            show screen notify("哈哈哈哈哈哈哈哈哈哈哈笑死我了")
             pass
         "组合技":
             $ quick_menu = False
