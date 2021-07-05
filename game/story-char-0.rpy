@@ -97,6 +97,7 @@ label story_char_0_battle_myround:
                     "获得了 0 GOLD！"
                     $ quick_menu = True
                     child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我要被做成火锅了啊！！！"
+                # TODO add wo ai zh guo
                 "发布作品": # maybe FIXME：引战
                     $ quick_menu = False
                     "会飞的鸡 使用了 发布作品！" nointeract
@@ -356,19 +357,22 @@ label story_char_0_battle_opround:
         hide danger with dissolve
 
     if use_attack == story_o_round_attack_PAN:
-        hide fulafu_battle_normal with easeoutleft
         hide child
         show child_with_pan:
             zoom 0.5
             xalign 0.9
             yalign 0.15
+        if renpy.random.randint(0,127) == 2:
+            "攻击不是很有效果..."
+            jump story_char_0_battle_myround
+        hide fulafu_battle_normal with easeoutleft
     else:
         hide child_with_pan with easeoutright
         show child_with_pan with easeinleft:
             zoom 0.5
             xalign 0.9
             yalign 0.15
-        "但是 会飞的鸡 对攻击免疫！"
+        "攻击不是很有效果..."
         jump story_char_0_myround
     play sound fulafu_faint
     pause 0.5
