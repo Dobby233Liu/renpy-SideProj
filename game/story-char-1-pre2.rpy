@@ -40,23 +40,23 @@ label story_char_1_pre2:
     scene fix_house with slideawayleft
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "你找到了 钥匙！" nointeract with dissolve
-    pause 0.5
+    pause 1.5
     window hide dissolve
     hide screen spell_showcase with dissolve
     play voice pong # collect
-    play voice haoci
     pause 0.25
+    window show dissolve
     "还剩两把钥匙没有收集。"
     "听说集满三把可以打开大门。"
     scene kitchen with fade
-    "这时候也没有什么可做的，你继续找钥匙。{w=0.5}{nw}"
+    "这时候也没有什么可做的，你继续找钥匙。{w=1}{nw}" nointeract
     scene bg_sunny_outside with fade
+    "这时候也没有什么可做的，你继续找钥匙。{w=1}{nw}" nointeract
     window hide
     stop music fadeout 0.25
     play music poke_mus_battle27
     show black at blink
-    pause 2.5
-    hide black
+    pause 1.25
     if renpy.random.randint(0,3) == 1:
         # "glitch out"
         play music c2g
@@ -66,10 +66,12 @@ label story_char_1_pre2:
         show fulafu_overworld
     else:
         show fulafu_overworld with blinds
+    pause 1.25
+    hide black
     with vpunch
     play voice fulafu_cry
     pause 0.25
-    window show
+    window show dissolve
     "突然，伏拉夫来了！"
     menu:
         with dissolve
@@ -158,12 +160,12 @@ label story_char_1_pre2:
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "从 伏拉夫 身上掉落一把 钥匙。"
     "你得到了 钥匙！" nointeract
-    pause 0.5
+    pause 1
     window hide dissolve
     hide screen spell_showcase with dissolve
     play sound pong # collect
     play voice haoci
-    pause 0.125
+    pause 0.25
     "只剩一把钥匙没有收集到。"
     # FIXME: fix pauses
     menu:
@@ -186,11 +188,11 @@ label story_char_1_pre2:
         "去打猎别的伏拉夫":
             $ _history_list.pop()
             $ quick_menu = False
-            "额...我觉得还是-{w=0.5}{nw}"
+            "额...我觉得还是-{w=1}{nw}"
             play sound run
             scene bg_sunny_outside with dissolve
-            "诶诶诶，锁还没开呢！{p=0.75}{nw}"
-            "你这是去干嘛！{p=0.8}{nw}"
+            "诶诶诶，锁还没开呢！{p=1.5}{nw}"
+            "你这是去干嘛！{p=1.7}{nw}"
             call story_char_1_pre2_end
         "当场去世":
             $ _history_list.pop()
