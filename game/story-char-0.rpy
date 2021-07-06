@@ -51,7 +51,6 @@ label story_char_0_battle_appear:
     window show dissolve
     "小孩♂ xxs 出现了！"
 label story_char_0_battle_myround:
-    $ xxs_slept = False
     menu:
         with Dissolve(1.0 * myround_no_fade)
         "要做点什么呢？"
@@ -158,7 +157,7 @@ label story_char_0_battle_myround:
                         yalign 0.22
                     play sound dizzy
                     if brainfucked_run:
-                        show fulafu_overworld_jumpscare2:
+                        show fulafu_overworld_jumpscare:
                             xalign 0.9
                             yalign 0.15
                     else:
@@ -169,27 +168,28 @@ label story_char_0_battle_myround:
                     if brainfucked_run:
                         play music dizzypt2
                         $ renpy.pause(2, hard=True)
-                        hide fulafu_overworld_jumpscare2
+                        hide fulafu_overworld_jumpscare
                         stop music
                         label report_error_test:
                         python:
                             try:
                                 short, full, traceback_fn = sys.modules["renpy.error"].report_exception("马上就到你家门口", False) # this gives a random error, but why not
                                 sys.modules["renpy.display.error"].report_exception(short, full, traceback_fn)
-                                brainfucked_run = False
-                                myround_no_fade = 1
-                                renpy.jump("story_char_0_battle_myround")
                             except Exception as e:
                                 sys.modules["renpy.error"].report_exception(e, False)
-                                quick_menu = True
-                                renpy.full_restart(label="story_char_0_intro") # better approach too
+                                pass
+                            quick_menu = True
+                            brainfucked_run = False
+                            myround_no_fade = 1
+                            xxs_slept = True
+                        jump story_char_0_battle_myround
                     hide circle with blinds
                     hide fulafu_battle_cast
                     show fulafu_battle_normal:
                         xalign 0.2
                         yalign 0.2
                     if xxs_slept:
-                        "但是 小孩♂ xxs 对攻击免疫！"
+                        "攻击不是很有效果..."
                         jump story_char_0_battle_opround
                     $ xxs_slept = True
                     child_lead "zzzzzzzzzz"
@@ -355,6 +355,7 @@ label story_char_0_battle_opround:
         with vpunch
         with hpunch
         hide danger with dissolve
+        $ xxs_slept = False
 
     if use_attack == story_o_round_attack_PAN:
         hide child
