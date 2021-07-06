@@ -15,8 +15,8 @@ label story_char_1:
         "攻略里说它能有效驱赶头顶上的苍蝇。"
         "但是游戏里却说它只是个装饰性物品，没有用。"
         "就算真如攻略所言，这里也没有苍蝇。"
-        "果然攻略不可信，丢了丢了。" nointeract
         hide dew_bottle with easeoutright
+        "果然攻略不可信，丢了丢了。"
         $ persistent.dew_bottle = 1
         pause
     elif persistent.dew_bottle == 1:
@@ -28,19 +28,22 @@ label story_char_1:
         "第一台":
             pass
         "第二台":
-            "第二台在外面，所以你去杠回来。{w=1}{nw}"
+            "第二台在外面，所以你去扛回来。{w=1}{nw}"
+            window hide dissolve
             stop music fadeout 0.5
+            pause 0.5
             hide car_fixing with dissolve
             play sound run
-            pause 0.07
+            pause 0.28
             stop sound
             scene bg_sunny_outside with fade
+            pause 0.5
             play sound run
-            pause 0.053
+            pause 0.424
             stop sound
             play sound pong
-            pause 0.0001
             scene black
+            pause 1
             $ quick_menu = False
             #stop music
             scene fail with dissolve
@@ -49,6 +52,7 @@ label story_char_1:
             pause
             stop sound
             $ quick_menu = True
+            jump endgame
         "发呆":
             hide car_fixing with dissolve
             scene black with dissolve
