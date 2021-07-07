@@ -8,21 +8,25 @@ init python:
     import random
     _old_renpy_random = renpy.random.random
     def _renpy_random(*args):
+        renpy.random.reset()
         random.Random.seed()
         return _old_renpy_random(*args)
     renpy.random.random = _renpy_random
     _old_renpy_randint = renpy.random.randint
     def _renpy_randint(*args):
+        renpy.random.reset()
         random.Random.seed()
         return _old_renpy_randint(*args)
     renpy.random.randint = _renpy_randint
     _old_renpy_choice = renpy.random.choice
     def _renpy_choice(*args):
+        renpy.random.reset()
         random.Random.seed()
         return _old_renpy_choice(*args)
     renpy.random.choice = _renpy_choice
     _old_renpy_shuffle = renpy.random.shuffle
     def _renpy_shuffle(*args):
+        renpy.random.reset()
         random.Random.seed()
         return _old_renpy_shuffle(*args)
     renpy.random.shuffle = _renpy_shuffle
