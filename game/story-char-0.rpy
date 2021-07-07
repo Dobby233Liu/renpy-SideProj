@@ -182,6 +182,7 @@ label story_char_0_battle_myround:
                             brainfucked_run = False
                             myround_no_fade = 1
                             xxs_slept = True
+                        play music poke_mus_battle27
                         jump story_char_0_battle_myround
                     hide circle with blinds
                     hide fulafu_battle_cast
@@ -365,15 +366,17 @@ label story_char_0_battle_opround:
             yalign 0.15
         if renpy.random.randint(0,127) == 2:
             "攻击不是很有效果..."
+            $ quick_menu = True
             jump story_char_0_battle_myround
         hide fulafu_battle_normal with easeoutleft
     else:
-        hide child_with_pan with easeoutright
-        show child_with_pan with easeinleft:
+        hide child_with_pan with easeoutleft
+        show child_with_pan with easeinright:
             zoom 0.5
             xalign 0.9
             yalign 0.15
         "攻击不是很有效果..."
+        $ quick_menu = True
         jump story_char_0_battle_myround
     play sound fulafu_faint
     pause 0.5
