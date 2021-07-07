@@ -340,7 +340,7 @@ label story_char_0_battle_opround:
         pause 1
         hide pan with dissolve
     else:
-        hide child_with_pan with easeoutright
+        hide child_with_pan with easeoutleft
         play sound run loop
         pause 0.5
         stop sound
@@ -348,7 +348,7 @@ label story_char_0_battle_opround:
             truecenter
             zoom 2.0
             alpha .15
-        show child_with_pan with easeinleft:
+        show child_with_pan with easeinright:
             zoom 0.5
             xalign 0.23
             yalign 0.25
