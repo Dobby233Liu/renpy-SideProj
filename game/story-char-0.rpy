@@ -37,12 +37,12 @@ label story_char_0_battle_intro:
 label story_char_0_battle_appear:
     $ quick_menu = True
     scene fake_battle with dissolve
-    show fulafu_battle_normal with easeinright:
+    show fulafu_battle_normal with easeinleft:
         xalign 0.2
         yalign 0.2
     play sound fulafu_cry
     pause 0.5
-    show child_with_pan with easeinleft:
+    show child_with_pan with easeinright:
         zoom 0.5
         xalign 0.9
         yalign 0.15
