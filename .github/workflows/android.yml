@@ -1,0 +1,145 @@
+name: Ren'Py 生成（Android）
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+env:
+  RENPY_VERSION: 7.4.6
+  KEY_CN: Dobby233Liu
+
+jobs:
+  android:
+    name: 使用 Ren'Py SDK 生成
+    runs-on: ubuntu-latest
+    steps:
+      - name: 克隆仓库
+        uses: actions/checkout@v2
+          
+      - name: 安装 JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 8
+      - name: 安装依赖
+        run: sudo apt-get install --yes bzip2 wget libxext6 libllvm6.0 mesa-utils
+
+      - name: 获取 cache 位置
+        working-directory: ..
+        id: cache-pos
+        run: echo "::set-output name=prev::$(pwd)"
+      - name: 缓存 Ren'Py SDK
+        uses: actions/cache@v2
+        id: sdk-cache
+        with:
+          key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v2
+          path: ${{ steps.cache-pos.outputs.prev }}/renpy-${{ env.RENPY_VERSION }}-sdk
+      - name: 安装 Ren'Py SDK
+        working-directory: ..
+        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        run: |
+          sdk_name=renpy-${{ env.RENPY_VERSION }}
+          wget -q https://www.renpy.org/dl/${{ env.RENPY_VERSION }}/${sdk_name}-sdk.tar.bz2
+          tar -xf ./${sdk_name}-sdk.tar.bz2
+          rm ./${sdk_name}-sdk.tar.bz2
+          cd ./${sdk_name}-sdk
+          wget -q https://www.renpy.org/dl/${{ env.RENPY_VERSION }}/${sdk_name}-rapt.zip
+          unzip -q ./${sdk_name}-rapt.zip
+          rm ./${sdk_name}-rapt.zip
+      - name: 配置 Python
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
+        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        run: |
+          echo "$(pwd)/lib/linux-x86_64" >> $GITHUB_PATH
+          echo "$(pwd)/lib/python2.7" >> $GITHUB_PATH
+      - name: 配置 RAPT (install_sdk.generate_keys)
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        shell: python
+        run: |
+          import os, sys
+
+          sys.path.insert(0, 'buildlib')
+
+          import rapt
+          import rapt.build
+          import rapt.plat
+          import rapt.install_sdk
+          import rapt.interface
+          rapt.plat.renpy = True
+
+          interface = rapt.interface.Interface()
+
+          rapt.install_sdk.run(
+              interface,
+              rapt.plat.keytool,
+              "-genkey",
+              "-keystore", "android.keystore",
+              "-alias", "android",
+              "-keyalg", "RSA",
+              "-keysize", "2048",
+              "-keypass", "android",
+              "-storepass", "android",
+              "-dname", "CN=%s" % os.environ["KEY_CN"],
+              "-validity", "20000",
+              use_path=True
+          )
+
+          rapt.build.copy_project(False)
+          rapt.install_sdk.set_property("key.alias", "android")
+          rapt.install_sdk.set_property("key.store.password", "android")
+          rapt.install_sdk.set_property("key.alias.password", "android")
+          rapt.install_sdk.set_property("key.store", rapt.plat.path("android.keystore"))
+          rapt.install_sdk.set_property("sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
+
+      - name: 准备 Android NDK 文件夹
+        run: |
+          sudo mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
+          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
+      - name: 缓存 NDK
+        id: ndk-cache
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/lib/android/sdk/ndk
+          key: ndk-cache-21.3.6528147-v1
+      - name: 安装 Android NDK
+        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+        run: yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "ndk;21.3.6528147"
+      - name: 写入 sdk.txt
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+        run: echo "$ANDROID_SDK_ROOT" > sdk.txt
+
+      - name: 生成工程
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+        run: |
+          mkdir -p ${{ github.workspace }}/build
+          ./renpy.sh launcher android_build ${{ github.workspace }} assembleRelease --dest ${{ github.workspace }}/build
+
+      - name: 寻找 apk 文件
+        id: apk
+        if: github.event_name != 'release'
+        working-directory: build
+        run: echo "::set-output name=filename::$(ls *-universal-release.apk)"
+      - name: 上传 apk 文件作为 artifact
+        if: github.event_name != 'release'
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.apk.outputs.filename }}
+          path: build/${{ steps.apk.outputs.filename }}
+      - name: 上传 apk 到 Releases
+        uses: svenstaro/upload-release-action@v2
+        if: github.event_name == 'release'
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true

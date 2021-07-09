@@ -3,6 +3,33 @@
 define player_character = 0
 default persistent.dew_bottle = 0
 
+init python:
+    _oldrandom = renpy.random.random
+    _oldseed = renpy.random.seed
+   
+    import time
+    renpy.random.seed(time.clock())
+    _globalrandstate = renpy.random.getstate()
+    
+    def _newrandom():
+        global _globalrandstate
+       
+        renpy.random.setstate(_globalrandstate)
+        rv = _oldrandom()
+        _globalrandstate = renpy.random.getstate()
+       
+        return rv
+        
+    def _newseed(value):
+        global _globalrandstate
+            
+        renpy.random.setstate(_globalrandstate)
+        _oldseed(value)
+        _globalrandstate = renpy.random.getstate()
+   
+    renpy.random.random = _newrandom
+    renpy.random.seed = _newseed
+
 label start:
     $ player_character = 0
 
@@ -19,7 +46,8 @@ label start:
                 "请选择角色。"
                 "黑曼君":
                     $ _history_list.pop()
-                    jump story_heimankun
+                    # FIXME: port to use numbers
+                    $ player_character = "heimankun"
                 "伏拉夫":
                     $ _history_list.pop()
                     $ player_character = 0
@@ -52,8 +80,8 @@ label search:
     $ quick_menu = False
     show screen fake_search("匹配中...") with dissolve
     pause 1.25
-    hide screen fake_search with dissolve
-    window show dissolve
+    hide screen fake_search
+    window show(None)
     "匹配成功。"
     $ _history_list.pop()
     $ jump_to_label = "story_char_" + str(player_character)

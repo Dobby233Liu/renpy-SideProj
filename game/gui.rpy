@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## 初始化
 ################################################################################
 
@@ -10,10 +10,8 @@ init offset = -2
 init python:
     gui.init(1280, 720)
 
-
-
 ################################################################################
-## GUI配置变量
+## GUI 配置变量
 ################################################################################
 
 
@@ -79,7 +77,6 @@ define gui.notify_text_size = 16
 ## 游戏标题的大小。
 define gui.title_text_size = 50
 
-
 ## 标题和游戏菜单 #####################################################################
 
 ## 用于标题菜单和游戏菜单的图像。
@@ -111,7 +108,7 @@ define gui.namebox_width = None
 define gui.namebox_height = None
 
 ## 包含角色名称的框的边界尺寸，以左、上、右、下顺序排列。
-define gui.namebox_borders = Borders(5, 5, 5, 5)
+define gui.namebox_borders = Borders(2, 1, 2, 1)
 
 ## 若为True，则名称框的背景将被平铺；若为False，则将缩放名称框的背景。
 define gui.namebox_tile = False
@@ -264,7 +261,6 @@ define gui.slot_spacing = 10
 ## 标题菜单文本的位置。
 define gui.main_menu_text_xalign = 1.0
 
-
 ## Frames ######################################################################
 ##
 ## These variables control the look of frames that can contain user interface
@@ -390,3 +386,57 @@ define gui.nvl_button_xalign = 0.0
 ## www.renpy.org/doc/html/style_properties.html#style-property-language
 
 define gui.language = "unicode"
+
+################################################################################
+## 移动设备
+################################################################################
+
+init python:
+
+    ## This increases the size of the quick buttons to make them easier to touch
+    ## on tablets and phones.
+    if renpy.variant("touch"):
+        gui.quick_button_borders = Borders(40, 14, 40, 0)
+
+    ## This changes the size and spacing of various GUI elements to ensure they
+    ## are easily visible on phones.
+    if renpy.variant("small"):
+        ## Font sizes.
+        gui.text_size = 24
+        gui.name_text_size = 30
+        gui.notify_text_size = 25
+        gui.interface_text_size = 36
+        gui.button_text_size = 40
+        gui.label_text_size = 36
+
+        ## Change the size and spacing of items in the game menu.
+        gui.choice_button_width = 800
+
+        gui.navigation_spacing = 20
+        gui.pref_button_spacing = 10
+
+        gui.history_height = 190
+        gui.history_text_width = 690
+
+        ## File button layout.
+        gui.file_slot_cols = 2
+        gui.file_slot_rows = 2
+
+        ## NVL-mode.
+        gui.nvl_height = 170
+
+        gui.nvl_name_width = 305
+        gui.nvl_name_xpos = 325
+
+        gui.nvl_text_width = 915
+        gui.nvl_text_xpos = 345
+        gui.nvl_text_ypos = 5
+
+        gui.nvl_thought_width = 1240
+        gui.nvl_thought_xpos = 20
+
+        gui.nvl_button_width = 1240
+        gui.nvl_button_xpos = 20
+
+        ## Quick buttons.
+        gui.quick_button_text_size = 20

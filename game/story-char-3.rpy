@@ -20,6 +20,7 @@ label story_char_3_start:
     window show dissolve
     scene bg_sunny_outside with dissolve
     show child_with_pan with dissolve
+label story_char_3_menu1:
     menu:
         with dissolve
         "你遇见了一个很皮的小孩，他一直饶你。要使用哪个技能？"
@@ -36,7 +37,12 @@ label story_char_3_start:
             stop sound
             $ quick_menu = True
             jump endgame
+        "干作者":
+            show screen notify("？？？")
+            "休想！"
+            jump story_char_3_menu1
     hide child_with_pan with dissolve
+label story_char_3_menu2:
     menu:
         with dissolve
         "你击败了那个小孩。接下来要去哪里？"
@@ -53,9 +59,13 @@ label story_char_3_start:
             jump endgame
         "卧室":
             pass
+        "啥也不干":
+            show screen notify("你想多了")
+            jump story_char_3_menu2
     scene fix_house with dissolve
     show car_fixing with dissolve
     show child_with_pan with dissolve
+label story_char_3_menu3:
     menu:
         with dissolve
         "你看见两个小孩在修机子。要做点什么？"
@@ -70,4 +80,10 @@ label story_char_3_start:
             stop sound
             $ quick_menu = True
             jump endgame
+        "走位":
+            show screen notify("你想多了")
+            jump story_char_3_menu3
+        "给俩个小孩谈谈话":
+            show screen notify("你想多了")
+            jump story_char_3_menu3
     return

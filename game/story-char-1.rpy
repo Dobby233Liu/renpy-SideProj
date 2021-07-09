@@ -8,15 +8,15 @@ label story_char_1:
     window show dissolve
     scene fix_house with dissolve
     show car_fixing with dissolve
-    "直奔主题，开局又要修车。"
+    "一开局，你就必须修机子。"
     if persistent.dew_bottle == 0:
         show dew_bottle with dissolve
         "无聊的你从背包里拿出一瓶开局就有的香水。"
         "攻略里说它能有效驱赶头顶上的苍蝇。"
         "但是游戏里却说它只是个装饰性物品，没有用。"
         "就算真如攻略所言，这里也没有苍蝇。"
-        "果然攻略不可信，丢了丢了。" nointeract
         hide dew_bottle with easeoutright
+        "果然攻略不可信，丢了丢了。"
         $ persistent.dew_bottle = 1
         pause
     elif persistent.dew_bottle == 1:
@@ -26,34 +26,37 @@ label story_char_1:
         with dissolve
         "接下来要修哪台机子？"
         "第一台":
-            $ _history_list.pop()
-            pause 1.0
+            pass
+        "第二台":
+            "第二台在外面，所以你去扛回来。{w=1}{nw}"
+            window hide dissolve
+            stop music fadeout 0.5
+            pause 0.5
             hide car_fixing with dissolve
-            "已经修好了一台机子，还剩 2 台。"
-            menu:
-                with dissolve
-                "你的头上出现了乌鸦！"
-                "修别的机子":
-                    pass
-                "等伏拉夫溜它":
-                    $ quick_menu = False
-                    scene black with dissolve
-                    "..."
-                    window hide dissolve
-                    stop music
-                    scene dead with dissolve
-                    play sound gameover
-                    show screen reload_prompt("伏拉夫来把乌鸦带走，顺便把你抓回去了！")
-                    pause
-                    stop sound
-                    $ quick_menu = True
-                    jump endgame
-                "驱赶":
-                    pass
+            play sound run
+            pause 0.28
+            stop sound
+            scene bg_sunny_outside with fade
+            pause 0.5
+            play sound run
+            pause 0.424
+            stop sound
+            play sound pong
+            scene black
+            pause 1
+            $ quick_menu = False
+            #stop music
+            scene fail with dissolve
+            play sound gameover
+            show screen reload_prompt("潜伏在第二台处的伏拉夫把你抓走了！")
+            pause
+            stop sound
+            $ quick_menu = True
+            jump endgame
         "发呆":
             hide car_fixing with dissolve
             scene black with dissolve
-            stop music
+            stop music fadeout 1
             $ quick_menu = False
             ".{w=0.5}{nw}"
             $ _history_list.pop()
@@ -74,6 +77,30 @@ label story_char_1:
             stop sound
             $ quick_menu = True
             jump endgame
+
+    pause 1.0
+    hide car_fixing with dissolve
+    "已经修好了一台机子，还剩 2 台。"
+    menu:
+        with dissolve
+        "你的头上出现了乌鸦！"
+        "修别的机子":
+            pass
+        "等伏拉夫，然后去溜他":
+            $ quick_menu = False
+            scene black with dissolve
+            "..."
+            window hide dissolve
+            stop music
+            scene dead with dissolve
+            play sound gameover
+            show screen reload_prompt("伏拉夫把你抓到了！\n记住，休想溜他！")
+            pause
+            stop sound
+            $ quick_menu = True
+            jump endgame
+        "驱赶":
+            pass
 
     show car_fixing with dissolve
     pause 1.0
@@ -128,6 +155,7 @@ label story_char_1:
                     $ i += 1
                 stop music
                 stop voice fadeout 0.05
+                scene black with blinds
                 #window hide(None)
                 $ renpy.pause(4, hard=True)
                 $ quick_menu = False
@@ -139,9 +167,10 @@ label story_char_1:
                 pause
                 stop sound
                 $ quick_menu = True
+                jump endgame
             "给我提示！":
                 $ _history_list.pop()
-                show screen notify("洞穴nx") with dissolve
+                show screen notify("洞穴wx") with dissolve
                 "你真菜。"
                 jump story_char_1_contiune
             "死掉":
@@ -155,4 +184,5 @@ label story_char_1:
                 pause
                 stop sound
                 $ quick_menu = True
+                jump endgame
     jump endgame
