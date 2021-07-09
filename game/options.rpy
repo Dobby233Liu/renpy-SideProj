@@ -16,7 +16,7 @@ define gui.show_name = True
 
 ## 游戏版本号。
 
-define config.version = "1.4-pre3"
+define config.version = "1.4"
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
 
@@ -60,8 +60,8 @@ define config.sample_voice = audio.haoci
 
 ## 需要循环的音频。
 define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
-define audio.poke_mus_battle27 = "<loop 13.94 to 52.64>audio/poke_mus_battle27.ogg"
-define audio.pokerg_mus_win = "<loop 1.755 to 15.58>audio/pokerg_mus_win.ogg"
+define audio.poke_mus_battle27 = "<loop 13.96 to 52.64>audio/poke_mus_battle27.ogg"
+define audio.pokerg_mus_win = "<loop 1.76 to 15.58>audio/pokerg_mus_win.ogg"
 
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
 ## 续播放，直至音乐停止或其他文件开始播放。
