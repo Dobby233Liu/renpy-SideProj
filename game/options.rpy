@@ -59,7 +59,7 @@ define config.sample_sound = audio.dizzy
 define config.sample_voice = audio.haoci
 
 ## 需要循环的音频。
-define audio.china2 = "<loop 96.03 to 199.96>audio/china2.mp3"
+define audio.china2 = "<loop 96 to 200>audio/china2.mp3"
 define audio.poke_mus_battle27 = "<loop 13.96 to 52.64>audio/poke_mus_battle27.ogg"
 define audio.pokerg_mus_win = "<loop 1.76 to 15.58>audio/pokerg_mus_win.ogg"
 
