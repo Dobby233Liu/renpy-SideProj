@@ -85,9 +85,10 @@ label flfsim_choose_type:
             show screen reload_prompt("你伤心地退抖了...")
             pause
             stop sound fadeout 1.0
+            hide screen reload_prompt with dissolve
             scene black with dissolve
             window show dissolve
-            "你早就给人留下了不好的印象了..."
+            "你已经给人留下了不好的印象了..."
             "再想怎样挽救，也已经无济于事了..."
             $ quick_menu = True
             jump endgame
@@ -117,6 +118,7 @@ label flfsim_choose_type:
             play sound gameover
             show screen reload_prompt("喷了他们没多久，你就被封号了！")
             pause
+            hide screen reload_prompt with dissolve
         "提醒他们网络不是法外之地":
             scene black with dissolve
             "于是，你又拍了一个作品来提醒他们，你还把它置顶了。"
