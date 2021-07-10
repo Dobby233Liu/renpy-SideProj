@@ -166,7 +166,8 @@ label story_char_0_battle_myround:
                             yalign 0.15
                     pause 0.5
                     if brainfucked_run:
-                        play music dizzypt2
+                        $ renpy.music.set_pause(True)
+                        play sound dizzypt2 loop
                         $ renpy.pause(2, hard=True)
                         hide fulafu_overworld_jumpscare
                         stop music
@@ -182,7 +183,7 @@ label story_char_0_battle_myround:
                             brainfucked_run = False
                             myround_no_fade = 1
                             xxs_slept = True
-                        play music poke_mus_battle27
+                            renpy.music.set_pause(False)
                         jump story_char_0_battle_myround
                     hide circle with blinds
                     hide fulafu_battle_cast
@@ -190,13 +191,15 @@ label story_char_0_battle_myround:
                         xalign 0.2
                         yalign 0.2
                     if xxs_slept:
-                        "攻击不是很有效果..."
+                        "但是 小孩♂ xxs 对攻击免疫！"
                         jump story_char_0_battle_opround
                     $ xxs_slept = True
-                    child_lead "zzzzzzzzzz"
+                    child_lead "zzzzzzzzzz" nointeract
+                    pause 1.0
                     "3..." nointeract
                     pause 1.0
-                    child_lead "zzzzzzzzzz"
+                    child_lead "zzzzzzzzzz" nointeract
+                    pause 1.0
                     "2..." nointeract
                     pause 1.0
                     if renpy.random.randint(0,3) == 2:
@@ -205,7 +208,8 @@ label story_char_0_battle_myround:
                         "攻击不是很有效果..."
                         jump story_char_0_battle_opround
                     else:
-                        child_lead "zzzzzzzzzz"
+                        child_lead "zzzzzzzzzz" nointeract
+                        pause 1.0
                         "1..." nointeract
                         pause 1.0
                         "..." nointeract
@@ -267,6 +271,7 @@ label story_char_0_battle_myround:
                 child_lead "怎么跑了"
         "gdv攻ghjghhgfffd跑pgh" if brainfucked_run:
              window hide(None)
+             stop music
              stop sound
              play music dizzypt2
              scene dead2
@@ -289,7 +294,6 @@ label story_char_0_battle_myround:
                  ui.text("Reloading script...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
 
                  renpy.pause(1.53, hard=True)
-
              window hide(None)
              python hide:
                  ui.add(Solid((0, 0, 0, 255)))
