@@ -226,7 +226,7 @@ label story_char_0_battle_myround:
                         play music pokerg_mus_win
                         "你胜利了！"
                         "获得了 0 GOLD！"
-                    $ quick_menu = True
+                        $ quick_menu = True
         "逃跑" if not brainfucked_run:
             if renpy.random.randint(0,3) == 2:
                 $ brainfucked_run = True
@@ -375,7 +375,7 @@ label story_char_0_battle_opround:
             jump story_char_0_battle_myround
         hide fulafu_battle_normal with easeoutleft
     else:
-        hide child_with_pan with easeoutleft
+        hide child_with_pan with easeoutright
         show child_with_pan with easeinright:
             zoom 0.5
             xalign 0.9
