@@ -59,8 +59,8 @@ define config.sample_sound = audio.dizzy
 define config.sample_voice = audio.haoci
 
 ## 需要循环的音频。
-define audio.china2 = "<loop 96 to 200>audio/china2.mp3"
-define audio.poke_mus_battle27 = "<loop 13.8 to 52.64>audio/poke_mus_battle27.ogg"
+define audio.china2 = "<loop 96 to 199.9>audio/china2.mp3"
+define audio.poke_mus_battle27 = "<loop 12.8 to 52.64>audio/poke_mus_battle27.ogg"
 define audio.pokerg_mus_win = "<loop 1.8 to 15.58>audio/pokerg_mus_win.ogg"
 
 ## 主界面播放的背景音乐文件。此文件将在整个游戏中持
