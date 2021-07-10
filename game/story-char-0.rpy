@@ -241,14 +241,15 @@ label story_char_0_battle_myround:
                 with hpunch
                 hide fulafu_overworld_jumpscare
                 window show(None) # oh
+                $ myround_no_fade = 0
                 "oaisdjsoijgodjin4e7cbvb hfthfcgf{nw}"
+                pause 0.01
                 hide black with None
-                $ renpy.music.set_pause(False)
-                $ quick_menu = True
                 show fulafu_battle_normal:
                     xalign 0.2
                     yalign 0.2
-                $ myround_no_fade = 0
+                $ renpy.music.set_pause(False)
+                $ quick_menu = True
                 jump story_char_0_battle_myround
             else:
                 play sound run
