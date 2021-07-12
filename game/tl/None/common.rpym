@@ -1,5 +1,4 @@
-﻿
-translate None strings:
+﻿translate None strings:
 
     # renpy/common/00accessibility.rpy:28
     old "Self-voicing disabled."
@@ -1232,5 +1231,3 @@ translate None strings:
     # renpy/common/00console.rpy:690
     old "long: Print the full representation of objects on the console."
     new "long: Print the full representation of objects on the console."
-
-define gui.system_font = u'NotoSansCJKsc-DemiLight.otf'
