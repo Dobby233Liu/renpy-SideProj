@@ -50,14 +50,14 @@ define gui.interface_text_color = '#fafafa'
 
 ## 字体和字体大小 #####################################################################
 
+## 用于游戏外文本的字体。
+define gui.interface_text_font = "WenQuanYiMicroHei.ttf"
+
 ## 用于游戏内文本的字体。
-define gui.text_font = "NotoSansCJKsc-DemiLight.otf"
+define gui.text_font = gui.interface_text_font
 
 ## 用于角色名称的字体。
-define gui.name_text_font = "NotoSansCJKsc-DemiLight.otf"
-
-## 用于游戏外文本的字体。
-define gui.interface_text_font = "NotoSansCJKsc-DemiLight.otf"
+define gui.name_text_font = gui.interface_text_font
 
 ## 普通对话文本的大小。
 define gui.text_size = 22
