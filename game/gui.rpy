@@ -52,12 +52,12 @@ define gui.interface_text_color = '#fafafa'
 
 ## 用于游戏外文本的字体。
 define gui.interface_text_font = "WenQuanYiMicroHei.ttf"
-
 ## 用于游戏内文本的字体。
 define gui.text_font = gui.interface_text_font
-
 ## 用于角色名称的字体。
 define gui.name_text_font = gui.interface_text_font
+## 引擎其他界面的字体。
+define gui.system_font = gui.interface_text_font
 
 ## 普通对话文本的大小。
 define gui.text_size = 22
