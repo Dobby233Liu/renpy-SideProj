@@ -35,7 +35,7 @@ jobs:
         uses: actions/cache@v2
         id: sdk-cache
         with:
-          key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v2
+          key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v3
           path: ${{ steps.cache-pos.outputs.prev }}/renpy-${{ env.RENPY_VERSION }}-sdk
       - name: 安装 Ren'Py SDK
         working-directory: ..
@@ -49,6 +49,8 @@ jobs:
           wget -q https://www.renpy.org/dl/${{ env.RENPY_VERSION }}/${sdk_name}-rapt.zip
           unzip -q ./${sdk_name}-rapt.zip
           rm ./${sdk_name}-rapt.zip
+          wget https://patch-diff.githubusercontent.com/raw/renpy/renpy-build/pull/25.patch
+          patch -i 25.patch
       - name: 配置 Python
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
         if: steps.sdk-cache.outputs.cache-hit != 'true'
@@ -95,19 +97,19 @@ jobs:
           rapt.install_sdk.set_property("key.store", rapt.plat.path("android.keystore"))
           rapt.install_sdk.set_property("sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
 
-      - name: 准备 Android NDK 文件夹
-        run: |
-          sudo mkdir -p /usr/local/lib/android/sdk/ndk
-          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
-          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
-      - name: 缓存 NDK
-        id: ndk-cache
-        uses: actions/cache@v2
-        with:
-          path: /usr/local/lib/android/sdk/ndk
-          key: ndk-cache-21.3.6528147-v1
+      #- name: 准备 Android NDK 文件夹
+      #  run: |
+      #    sudo mkdir -p /usr/local/lib/android/sdk/ndk
+      #    sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
+      #    sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
+      #- name: 缓存 NDK
+      #  id: ndk-cache
+      #  uses: actions/cache@v2
+      #  with:
+      #    path: /usr/local/lib/android/sdk/ndk
+      #    key: ndk-cache-21.3.6528147-v1
       - name: 安装 Android NDK
-        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        #if: steps.ndk-cache.outputs.cache-hit != 'true'
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
         run: yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "ndk;21.3.6528147"
       - name: 写入 sdk.txt
