@@ -50,7 +50,7 @@ jobs:
           unzip -q ./${sdk_name}-rapt.zip
           rm ./${sdk_name}-rapt.zip
           wget https://patch-diff.githubusercontent.com/raw/renpy/renpy-build/pull/25.patch
-          patch -i 25.patch
+          patch -p1 -i 25.patch
       - name: 配置 Python
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
         if: steps.sdk-cache.outputs.cache-hit != 'true'
