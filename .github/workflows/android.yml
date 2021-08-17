@@ -91,13 +91,12 @@ jobs:
           )
 
           local_properties = rapt.plat.path("project/local.properties")
-          rapt.build.copy_project(False)
+          #rapt.build.copy_project(False)
           rapt.install_sdk.set_property(local_properties, "key.alias", "android")
           rapt.install_sdk.set_property(local_properties, "key.store.password", "android")
           rapt.install_sdk.set_property(local_properties, "key.alias.password", "android")
           rapt.install_sdk.set_property(local_properties, "key.store", rapt.plat.path("android.keystore"))
           rapt.install_sdk.set_property(local_properties, "sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
-      - run: rm -rf /home/runner/work/renpy-SideProj/renpy-nightly-2021-08-16-d1727e013-sdk/rapt/project/app/src/main/assets
 
       #- name: 准备 Android NDK 文件夹
       #  run: |
