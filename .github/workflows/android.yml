@@ -100,8 +100,7 @@ jobs:
 
           # test
           assets = rapt.plat.path("project/app/src/main/assets")
-          if os.path.isdir(assets):
-              shutil.rmtree(assets)
+          shutil.rmtree(assets)
 
       #- name: 准备 Android NDK 文件夹
       #  run: |
