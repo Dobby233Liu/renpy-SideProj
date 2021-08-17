@@ -124,7 +124,7 @@ jobs:
           SDL_VIDEODRIVER: dummy
         run: |
           mkdir -p ${{ github.workspace }}/build
-          ./renpy.sh launcher android_build ${{ github.workspace }} buildRelease --dest ${{ github.workspace }}/build
+          ./renpy.sh launcher android_build ${{ github.workspace }} --dest ${{ github.workspace }}/build
 
       - name: 寻找 apk 文件
         id: apk
