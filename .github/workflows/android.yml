@@ -91,7 +91,7 @@ jobs:
           )
 
           local_properties = rapt.plat.path("project/local.properties")
-          #rapt.build.copy_project(False)
+          rapt.build.copy_project(False)
           rapt.install_sdk.set_property(local_properties, "key.alias", "android")
           rapt.install_sdk.set_property(local_properties, "key.store.password", "android")
           rapt.install_sdk.set_property(local_properties, "key.alias.password", "android")
