@@ -63,7 +63,7 @@ jobs:
         if: steps.sdk-cache.outputs.cache-hit != 'true'
         shell: python
         run: |
-          import os, sys
+          import os, sys, shutil
 
           sys.path.insert(0, 'buildlib')
 
@@ -97,6 +97,11 @@ jobs:
           rapt.install_sdk.set_property(local_properties, "key.alias.password", "android")
           rapt.install_sdk.set_property(local_properties, "key.store", rapt.plat.path("android.keystore"))
           rapt.install_sdk.set_property(local_properties, "sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
+
+          # test
+          assets = rapt.plat.path("project/app/src/main/assets")
+          if os.path.isdir(assets):
+              shutil.rmtree(assets)
 
       #- name: 准备 Android NDK 文件夹
       #  run: |
@@ -146,3 +151,17 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
+
+      - name: Nuke from orbit
+        working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
+        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        shell: python
+        run: |
+          import sys
+
+          sys.path.insert(0, 'buildlib')
+
+          import rapt
+          import rapt.build, rapt.interface
+          
+          rapt.build.distclean(rapt.interface.Interface())
