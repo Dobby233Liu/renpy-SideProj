@@ -72,7 +72,6 @@ jobs:
           import rapt.plat
           import rapt.install_sdk
           import rapt.interface
-          rapt.plat.renpy = True
 
           interface = rapt.interface.Interface()
 
@@ -91,12 +90,13 @@ jobs:
               use_path=True
           )
 
+          local_properties = plat.path("project/local.properties")
           rapt.build.copy_project(False)
-          rapt.install_sdk.set_property("key.alias", "android")
-          rapt.install_sdk.set_property("key.store.password", "android")
-          rapt.install_sdk.set_property("key.alias.password", "android")
-          rapt.install_sdk.set_property("key.store", rapt.plat.path("android.keystore"))
-          rapt.install_sdk.set_property("sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
+          rapt.install_sdk.set_property(local_properties, "key.alias", "android")
+          rapt.install_sdk.set_property(local_properties, "key.store.password", "android")
+          rapt.install_sdk.set_property(local_properties, "key.alias.password", "android")
+          rapt.install_sdk.set_property(local_properties, "key.store", rapt.plat.path("android.keystore"))
+          rapt.install_sdk.set_property(local_properties, "sdk.dir", os.environ["ANDROID_SDK_ROOT"], replace=True)
 
       #- name: 准备 Android NDK 文件夹
       #  run: |
