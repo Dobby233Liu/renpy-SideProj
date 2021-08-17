@@ -90,7 +90,7 @@ jobs:
               use_path=True
           )
 
-          local_properties = plat.path("project/local.properties")
+          local_properties = rapt.plat.path("project/local.properties")
           rapt.build.copy_project(False)
           rapt.install_sdk.set_property(local_properties, "key.alias", "android")
           rapt.install_sdk.set_property(local_properties, "key.store.password", "android")
