@@ -50,6 +50,8 @@ jobs:
           wget -q ${{ env.RENPYORG }}/${{ env.RENPY_VERSION }}/${sdk_name}-rapt.zip
           unzip -q ./${sdk_name}-rapt.zip
           rm ./${sdk_name}-rapt.zip
+          wget -q -O 1.patch https://github.com/renpy/renpy-build/compare/master...Dobby233Liu:rapt-try-fix.patch
+          patch -p1 -i 1.patch
       - name: 配置 Python
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
         if: steps.sdk-cache.outputs.cache-hit != 'true'
