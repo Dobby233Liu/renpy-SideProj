@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v2
         id: sdk-cache
         with:
-          key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v3
+          key: renpy-sdk-${{ env.RENPY_VERSION }}-ANDROID-v1
           path: ${{ steps.cache-pos.outputs.prev }}/renpy-${{ env.RENPY_VERSION }}-sdk
       - name: 安装 Ren'Py SDK
         working-directory: ..
@@ -54,13 +54,13 @@ jobs:
           patch -p1 -i 1.patch
       - name: 配置 Python
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk
-        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        #if: steps.sdk-cache.outputs.cache-hit != 'true'
         run: |
           echo "$(pwd)/lib/linux-x86_64" >> $GITHUB_PATH
           echo "$(pwd)/lib/python2.7" >> $GITHUB_PATH
       - name: 配置 RAPT (install_sdk.generate_keys)
         working-directory: ../renpy-${{ env.RENPY_VERSION }}-sdk/rapt
-        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        #if: steps.sdk-cache.outputs.cache-hit != 'true'
         shell: python
         run: |
           import os, sys, shutil
