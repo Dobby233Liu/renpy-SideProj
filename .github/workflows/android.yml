@@ -130,7 +130,7 @@ jobs:
         id: apk
         if: github.event_name != 'release'
         working-directory: build
-        run: echo "::set-output name=filename::$(ls *-universal-release.apk)"
+        run: echo "::set-output name=filename::$(ls *.apk)"
       - name: 上传 apk 文件作为 artifact
         if: github.event_name != 'release'
         uses: actions/upload-artifact@v1
