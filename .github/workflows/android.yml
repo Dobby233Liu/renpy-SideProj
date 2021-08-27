@@ -9,7 +9,7 @@ on:
 
 env:
   RENPYORG: https://nightly.renpy.org
-  RENPY_VERSION: nightly-2021-08-23-969cf58a3
+  RENPY_VERSION: nightly-2021-08-24-afe10a6fe
   KEY_CN: Dobby233Liu
 
 jobs:
