@@ -37,7 +37,10 @@ label story_char_1_pre2:
             jump endgame
         "去找更多的物资":
             pass
-    scene fix_house with slideawayleft
+    window hide fade
+    with slideawayleft
+    scene fix_house with fade
+    pause 1.5
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "你找到了 钥匙！" nointeract with dissolve
     pause 1.5
@@ -49,9 +52,9 @@ label story_char_1_pre2:
     "还剩两把钥匙没有收集。"
     "听说集满三把可以打开大门。"
     scene kitchen with fade
-    "这时候也没有什么可做的，你继续找钥匙。{w=1}{nw}" nointeract
+    "这时候也没有什么可做的。{p}你继续找钥匙。"
     scene bg_sunny_outside with fade
-    "这时候也没有什么可做的，你继续找钥匙。{w=1}{nw}" nointeract
+    "{p=2}{nw}" nointeract
     window hide
     stop music fadeout 0.25
     play music poke_mus_battle27
