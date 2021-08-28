@@ -9,7 +9,7 @@ label story_char_1_pre2:
     window show dissolve
     scene kitchen with dissolve
     show screen spell_showcase("images/pan.png", 1.5, 0.25) with dissolve
-    "你开局就在厨房里。这儿有个平底锅，旁边有一张说明书。" with dissolve
+    "你开局就在厨房里。{p}这儿有个平底锅，旁边有一张说明书。" with dissolve
     show screen spell_showcase("images/pan_note.png") with dissolve
     "第一：平底锅是一次性物品，使用一次后销毁（无法使用）。"
     "第二：对敌人使用可以使敌人眩晕 30 秒，在坚固的固体上使用直接销毁，其它无效果。"
@@ -37,9 +37,7 @@ label story_char_1_pre2:
             jump endgame
         "去找更多的物资":
             pass
-    scene black with dissolve
-    window hide dissolve
-    scene fix_house with slideawayleft
+    scene fix_house with slideleft
     pause 1.5
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "你找到了 钥匙！" nointeract with dissolve
@@ -55,7 +53,7 @@ label story_char_1_pre2:
     "这时候也没有什么可做的。{p}你继续找钥匙。"
     scene bg_sunny_outside with fade
     "{p=2}{nw}" nointeract
-    window hide
+    window hide dissolve
     stop music fadeout 0.25
     play music poke_mus_battle27
     show black at blink
