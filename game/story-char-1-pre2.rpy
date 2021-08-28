@@ -37,9 +37,9 @@ label story_char_1_pre2:
             jump endgame
         "去找更多的物资":
             pass
-    window hide fade
-    with slideawayleft
-    scene fix_house with fade
+    scene black with dissolve
+    window hide dissolve
+    scene fix_house with slideawayleft
     pause 1.5
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "你找到了 钥匙！" nointeract with dissolve
@@ -96,7 +96,7 @@ label story_char_1_pre2:
             scene dead with dissolve
             stop music
             play sound gameover
-            show screen reload_prompt("你打不过伏拉夫，倒下了！") with dissolve
+            show screen reload_prompt("你力气很小，没撞成反而被伏拉夫抓走了！") with dissolve
             pause
             stop sound
             $ quick_menu = True
@@ -113,6 +113,8 @@ label story_char_1_pre2:
             play voice fulafu_faint fadeout 0.125
             hide fulafu_overworld with squares
             "伏拉夫 晕倒了！"
+            stop music fadeout 2.0
+            "胜利！"
             play music china2 fadein 2.0
             $ quick_menu = True
         "平底锅":
@@ -132,9 +134,10 @@ label story_char_1_pre2:
             play voice fulafu_faint fadeout 0.125
             hide fulafu_overworld with blinds
             "伏拉夫 被击倒了！"
-            play music china2 fadein 2.0
+            stop music fadeout 2.0
             "胜利！"
             "你的平底锅损毁了。作为补偿，你得到了 10 经验。"
+            play music china2 fadein 2.0
             $ quick_menu = True
         "逃跑":
             $ _history_list.pop()
@@ -169,7 +172,7 @@ label story_char_1_pre2:
     play sound pong # collect
     play voice haoci
     pause 0.25
-    "只剩一把钥匙没有收集到。"
+    "只剩一把钥匙了。"
     # FIXME: fix pauses
     menu:
         with dissolve
