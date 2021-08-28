@@ -1154,11 +1154,11 @@ style notify_text:
 # ~~~
 
 transform blink():
-    alpha .0
+    alpha 0
 
     block:
-        linear .25 alpha 1.0
-        linear .25 alpha 0.0
+        linear .5 alpha 1.0
+        linear .5 alpha 0.25
         repeat
 
 init python:
