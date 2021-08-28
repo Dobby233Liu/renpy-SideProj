@@ -1157,9 +1157,9 @@ transform blink():
     alpha 0
 
     block:
-        linear .5 alpha 1.0
-        pause .5
-        linear .5 alpha 0.25
+        easein .5 alpha 1.0
+        pause .25
+        easeout .5 alpha 0
         pause .5
         repeat
 
