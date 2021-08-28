@@ -1158,7 +1158,9 @@ transform blink():
 
     block:
         linear .5 alpha 1.0
+        pause .5
         linear .5 alpha 0.25
+        pause .5
         repeat
 
 init python:
