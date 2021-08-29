@@ -1158,6 +1158,13 @@ transform blink():
 
     block:
         easein .5 alpha 1.0
+        easeout .5 alpha 0
+        repeat
+transform blink_present():
+    alpha 0
+
+    block:
+        easein .5 alpha 1.0
         pause .25
         easeout .5 alpha 0
         pause .5
@@ -1177,7 +1184,7 @@ screen fake_search(my_text):
     hbox:
         xalign 0.5
         yalign 0.5
-        text my_text at blink() size 32
+        text my_text at blink_present() size 32
 
 screen reload_prompt(my_text):
     hbox:
@@ -1216,7 +1223,7 @@ screen race_prepare(positive, negative):
 screen spell_showcase(spell_sprite, scale_factor=1, yalign_diff=0):
     $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor)
     $ yalign_calc = 0.25 + yalign_diff
-    add scaled_spell_sprite xalign 0.5 yalign yalign_calc at blink()
+    add scaled_spell_sprite xalign 0.5 yalign yalign_calc at blink_present()
 
 screen credits_paper(text=gui.credits):
     modal True
