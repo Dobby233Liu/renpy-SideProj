@@ -8,7 +8,7 @@ on:
     types: [published]
 
 env:
-  RENPY_VERSION: 7.4.6
+  RENPY_VERSION: 7.4.8
   KEY_CN: Dobby233Liu
 
 jobs:
