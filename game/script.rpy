@@ -39,6 +39,12 @@ label start:
     menu:
         with dissolve
         "请选择阵营。"
+        "!!环境变量测试!!" if renpy.android:
+            python:
+                for k, v in os.environ.items():
+                    if "ANDROID_" in k:
+                        print("%s=%s" % (k, v))
+                        renpy.say(Character(k), v)
         "狩猎":
             $ _history_list.pop()
             menu:
