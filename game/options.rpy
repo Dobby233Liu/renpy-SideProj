@@ -177,3 +177,10 @@ define config.autosave_on_choice = False
 define config.autosave_on_quit = False
 define config.debug = config.developer
 define config.debug_text_overflow = config.debug
+init python:
+    config.keymap['game_menu'].remove('mouseup_3')
+    config.keymap['hide_windows'].append('mouseup_3')
+
+    def func_null():
+        pass
+    config.game_menu_action = func_null
