@@ -45,6 +45,7 @@ label start:
                     if "ANDROID_" in k:
                         print("%s=%s" % (k, v))
                         renpy.say(Character(k), v)
+            jump start
         "狩猎":
             $ _history_list.pop()
             menu:
