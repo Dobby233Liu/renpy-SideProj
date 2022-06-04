@@ -152,7 +152,7 @@ translate en strings:
 
     # game/story-char-1.rpy:25
     old "发呆"
-    new "AFK"
+    new "Do nothing"
 
     # game/story-char-1.rpy:51
     old "潜伏在第二台处的伏拉夫把你抓走了！"
