@@ -10,7 +10,7 @@ label story_char_2:
 label story_char_2_start:
     $ quick_menu = False
     window hide dissolve
-    show screen race_prepare("老八\n会下蛋的马", "小孩\n奥利给\n你个猪\nxxs") with dissolve
+    show screen race_prepare(_("老八\n会下蛋的马"), _("小孩\n奥利给\n你个猪\nxxs")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
@@ -28,7 +28,7 @@ label story_char_2_start:
             stop music
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你被 xxs 反杀了！")
+            show screen reload_prompt(_("你被 xxs 反杀了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -50,7 +50,7 @@ label story_char_2_start:
             stop music
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你打不过 xxs，反而被他打死了！")
+            show screen reload_prompt(_("你打不过 xxs，反而被他打死了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -60,10 +60,10 @@ label story_char_2_start:
         with dissolve
         "你又看见了另外两个小孩。要用哪个招式攻击？"
         "奥利给":
-            show screen notify("哈哈哈哈哈哈哈哈哈哈哈哈哈")
+            show screen notify(_("哈哈哈哈哈哈哈哈哈哈哈哈哈"))
             pass
         "奥利给干了":
-            show screen notify("哈哈哈哈哈哈哈哈哈哈哈笑死我了")
+            show screen notify(_("哈哈哈哈哈哈哈哈哈哈哈笑死我了"))
             pass
         "组合技":
             $ quick_menu = False
@@ -79,7 +79,7 @@ label story_char_2_start:
             pause 2.0
             scene win with dissolve
             play sound win
-            show screen reload_prompt("你击败了所有小孩！")
+            show screen reload_prompt(_("你击败了所有小孩！"))
             pause
             stop sound
             $ quick_menu = True
@@ -89,7 +89,7 @@ label story_char_2_start:
     stop music
     scene dead with dissolve
     play sound gameover
-    show screen reload_prompt("你使用的技能不仅没有打败小孩，他们还把你打死了！")
+    show screen reload_prompt(_("你使用的技能不仅没有打败小孩，他们还把你打死了！"))
     pause
     stop sound
     $ quick_menu = True

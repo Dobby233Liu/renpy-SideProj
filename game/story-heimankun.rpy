@@ -1,4 +1,4 @@
-label story_heimankun:
+label story_char_heimankun:
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
     show screen spell_showcase("images/heiman_spell_coming2urhome.png") with dissolve
@@ -7,10 +7,10 @@ label story_heimankun:
     show screen spell_showcase("images/spell_heilafu.png") with dissolve
     "大家好我是黑拉夫：附近倒地者死亡时间减少 10 秒（有概率直接秒死）。"
     hide screen spell_showcase with dissolve
-label story_heimankun_start:
+label story_char_heimankun_start:
     $ quick_menu = False
     window hide dissolve
-    show screen race_prepare("黑曼君", "小孩") with dissolve
+    show screen race_prepare(_("黑曼君"), _("小孩")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
@@ -35,7 +35,7 @@ label story_heimankun_start:
             pause 2.0
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你被小孩打死了！")
+            show screen reload_prompt(_("你被小孩打死了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -65,7 +65,7 @@ label story_heimankun_start:
             pause 2.0
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你被陷害了！")
+            show screen reload_prompt(_("你被陷害了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -89,7 +89,7 @@ label story_heimankun_start:
             pause 1.0
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你被毒死了！")
+            show screen reload_prompt(_("你被毒死了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -102,7 +102,7 @@ label story_heimankun_start:
     stop music
     scene win with dissolve
     play sound win
-    show screen reload_prompt("时间被消耗光了，你胜利了！")
+    show screen reload_prompt(_("时间被消耗光了，你胜利了！"))
     pause
     stop sound
     $ quick_menu = True

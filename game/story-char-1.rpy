@@ -1,7 +1,7 @@
 label story_char_1:
     window hide dissolve
     $ quick_menu = False
-    show screen race_prepare("伏拉夫\n会飞的猪", "小孩\nxxs") with dissolve
+    show screen race_prepare(_("伏拉夫\n会飞的猪"), _("小孩\nxxs")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
@@ -48,7 +48,7 @@ label story_char_1:
             #stop music
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("潜伏在第二台处的伏拉夫把你抓走了！")
+            show screen reload_prompt(_("潜伏在第二台处的伏拉夫把你抓走了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -66,13 +66,13 @@ label story_char_1:
             $ _history_list.pop()
             window hide dissolve
             play voice haoci
-            show screen chat("xxs 因为 AFK 被系统踢出游戏")
+            show screen chat(_("xxs 因为 AFK 被系统踢出游戏"))
             pause 2.0
             hide screen chat with dissolve
             pause 1.0
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("你因为挂机被踢出了游戏！")
+            show screen reload_prompt(_("你因为挂机被踢出了游戏！"))
             pause
             stop sound
             $ quick_menu = True
@@ -94,7 +94,7 @@ label story_char_1:
             stop music
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("伏拉夫把你抓到了！\n记住，休想溜他！")
+            show screen reload_prompt(_("伏拉夫把你抓到了！\n记住，休想溜他！"))
             pause
             stop sound
             $ quick_menu = True
@@ -117,7 +117,7 @@ label story_char_1:
                 stop music
                 scene win with dissolve
                 play sound win
-                show screen reload_prompt("你修好了第三台机子。你们赢了！")
+                show screen reload_prompt(_("你修好了第三台机子。你们赢了！"))
                 pause
                 stop sound
                 $ quick_menu = True
@@ -143,7 +143,7 @@ label story_char_1:
                 "那是什么声音？..." nointeract
                 pause 4
                 play music punchs fadein 0.25
-                "...洞穴要塌了...!" nointeract
+                "...洞穴要塌了...！" nointeract
                 pause 1.2
                 window hide(None)
                 $ i = 0
@@ -163,14 +163,14 @@ label story_char_1:
                 #stop music
                 scene fail with dissolve
                 play sound gameover
-                show screen reload_prompt("机子没人修，人也只能挤在一起，洞穴就这样崩了！")
+                show screen reload_prompt(_("机子没人修，人也只能挤在一起，洞穴就这样崩了！"))
                 pause
                 stop sound
                 $ quick_menu = True
                 jump endgame
             "给我提示！":
                 $ _history_list.pop()
-                show screen notify("洞穴wx") with dissolve
+                show screen notify(_("洞穴wx")) with dissolve
                 "你真菜。"
                 jump story_char_1_contiune
             "死掉":
@@ -180,7 +180,7 @@ label story_char_1:
                 stop music
                 scene dead with dissolve
                 play sound gameover
-                show screen reload_prompt("你自裁了。你感觉自己像个人渣！")
+                show screen reload_prompt(_("你自裁了。你感觉自己像个人渣！"))
                 pause
                 stop sound
                 $ quick_menu = True

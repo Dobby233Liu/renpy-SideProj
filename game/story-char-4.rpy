@@ -12,7 +12,7 @@ label story_char_4:
 label story_char_4_start:
     $ quick_menu = False
     window hide dissolve
-    show screen race_prepare("跳绳小妞\nxxs", "伏拉夫") with dissolve
+    show screen race_prepare(_("跳绳小妞\nxxs"), _("伏拉夫")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
@@ -35,7 +35,7 @@ label story_char_4_start:
             pause 1
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你被毒死了！")
+            show screen reload_prompt(_("你被毒死了！"))
             pause
             stop sound
             $ quick_menu = True
@@ -91,13 +91,13 @@ label story_char_4_start:
             "...{w=1.0}{nw}"
             $ _history_list.pop()
             window hide dissolve
-            show screen chat("跳绳小妞 因为 AFK 被系统踢出游戏")
+            show screen chat(_("跳绳小妞 因为 AFK 被系统踢出游戏"))
             pause 2.0
             hide screen chat with dissolve
             pause 1.0
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("你被踢出了游戏！")
+            show screen reload_prompt(_("你被踢出了游戏！"))
             pause
             stop sound
             $ quick_menu = True
@@ -144,13 +144,13 @@ label story_char_4_start:
             hide fulafu_overworld_bundled_just_yet with dissolve
             scene black with dissolve
             window hide dissolve
-            show screen chat("跳绳小妞 因为不配合他人游戏被踢出游戏")
+            show screen chat(_("跳绳小妞 因为不配合他人游戏被踢出游戏"))
             pause 2.0
             hide screen chat with dissolve
             pause 1.0
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("你被队友举报，官方将你踢出了游戏！")
+            show screen reload_prompt(_("你被队友举报，官方将你踢出了游戏！"))
             pause
             stop sound
             $ quick_menu = True
@@ -161,7 +161,7 @@ label story_char_4_start:
             stop music
             scene win with dissolve
             play sound win
-            show screen reload_prompt("游戏正好结束了！")
+            show screen reload_prompt(_("游戏正好结束了！"))
             pause
             stop sound
             $ quick_menu = True

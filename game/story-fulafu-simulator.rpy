@@ -1,19 +1,24 @@
 image game_menu_ow = "gui/overlay/game_menu.png"
 label story_fulafu_simulator:
     if persistent.introduced_sim_character_fulafu:
-        jump flfsim_choose_type
+        menu:
+            "要跳过开头吗？"
+            "跳过":
+                jump flfsim_choose_type
+            "继续":
+                pass
     scene game_menu_ow with dissolve
     show fulafu_overworld with dissolve
     "你是伏拉夫，抖音上的一个俄罗斯博主。"
     "你以前四处苦苦代言红酒、开包子店等等，可是却一直没有生意。"
     if not persistent.bad_fund:
-        $ persistent.bad_fund = renpy.random.choice(["做起了吃播", "恰烂钱"])
+        $ persistent.bad_fund = renpy.random.choice([_("做起了吃播"), _("恰烂钱")])
     $ bad_fund = persistent.bad_fund # have fulafu remember his passion (for boredom)
-    $ zzz = "去了火锅气味" if bad_fund == "恰烂钱" else "吃了火锅"
-    $ r = "突然想到了一条财富之路" if bad_fund == "恰烂钱" else "感觉很好吃"
-    "但是自从加入了抖音，并在某个火锅店[zzz]之后，[r]，就开始[bad_fund]了。"
-    $ ugh = "天上还真会掉馅饼" if bad_fund == "恰烂钱" else "这里的火锅还挺好吃的"
-    "中国各个方面都很好，而且[ugh]，使你爱起中国，入了中国国籍。"
+    $ zzz = _("去了火锅气味") if bad_fund == _("恰烂钱") else _("吃了火锅")
+    $ r = _("突然想到了一条财富之路") if bad_fund == _("恰烂钱") else _("感觉很好吃")
+    "但是自从加入了抖音，并在某个火锅店[zzz!t]之后，[r!t]，就开始[bad_fund!t]了。"
+    $ ugh = _("天上还真会掉馅饼") if bad_fund == _("恰烂钱") else _("这里的火锅还挺好吃的")
+    "中国各个方面都很好，而且[ugh!t]，使你爱起中国，入了中国国籍。"
     # be aware about some strange glitch that changes the music
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference
@@ -48,23 +53,26 @@ label flfsim_choose_type:
             
             "然后，你就被喷子们喷了一顿。"
             scene black with pixellate
-            $ this_is = renpy.random.choice(["这里是", "我是", "我素", "这是", ""])
+            $ this_is = renpy.random.choice([_("这里是"), _("我是"), _("我素"), _("这是"), ""])
             $ postfix = renpy.random.choice(["★_", "★", "_", "_★", "★_★", ""])
-            $ feed = renpy.random.choice([" 不要投喂", "，不要投喂！", ""])
+            $ feed = renpy.random.choice([_(" 不要投喂"), _("，不要投喂！"), ""])
             $ inm_ref = renpy.random.choice(["CoCo", "coco", "Coco", "COCO", "CO2", "kekker", ""])
-            "[this_is]可可[inm_ref][postfix]" "文明观猴[feed]"
-            $ blackened = renpy.random.choice(["丶", "丶（已黑化）", "（已黑化）", ""])
-            "细雨的温柔[blackened]" "这不是我们中国的知名猴戏🐒"
-            $ pls_no = renpy.random.choice(["烂钱是不可能不恰的，只能越恰花样越多，，，", "我爱中国的Q", "你以为我不知道你又要恰烂钱？", "他居然学会加密取款了！11", "帐号正确，但是密码永远不会对"])
-            "用户1145141919" "[pls_no]"
-            $ recall_methodlogy = "骗人的把戏"
+            "[this_is!t]可可[inm_ref!t][postfix!t]" "文明观猴[feed!t]"
+            $ blackened = renpy.random.choice(["丶", _("丶（已黑化）"), _("（已黑化）"), ""])
+            "细雨的温柔[blackened!t]" "这不是我们中国的知名猴戏🐒"
+            $ pls_no = renpy.random.choice([_("烂钱是不可能不恰的，只能越恰花样越多，，，"),
+                _("我爱中国的Q"), _("你以为我不知道你又要恰烂钱？"),
+                _("他居然学会加密取款了！11"), _("帐号正确，但是密码永远不会对")
+            ])
+            "用户1145141919" "[pls_no!t]"
+            $ recall_methodlogy = _("骗人的把戏")
             $ oneninethreefour = "1934"
-            if persistent.bad_fund == "恰烂钱":
-                $ recall_methodlogy = renpy.random.choice(["恰烂钱", "赚钱"]) + "的手法"
+            if persistent.bad_fund == _("恰烂钱"):
+                $ recall_methodlogy = renpy.random.choice([_("恰烂钱"), _("赚钱")]) + _("的手法")
                 $ oneninethreefour = "2016"
-            $ fake_user_pfx = renpy.random.choice(["火山", "西瓜", "头条", ""])
-            "[fake_user_pfx]用户810234[oneninethreefour]" "这[recall_methodlogy]，智力没有问题的都看得出来吧"
-            if bad_fund == "恰烂钱":
+            $ fake_user_pfx = renpy.random.choice([_("火山"), _("西瓜"), _("头条"), ""])
+            "[fake_user_pfx!t]用户810234[oneninethreefour]" "这[recall_methodlogy!t]，智力没有问题的都看得出来吧"
+            if persistent.bad_fund == _("恰烂钱"):
                 scene fix_house with pixellate
                 jump start_the_buyaolian
             stop music fadeout 1.0
@@ -82,7 +90,7 @@ label flfsim_choose_type:
             window hide dissolve
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("你伤心地退抖了...")
+            show screen reload_prompt(_("你伤心地退抖了..."))
             pause
             stop sound fadeout 1.0
             hide screen reload_prompt with dissolve
@@ -116,7 +124,7 @@ label flfsim_choose_type:
             window hide dissolve
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("喷了他们没多久，你就被封号了！")
+            show screen reload_prompt(_("喷了他们没多久，你就被封号了！"))
             pause
             hide screen reload_prompt with dissolve
         "提醒他们网络不是法外之地":

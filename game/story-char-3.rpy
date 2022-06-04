@@ -13,7 +13,7 @@ label story_char_3:
 label story_char_3_start:
     $ quick_menu = False
     window hide dissolve
-    show screen race_prepare("老祺\n会吃太阳的蛇", "小孩\n我不是处理器\n皮皮虾\n我们走") with dissolve
+    show screen race_prepare(_("老祺\n会吃太阳的蛇"), _("小孩\n我不是处理器\n皮皮虾\n我们走")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
@@ -32,13 +32,13 @@ label story_char_3_menu1:
             stop music
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你被反杀了！")
+            show screen reload_prompt(_("你被反杀了！"))
             pause
             stop sound
             $ quick_menu = True
             jump endgame
         "干作者":
-            show screen notify("？？？")
+            show screen notify(_("？？？"))
             "休想！"
             jump story_char_3_menu1
     hide child_with_pan with dissolve
@@ -52,7 +52,7 @@ label story_char_3_menu2:
             stop music
             scene fail with dissolve
             play sound gameover
-            show screen reload_prompt("花式吊打打打打打打哒！～")
+            show screen reload_prompt(_("花式吊打打打打打打哒！～"))
             pause
             stop sound
             $ quick_menu = True
@@ -60,7 +60,7 @@ label story_char_3_menu2:
         "卧室":
             pass
         "啥也不干":
-            show screen notify("你想多了")
+            show screen notify(_("你想多了"))
             jump story_char_3_menu2
     scene fix_house with dissolve
     show car_fixing with dissolve
@@ -75,15 +75,15 @@ label story_char_3_menu3:
             stop music
             scene win with dissolve
             play sound win
-            show screen reload_prompt("你击败了所有小孩！")
+            show screen reload_prompt(_("你击败了所有小孩！"))
             pause
             stop sound
             $ quick_menu = True
             jump endgame
         "走位":
-            show screen notify("你想多了")
+            show screen notify(_("你想多了"))
             jump story_char_3_menu3
         "给俩个小孩谈谈话":
-            show screen notify("你想多了")
+            show screen notify(_("你想多了"))
             jump story_char_3_menu3
     return

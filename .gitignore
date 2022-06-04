@@ -6,3 +6,4 @@ game/cache
 *.rpyc
 *.rpymc
 *.1.bak
+text_overflow.txt

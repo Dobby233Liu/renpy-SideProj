@@ -2,7 +2,7 @@ label story_char_1_pre2:
     window hide dissolve
     $ quick_menu = False
     # FIXME: wtf is this
-    show screen race_prepare("伏拉夫\n会飞的猪\n{i}sysmsg{/i}\n{i}还有两个...{/i}", "小孩\nxxs\n抖音小雨\n可可里加巧克力") with dissolve
+    show screen race_prepare(_("伏拉夫\n会飞的猪\n{i}sysmsg{/i}\n{i}还有两个...{/i}"), _("小孩\nxxs\n抖音小雨\n可可里加巧克力")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
     $ quick_menu = True
@@ -30,7 +30,7 @@ label story_char_1_pre2:
             pause 1.0
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你因为太手残，不小心打晕了自己！") with dissolve
+            show screen reload_prompt(_("你因为太手残，不小心打晕了自己！")) with dissolve
             pause
             stop sound
             $ quick_menu = True
@@ -94,7 +94,7 @@ label story_char_1_pre2:
             scene dead with dissolve
             stop music
             play sound gameover
-            show screen reload_prompt("你力气很小，没撞成反而被伏拉夫抓走了！") with dissolve
+            show screen reload_prompt(_("你力气很小，没撞成反而被伏拉夫抓走了！")) with dissolve
             pause
             stop sound
             $ quick_menu = True
@@ -156,7 +156,7 @@ label story_char_1_pre2:
             window hide dissolve
             scene dead with dissolve
             play sound gameover
-            show screen reload_prompt("你跑不过伏拉夫，被他抓走了！") with dissolve
+            show screen reload_prompt(_("你跑不过伏拉夫，被他抓走了！")) with dissolve
             pause
             stop sound
             $ quick_menu = True
@@ -185,7 +185,7 @@ label story_char_1_pre2:
             $ _history_list.pop()
             "...{w=1.0}{nw}"
             $ _history_list.pop()
-            call story_char_1_pre2_end("最后你找到了最后一把钥匙，\n在伏拉夫靠近之前逃脱了！", "win", audio.win)
+            call story_char_1_pre2_end(_("最后你找到了最后一把钥匙，\n在伏拉夫靠近之前逃脱了！"), "win", audio.win)
         "去挖地道":
             $ _history_list.pop()
             call story_char_1_pre2_end
@@ -202,7 +202,7 @@ label story_char_1_pre2:
             $ _history_list.pop()
             call story_char_1_pre2_end
     jump endgame
-label story_char_1_pre2_end(content="你背叛了你的队友！", scrn="fail", mus=audio.gameover):
+label story_char_1_pre2_end(content=_("你背叛了你的队友！"), scrn="fail", mus=audio.gameover):
     $ quick_menu = False
     window hide dissolve
     stop music

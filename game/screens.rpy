@@ -203,8 +203,8 @@ screen choice(items):
 define config.narrator_menu = True
 
 define narrator = Character()
-define flying_chicken = Character("会飞的鸡")
-define child_lead = Character("xxs")
+define flying_chicken = Character(_("会飞的鸡"))
+define child_lead = Character(_("xxs"))
 
 style choice_vbox is vbox
 style choice_button is button
@@ -353,7 +353,7 @@ screen main_menu():
     if gui.show_name:
 
         vbox:
-            text "{b}{color=fff0f0}逃离伏拉夫{/color}{/b}":
+            text "{b}{color=fff0f0}[config.name!t]{/color}{/b}":
                 style "main_menu_title"
 
 
@@ -617,6 +617,12 @@ screen preferences():
                     textbutton _("禁用") action Preference("rollback side", "disable")
                     textbutton _("左侧") action Preference("rollback side", "left")
                     textbutton _("右侧") action Preference("rollback side", "right")
+
+                vbox:
+                    style_prefix "radio"
+                    label _("语言")
+                    textbutton "简体中文" action Language(None)
+                    textbutton "English" action Language("en")
 
                 vbox:
                     style_prefix "check"
@@ -1184,13 +1190,13 @@ screen fake_search(my_text):
     hbox:
         xalign 0.5
         yalign 0.5
-        text my_text at blink_present() size 32
+        text "[my_text!t]" at blink_present() size 32
 
 screen reload_prompt(my_text):
     hbox:
         xalign 0.5
         yalign 0.5
-        text my_text size 32
+        text "[my_text!t]" size 32
 
 screen chat(my_text):
 
@@ -1198,7 +1204,7 @@ screen chat(my_text):
         xalign 0
         yalign 0.75
 
-        text my_text size 24
+        text "[my_text!t]" size 24
 
 screen race_prepare(positive, negative):
 
@@ -1206,7 +1212,7 @@ screen race_prepare(positive, negative):
         xalign 0.25
         yalign 0.5
 
-        text positive size 24
+        text "[positive!t]" size 24
 
     hbox:
         xalign 0.5
@@ -1218,25 +1224,27 @@ screen race_prepare(positive, negative):
         xalign 0.75
         yalign 0.5
 
-        text negative size 24
+        text "[negative!t]" size 24
 
 screen spell_showcase(spell_sprite, scale_factor=1, yalign_diff=0):
-    $ scaled_spell_sprite = im.FactorScale(spell_sprite, scale_factor)
     $ yalign_calc = 0.25 + yalign_diff
-    add scaled_spell_sprite xalign 0.5 yalign yalign_calc at blink_present()
+    add spell_sprite at blink_present():
+        xalign 0.5
+        yalign yalign_calc
+        zoom scale_factor
 
 screen credits_paper(text=gui.credits):
     modal True
     style_prefix "confirm"
     frame:
-       vbox:
-           xalign .5
-           yalign .5
-           spacing 30
-           text text:
+        vbox:
+            xalign .5
+            yalign .5
+            spacing 30
+            text "[text!t]":
                 style "confirm_prompt"
                 xalign 0.5
-           hbox:
+            hbox:
                 xalign 0.5
                 spacing 100
                 textbutton _("确定") action ToggleScreen("credits_paper", transition=Dissolve(0.1))

@@ -39,7 +39,7 @@ label start:
     menu:
         with dissolve
         "请选择阵营。"
-        "!!环境变量测试!!" if renpy.android:
+        "!!环境变量测试!!" if renpy.android and config.developer:
             python:
                 for k, v in os.environ.items():
                     if "ANDROID_" in k:
@@ -85,7 +85,7 @@ label start:
 label search:
     window hide dissolve
     $ quick_menu = False
-    show screen fake_search("匹配中...") with dissolve
+    show screen fake_search(_("匹配中...")) with dissolve
     pause 1.25
     hide screen fake_search
     window show(None)

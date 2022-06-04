@@ -184,3 +184,6 @@ init python:
     def func_null():
         pass
     config.game_menu_action = func_null
+
+default persistent.bad_fund = ""
+default persistent.introduced_sim_character_fulafu = False
