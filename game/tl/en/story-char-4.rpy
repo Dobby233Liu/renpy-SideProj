@@ -4,19 +4,19 @@
 translate en story_char_4_decf061a:
 
     # "技能：{w=1.0}{nw}"
-    "技能：{w=1.0}{nw}"
+    "Skills:{w=1.0}{nw}"
 
 # game/story-char-4.rpy:10
 translate en story_char_4_44e30e29:
 
     # "跳绳：使周围的对手眩晕 3 秒。"
-    "跳绳：使周围的对手眩晕 3 秒。"
+    "Rope-Jump: Makes enemies around faint for 3 seconds."
 
 # game/story-char-4.rpy:34
 translate en story_char_4_start_c6ff222e:
 
     # "...等会？怎么有股狗剩的味道——" nointeract
-    "...等会？怎么有股狗剩的味道——" nointeract
+    "...Wait, is this Dog Residue-" nointeract
 
 # game/story-char-4.rpy:47
 translate en story_char_4_start_33d1a0e8:
