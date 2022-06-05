@@ -52,7 +52,7 @@ translate en story_char_1_pre2_441e3aa8:
 translate en story_char_1_pre2_dea2b060:
 
     # "突然，伏拉夫来了！"
-    "Suddenly, the Fulafu appears!"
+    "Suddenly, a Fulafu appears!"
 
 # game/story-char-1-pre2.rpy:83
 translate en story_char_1_pre2_c7d3af88:
@@ -212,7 +212,7 @@ translate en strings:
 
     # game/story-char-1-pre2.rpy:175
     old "去挖地道"
-    new "Go dig the tunnel"
+    new "Go dig a tunnel"
 
     # game/story-char-1-pre2.rpy:175
     old "去打猎别的伏拉夫"
@@ -224,7 +224,7 @@ translate en strings:
 
     # game/story-char-1-pre2.rpy:188
     old "最后你找到了最后一把钥匙，\n在伏拉夫靠近之前逃脱了！"
-    new "You found the last key,\then escaped from the Fulafus before they\ncame close!"
+    new "You found the last key, then escaped from\nthe Fulafus before they came close!"
 
     # game/story-char-1-pre2.rpy:205
     old "你背叛了你的队友！"

@@ -1,6 +1,6 @@
 label story_char_1_pre2:
-    window hide dissolve
     $ quick_menu = False
+    window hide dissolve
     # FIXME: wtf is this
     show screen race_prepare(_("伏拉夫\n会飞的猪\n{i}sysmsg{/i}\n{i}还有两个...{/i}"), _("小孩\nxxs\n抖音小雨\n可可里加巧克力")) with dissolve
     pause 2.0
@@ -36,7 +36,7 @@ label story_char_1_pre2:
     pause 1.5
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "你找到了 钥匙！" nointeract with dissolve
-    pause 1.5
+    pause 2.5
     window hide dissolve
     hide screen spell_showcase with dissolve
     play voice pong # collect
@@ -76,26 +76,29 @@ label story_char_1_pre2:
             $ _history_list.pop()
             $ quick_menu = False
             "xxs 使用了 撞击！" nointeract
+            pause 1
             with vpunch
             pause 0.25
             play sound punchs
             with hpunch
             pause 0.25
-            scene black with dissolve
             play sound dizzypt2
+            window hide dissolve
+            scene black with fade
+            pause 1
             play sound child_faint
-            pause 1.0
+            pause 1.5
             call endscreen(content=_("你力气很小，没撞成反而被伏拉夫抓走了！"), screen="dead", music=audio.gameover)
             return
-        "放屁":
-            # this was in 1.0; forgive me
+        "放屁": # this was in 1.0; forgive me
             $ _history_list.pop()
             $ quick_menu = False
             "xxs 使用了 屁！" nointeract
+            pause 1
             play sound dizzy
             pause 0.25
             play sound dizzypt2
-            pause 0.25
+            pause 0.5
             play voice fulafu_faint fadeout 0.125
             hide fulafu_overworld with squares
             "伏拉夫 晕倒了！"
@@ -107,6 +110,7 @@ label story_char_1_pre2:
             $ _history_list.pop()
             $ quick_menu = False
             "xxs 使用了 平底锅！" nointeract
+            pause 1
             play sound dizzy
             pause 0.25
             play sound pong
@@ -146,7 +150,7 @@ label story_char_1_pre2:
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "从 伏拉夫 身上掉落一把 钥匙。"
     "你得到了 钥匙！" nointeract
-    pause 1
+    pause 2.5
     window hide dissolve
     hide screen spell_showcase with dissolve
     play sound pong # collect
@@ -176,7 +180,7 @@ label story_char_1_pre2:
             $ quick_menu = False
             "额...我觉得还是-{w=1}{nw}"
             play sound run
-            scene bg_sunny_outside with dissolve
+            scene fix_house with dissolve
             "诶诶诶，锁还没开呢！{p=1.5}{nw}"
             "你这是去干嘛！{p=1.7}{nw}"
         "当场去世":

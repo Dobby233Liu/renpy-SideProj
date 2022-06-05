@@ -4,32 +4,6 @@ define player_character = 0
 default persistent.dew_bottle = 0
 
 init python:
-    _oldrandom = renpy.random.random
-    _oldseed = renpy.random.seed
-   
-    import time
-    renpy.random.seed(time.clock())
-    _globalrandstate = renpy.random.getstate()
-    
-    def _newrandom():
-        global _globalrandstate
-       
-        renpy.random.setstate(_globalrandstate)
-        rv = _oldrandom()
-        _globalrandstate = renpy.random.getstate()
-       
-        return rv
-        
-    def _newseed(value):
-        global _globalrandstate
-            
-        renpy.random.setstate(_globalrandstate)
-        _oldseed(value)
-        _globalrandstate = renpy.random.getstate()
-   
-    renpy.random.random = _newrandom
-    renpy.random.seed = _newseed
-
     def safe_get_pos():
         pos = renpy.music.get_pos(channel="music")
         if pos: return pos
@@ -97,9 +71,7 @@ label search:
     window show(None)
     "匹配成功。"
     $ _history_list.pop()
-    $ jump_to_label = "story_char_" + str(player_character)
-    $ quick_menu = True
-    jump expression jump_to_label
+    jump expression "story_char_" + str(player_character)
     jump endgame
 
 label endscreen(content=_("你背叛了你的队友！"), screen="fail", music=audio.gameover):

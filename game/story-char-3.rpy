@@ -1,4 +1,5 @@
 label story_char_3:
+    $ quick_menu = True
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
     show screen spell_showcase("images/spell_ohbad.png") with dissolve

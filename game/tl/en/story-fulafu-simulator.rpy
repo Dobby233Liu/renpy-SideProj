@@ -106,7 +106,7 @@ translate en flfsim_choose_type_b34671be:
 translate en flfsim_choose_type_13a05007:
 
     # "再想怎样挽救，也已经无济于事了..."
-    "And you will never be able to fix it..."
+    "Now, even if you try hard, you will never be able to fix it..."
 
 # game/story-fulafu-simulator.rpy:103
 translate en flfsim_choose_type_0020684a:
@@ -166,7 +166,7 @@ translate en start_the_buyaolian_edf81d52:
 translate en start_the_buyaolian_488902ec:
 
     # "后来，你逐渐过气，最后就此消失了..."
-    "Your visibility slowly decays, and in the end, you disappeared from the internet."
+    "Your visibility slowly decays, and in the end, you disappeared from the internet..."
 
 # game/story-fulafu-simulator.rpy:144
 translate en start_the_buyaolian_b514f3c1:

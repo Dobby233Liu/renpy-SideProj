@@ -1,6 +1,6 @@
 label story_char_1:
-    window hide dissolve
     $ quick_menu = False
+    window hide dissolve
     show screen race_prepare(_("伏拉夫\n会飞的猪"), _("小孩\nxxs")) with dissolve
     pause 2.0
     hide screen race_prepare with dissolve
@@ -18,7 +18,6 @@ label story_char_1:
         hide dew_bottle with easeoutright
         "果然攻略不可信，丢了丢了。"
         $ persistent.dew_bottle = 1
-        pause
     elif persistent.dew_bottle == 1:
         $ persistent.dew_bottle = -1
         "对了，你吸取了上次的教训，这次没手贱去捡垃圾。"
@@ -28,6 +27,7 @@ label story_char_1:
         "第一台":
             pass
         "第二台":
+            $ quick_menu = False
             "第二台在外面，所以你去扛回来。{w=1}{nw}"
             window hide dissolve
             stop music fadeout 0.5
@@ -39,18 +39,18 @@ label story_char_1:
             scene bg_sunny_outside with fade
             pause 0.5
             play sound run
-            pause 0.424
+            pause 0.924
             stop sound
-            play sound pong
             scene black
-            pause 1
+            play sound pong
+            pause 2
             call endscreen(content=_("潜伏在第二台处的伏拉夫把你抓走了！"), screen="fail", music=audio.gameover)
             return
         "发呆":
+            $ quick_menu = False
             hide car_fixing with dissolve
             scene black with dissolve
             stop music fadeout 1
-            $ quick_menu = False
             ".{w=0.5}{nw}"
             $ _history_list.pop()
             "..{w=0.75}{nw}"
@@ -58,7 +58,6 @@ label story_char_1:
             "...{w=1.0}{nw}"
             $ _history_list.pop()
             window hide dissolve
-            play voice haoci
             show screen chat(_("xxs 因为 AFK 被系统踢出游戏"))
             pause 2.0
             hide screen chat with dissolve
@@ -101,26 +100,28 @@ label story_char_1:
                 "你来到洞穴里。"
                 "这里看起来不太宽敞，不过毕竟紧急时刻，也还可以。"
                 stop music fadeout 0.5
-                "..." nointeract
-                pause 4
                 $ quick_menu = False
+                "..." nointeract
+                $ renpy.pause(2, hard=True)
                 play music run fadein 0.125
                 "突然，你发现成群的人正在冲进洞穴里。" nointeract
                 $ renpy.pause(0.5*8, hard=True)
                 play sound run loop
                 "你的队友，还有发现洞穴的敌人。" nointeract
-                $ renpy.pause(0.25*8, hard=True)
+                $ renpy.pause(0.25*10, hard=True)
                 stop music
                 stop sound fadeout 0.0625
+                $ renpy.pause(0.0625, hard=True)
                 play sound pong
+                $ renpy.pause(0.125, hard=True)
                 "那是什么声音？..." nointeract
-                pause 4
+                $ renpy.pause(4, hard=True)
                 play music punchs fadein 0.25
                 "...洞穴要塌了...！" nointeract
-                pause 1.2
+                $ renpy.pause(1.2, hard=True)
                 window hide(None)
                 $ i = 0
-                while i < 16:
+                while i < 6:
                     play voice punchs
                     with vpunch
                     with hpunch

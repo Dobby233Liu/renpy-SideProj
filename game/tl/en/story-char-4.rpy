@@ -181,7 +181,7 @@ translate en strings:
 
     # game/story-char-4.rpy:147
     old "跳绳小妞 因为不配合他人游戏被踢出游戏"
-    new "RDJ was kicked for not cooperating with others"
+    new "RJG was kicked for not cooperating with others"
 
     # game/story-char-4.rpy:153
     old "你被队友举报，官方将你踢出了游戏！"

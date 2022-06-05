@@ -54,7 +54,7 @@ translate en strings:
 
     # game/story-char-2.rpy:20
     old "你在厨房遇到了 xxs。是否攻击？"
-    new "你在厨房遇到了 xxs。是否攻击？"
+    new "You met xxs in the kitchen. Will you attack?"
 
     # game/story-char-2.rpy:20
     old "是"
@@ -70,11 +70,11 @@ translate en strings:
 
     # game/story-char-2.rpy:36
     old "但是你的血量不足。是否打血包？"
-    new "You don't have enough HP. Will you use a Blood Packet?"
+    new "You don't have enough HP. Do you want to use a Blood Packet?"
 
     # game/story-char-2.rpy:53
     old "你打不过 xxs，反而被他打死了！"
-    new "You can't beat xxs. They beat you to death!"
+    new "You can't beat xxs. Instead he beat you to death!"
 
     # game/story-char-2.rpy:59
     old "你又看见了另外两个小孩。要用哪个招式攻击？"
@@ -107,4 +107,3 @@ translate en strings:
     # game/story-char-2.rpy:92
     old "你使用的技能不仅没有打败小孩，他们还把你打死了！"
     new "The skill you used didn't work out,\nand the Children beat you to death!"
-

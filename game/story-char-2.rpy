@@ -1,4 +1,5 @@
 label story_char_2:
+    $ quick_menu = True
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
     show screen spell_showcase("images/spell_shit.png") with dissolve
@@ -30,10 +31,10 @@ label story_char_2_start:
         "但是你的血量不足。是否打血包？"
         "是":
             play sound dizzy
-            pause 0.5
+            pause 1
             "你恢复了 100 HP。你的 HP 已满。"
             play sound punchs
-            pause 0.5
+            pause 1
             hide child_with_pan with dissolve
             "你打败了 xxs。"
         "否":
@@ -55,7 +56,7 @@ label story_char_2_start:
             stop music
             scene black with dissolve
             "奥利给，干了！" nointeract
-            pause 1.0
+            pause 1.5
             play sound dizzy
             pause 0.15
             play sound punchs

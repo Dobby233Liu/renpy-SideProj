@@ -1,4 +1,5 @@
 label story_fulafu_simulator:
+    $ quick_menu = True
     if persistent.introduced_sim_character_fulafu:
         menu:
             "要跳过开头吗？"
@@ -11,6 +12,8 @@ label story_fulafu_simulator:
     "你是伏拉夫，抖音上的一个俄罗斯博主。"
     "你以前四处苦苦代言红酒、开包子店等等，可是却一直没有生意。"
     $ bf_types = [_("做起了吃播"), _("恰烂钱")]
+    if not isinstance(persistent.bad_fund, int):
+        $ persistent.bad_fund = None
     if not persistent.bad_fund:
         $ persistent.bad_fund = renpy.random.choice([0, 1])
     $ bad_fund = bf_types[persistent.bad_fund] # have fulafu remember his passion (for boredom)
@@ -67,12 +70,12 @@ label flfsim_choose_type:
             "用户1145141919" "[pls_no!t]"
             $ recall_methodlogy = _("骗人的把戏")
             $ oneninethreefour = "1934"
-            if persistent.bad_fund == _("恰烂钱"):
+            if bad_fund == _("恰烂钱"):
                 $ recall_methodlogy = renpy.random.choice([_("恰烂钱的手法"), _("赚钱的手法")])
                 $ oneninethreefour = "2016"
             $ fake_user_pfx = renpy.random.choice([_("火山"), _("西瓜"), _("头条"), ""])
             "[fake_user_pfx!t]用户810234[oneninethreefour]" "这[recall_methodlogy!t]，智力没有问题的都看得出来吧"
-            if persistent.bad_fund == _("恰烂钱"):
+            if bad_fund == _("恰烂钱"):
                 scene fix_house with pixellate
                 jump start_the_buyaolian
             stop music fadeout 1.0
@@ -82,9 +85,7 @@ label flfsim_choose_type:
             pause 1.0
             "想好好再做一次真正的生意，却仍然被人矛头相对..."
             "..."
-            "......" nointeract
-            $ renpy.pause(0.25, interact=False)
-            pause
+            "......{p=0.25}"
             ".........{w=0.25}这真的是令人叹息啊..."
             $ quick_menu = False
             window hide dissolve

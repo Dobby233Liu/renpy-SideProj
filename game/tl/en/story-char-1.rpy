@@ -88,7 +88,7 @@ translate en story_char_1_dbcf5310:
 translate en story_char_1_contiune_c3b50118:
 
     # "你来到洞穴里。"
-    "You got into the cave."
+    "You get into the cave."
 
 # game/story-char-1.rpy:129
 translate en story_char_1_contiune_bf6935cc:
@@ -140,15 +140,15 @@ translate en strings:
 
     # game/story-char-1.rpy:25
     old "接下来要修哪台机子？"
-    new "Which unit will you fix?"
+    new "Which unit will you fix now?"
 
     # game/story-char-1.rpy:25
     old "第一台"
-    new "1st Unit"
+    new "1st unit"
 
     # game/story-char-1.rpy:25
     old "第二台"
-    new "2nd Unit"
+    new "2nd unit"
 
     # game/story-char-1.rpy:25
     old "发呆"
@@ -184,7 +184,7 @@ translate en strings:
 
     # game/story-char-1.rpy:110
     old "你的朋友突然告诉你洞穴被他挖通了。要去那里避难吗？"
-    new "A teammate suddenly tells you that he dug the cave. Will you go there for refuge?"
+    new "A teammate suddenly tells you that he dug a cave. Will you go there for refuge?"
 
     # game/story-char-1.rpy:110
     old "再修一台"
@@ -224,5 +224,5 @@ translate en strings:
 translate en story_char_1_contiune_7a551104:
 
     # "...洞穴要塌了...！" nointeract
-    "...洞穴要塌了...！" nointeract
+    "...The cave is collapsing...!" nointeract
 

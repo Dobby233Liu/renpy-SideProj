@@ -1,4 +1,5 @@
 label story_char_4:
+    $ quick_menu = True
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
     show screen spell_showcase("images/spell_rope_jumping.png") with dissolve
@@ -21,12 +22,18 @@ label story_char_4_start:
             $ quick_menu = False
             window hide dissolve
             stop music
+            hide screen spell_showcase with dissolve
             scene black with dissolve
+            pause 1
             play sound chomp
-            pause 0.25
+            pause 1
             play voice haoci
-            pause 0.5
+            pause 1.5
             "...等会？怎么有股狗剩的味道——" nointeract
+            pause 2
+            play sound dizzypt2
+            pause 1.5
+            stop sound
             pause 1
             call endscreen(content=_("你被毒死了！"), screen="dead", music=audio.gameover)
             return
@@ -39,7 +46,7 @@ label story_char_4_start:
     play sound run
     pause 0.25
     play sound run
-    pause 0.25
+    pause 1.25
     # be aware about some strange glitch that change the music
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference

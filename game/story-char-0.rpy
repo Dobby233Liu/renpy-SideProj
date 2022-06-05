@@ -6,6 +6,7 @@ define story_o_round_attack_PAN = _("平底锅")
 define story_o_round_attack_TACKLE = _("撞击")
 
 label story_char_0:
+    $ quick_menu = False
     $ brainfucked_run = False
     $ myround_no_fade = 1
     $ xxs_slept = False
@@ -66,7 +67,7 @@ label story_char_0_battle_myround:
                 "很快就到你那里":
                     $ quick_menu = False
                     "会飞的鸡 使用了 很快就到你那里！" nointeract
-                    pause 0.5
+                    pause 1
                     hide fulafu_battle_normal with squares
                     play sound dizzy
                     show fulafu_battle_cast with easeinright:
@@ -97,7 +98,7 @@ label story_char_0_battle_myround:
                 "发布作品": # maybe FIXME：引战
                     $ quick_menu = False
                     "会飞的鸡 使用了 发布作品！" nointeract
-                    pause 0.5
+                    pause 1
                     hide fulafu_battle_normal
                     show fulafu_battle_cast:
                         xalign 0.2
@@ -300,7 +301,7 @@ label story_char_0_battle_opround:
 
     $ quick_menu = False
     "小孩♂ xxs 使用了 [use_attack!t]！" nointeract
-    pause 0.5
+    pause 1
 
     if use_attack == story_o_round_attack_PAN:
         hide child_with_pan

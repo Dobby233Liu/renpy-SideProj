@@ -1,4 +1,5 @@
 label story_char_heimankun:
+    $ quick_menu = True
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
     show screen spell_showcase("images/heiman_spell_coming2urhome.png") with dissolve

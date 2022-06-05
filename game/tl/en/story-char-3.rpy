@@ -54,7 +54,7 @@ translate en strings:
 
     # game/story-char-3.rpy:24
     old "干作者"
-    new "Kill the dev"
+    new "Fuck the dev"
 
     # game/story-char-3.rpy:35
     old "你被反杀了！"
@@ -62,7 +62,7 @@ translate en strings:
 
     # game/story-char-3.rpy:41
     old "？？？"
-    new "What."
+    new "What???"
 
     # game/story-char-3.rpy:46
     old "你击败了那个小孩。接下来要去哪里？"
