@@ -1,4 +1,3 @@
-image game_menu_ow = "gui/overlay/game_menu.png"
 label story_fulafu_simulator:
     if persistent.introduced_sim_character_fulafu:
         menu:
@@ -7,13 +6,14 @@ label story_fulafu_simulator:
                 jump flfsim_choose_type
             "继续":
                 pass
-    scene game_menu_ow with dissolve
+    scene "gui/overlay/game_menu.png" with dissolve
     show fulafu_overworld with dissolve
     "你是伏拉夫，抖音上的一个俄罗斯博主。"
     "你以前四处苦苦代言红酒、开包子店等等，可是却一直没有生意。"
+    $ bf_types = [_("做起了吃播"), _("恰烂钱")]
     if not persistent.bad_fund:
-        $ persistent.bad_fund = renpy.random.choice([_("做起了吃播"), _("恰烂钱")])
-    $ bad_fund = persistent.bad_fund # have fulafu remember his passion (for boredom)
+        $ persistent.bad_fund = renpy.random.choice([0, 1])
+    $ bad_fund = bf_types[persistent.bad_fund] # have fulafu remember his passion (for boredom)
     $ zzz = _("去了火锅气味") if bad_fund == _("恰烂钱") else _("吃了火锅")
     $ r = _("突然想到了一条财富之路") if bad_fund == _("恰烂钱") else _("感觉很好吃")
     "但是自从加入了抖音，并在某个火锅店[zzz!t]之后，[r!t]，就开始[bad_fund!t]了。"
