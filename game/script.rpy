@@ -102,7 +102,7 @@ label endscreen(content=_("你背叛了你的队友！"), screen="fail", music=a
     window hide dissolve
     stop music
     scene expression screen with dissolve
-    play sound mus
+    play sound music
     show screen reload_prompt(content) with dissolve
     pause
     stop sound
