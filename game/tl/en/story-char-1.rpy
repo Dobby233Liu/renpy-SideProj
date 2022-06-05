@@ -218,3 +218,11 @@ translate en strings:
     old "你自裁了。你感觉自己像个人渣！"
     new "You decided to get out. You feel like trash!"
 
+# TODO: Translation updated at 2022-06-05 10:38
+
+# game/story-char-1.rpy:146
+translate en story_char_1_contiune_7a551104:
+
+    # "...洞穴要塌了...！" nointeract
+    "...洞穴要塌了...！" nointeract
+

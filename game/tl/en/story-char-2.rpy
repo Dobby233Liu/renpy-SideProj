@@ -10,13 +10,13 @@ translate en story_char_2_decf061a:
 translate en story_char_2_cb186f99:
 
     # "奥利给：使周围的小孩呕吐。"
-    "Ollie-Give: Makes the Children around the user vomit."
+    "Ollie-Give: Makes the Children nearby vomit."
 
 # game/story-char-2.rpy:8
 translate en story_char_2_4bcec102:
 
     # "奥利给干了：伤害周围的小孩，血量掉一半。"
-    "Come On, Ollie-Give: Reduces the HP of the Children around the user to half."
+    "Come On, Ollie-Give: Reduces the HP of the Children nearby to half."
 
 # game/story-char-2.rpy:42
 translate en story_char_2_start_9c17f66d:

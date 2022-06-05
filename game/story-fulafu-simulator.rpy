@@ -58,7 +58,7 @@ label flfsim_choose_type:
             $ feed = renpy.random.choice([_(" 不要投喂"), _("，不要投喂！"), ""])
             $ inm_ref = renpy.random.choice(["CoCo", "coco", "Coco", "COCO", "CO2", "kekker", ""])
             "[this_is!t]可可[inm_ref!t][postfix!t]" "文明观猴[feed!t]"
-            $ blackened = renpy.random.choice(["丶", _("丶（已黑化）"), _("（已黑化）"), ""])
+            $ blackened = renpy.random.choice([_("丶"), _("丶（已黑化）"), _("（已黑化）"), ""])
             "细雨的温柔[blackened!t]" "这不是我们中国的知名猴戏🐒"
             $ pls_no = renpy.random.choice([_("烂钱是不可能不恰的，只能越恰花样越多，，，"),
                 _("我爱中国的Q"), _("你以为我不知道你又要恰烂钱？"),
@@ -68,7 +68,7 @@ label flfsim_choose_type:
             $ recall_methodlogy = _("骗人的把戏")
             $ oneninethreefour = "1934"
             if persistent.bad_fund == _("恰烂钱"):
-                $ recall_methodlogy = renpy.random.choice([_("恰烂钱"), _("赚钱")]) + _("的手法")
+                $ recall_methodlogy = renpy.random.choice([_("恰烂钱的手法"), _("赚钱的手法")])
                 $ oneninethreefour = "2016"
             $ fake_user_pfx = renpy.random.choice([_("火山"), _("西瓜"), _("头条"), ""])
             "[fake_user_pfx!t]用户810234[oneninethreefour]" "这[recall_methodlogy!t]，智力没有问题的都看得出来吧"
