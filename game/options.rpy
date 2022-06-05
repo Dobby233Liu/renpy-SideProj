@@ -16,7 +16,7 @@ define gui.show_name = True
 
 ## 游戏版本号。
 
-define config.version = "1.4"
+define config.version = "1.5"
 
 ## 放置在游戏“关于”屏幕的文本。将文本放在三个引号之间，并在段落之间留一个空行。
 
