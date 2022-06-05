@@ -55,7 +55,7 @@ label story_char_4_start:
         # lolol ddlc reference
         $ old_pos = safe_get_pos()
         #$ print(str(old_pos))
-        play music "<from " + str(old_pos) + " " + audio.china2[1:21] + ">audio/c2g.ogg"
+        play music "<from " + str(old_pos) + " " + audio.china2[1:18] + ">audio/c2g.ogg"
         show fulafu_overworld_jumpscare
         pause 0.5
         stop music
@@ -91,7 +91,7 @@ label story_char_4_start:
             "...{w=1.0}{nw}"
             $ _history_list.pop()
             window hide dissolve
-            show screen chat(_("xxs 因为 AFK 被系统踢出游戏"))
+            show screen chat(_("跳绳小妞 因为 AFK 被系统踢出游戏"))
             pause 2.0
             hide screen chat with dissolve
             pause 1.0

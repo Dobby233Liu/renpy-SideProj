@@ -24,7 +24,7 @@ label story_fulafu_simulator:
         # lolol ddlc reference
         $ old_pos = safe_get_pos()
         #$ print(str(old_pos))
-        play music "<from " + str(old_pos) + " " + audio.china2[1:21] + ">audio/c2g.ogg"
+        play music "<from " + str(old_pos) + " " + audio.china2[1:18] + ">audio/c2g.ogg"
         hide fulafu_overworld
         show fulafu_overworld_jumpscare
         "现在每几天都去各种小孩家里拿“火锅底料”。{p=1.0}{nw}"

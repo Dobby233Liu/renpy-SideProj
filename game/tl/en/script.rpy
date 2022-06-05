@@ -38,7 +38,7 @@ translate en strings:
 
     # game/script.rpy:51
     old "伏拉夫"
-    new "Fulafu (Vlad)"
+    new "Fulafu"
 
     # game/script.rpy:51
     old "老八"

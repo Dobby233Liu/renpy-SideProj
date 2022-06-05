@@ -22,7 +22,7 @@ translate en story_char_4_start_c6ff222e:
 translate en story_char_4_start_33d1a0e8:
 
     # "你又去修机子。"
-    "You go to fix the machine."
+    "You go to fix the machines."
 
 # game/story-char-4.rpy:69
 translate en story_char_4_start_dea2b060:

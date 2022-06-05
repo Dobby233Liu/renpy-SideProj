@@ -10,7 +10,7 @@ translate en story_fulafu_simulator_2281359b:
 translate en story_fulafu_simulator_701b57c7:
 
     # "你以前四处苦苦代言红酒、开包子店等等，可是却一直没有生意。"
-    "You used to do stuff like endorsing wine and open bakerys, but there has been no business."
+    "You used to do stuff like endorsing wine and opening bakerys, however you never got business."
 
 # game/story-fulafu-simulator.rpy:19
 translate en story_fulafu_simulator_85efc8c0:
@@ -58,7 +58,7 @@ translate en flfsim_choose_type_21eca5b8:
 translate en flfsim_choose_type_f0ac48f4:
 
     # "细雨的温柔[blackened!t]" "这不是我们中国的知名猴戏🐒"
-    "Tender like a drizzle[blackened!t]" "This doesn't look like the classic monkey show 🐒"
+    "Tender like a drizzle[blackened!t]" "This doesn't look like our classic monkey show 🐒"
 
 # game/story-fulafu-simulator.rpy:67
 translate en flfsim_choose_type_7b6096f6:
@@ -226,7 +226,7 @@ translate en strings:
 
     # game/story-fulafu-simulator.rpy:20
     old "天上还真会掉馅饼"
-    new "there are actually pie from the sky"
+    new "there actually are pies from the sky"
 
     # game/story-fulafu-simulator.rpy:20
     old "这里的火锅还挺好吃的"
@@ -234,15 +234,15 @@ translate en strings:
 
     # game/story-fulafu-simulator.rpy:44
     old "那么，要拍什么类型的作品呢？"
-    new "What kind of video will you film."
+    new "So, what kind of video will you film?"
 
     # game/story-fulafu-simulator.rpy:44
     old "狂舔中国"
-    new "Embrace China madly"
+    new "Mad China embracing"
 
     # game/story-fulafu-simulator.rpy:44
     old "回归老本行，推销红酒"
-    new "Back to old business and sell wine"
+    new "Wine selling (back to old business)"
 
     # game/story-fulafu-simulator.rpy:56
     old "这里是"
@@ -278,7 +278,7 @@ translate en strings:
 
     # game/story-fulafu-simulator.rpy:63
     old "烂钱是不可能不恰的，只能越恰花样越多，，，"
-    new "A person that grabs money will never cease to do it. The grabbing method will only get complexer over time,"
+    new "One who grabs money will never cease to do it, except the grabbing method will only get complexier over time,"
 
     # game/story-fulafu-simulator.rpy:63
     old "我爱中国的Q"
