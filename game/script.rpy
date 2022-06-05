@@ -31,6 +31,7 @@ init python:
     renpy.random.seed = _newseed
 
 label start:
+    $ quick_menu = True
     $ player_character = 0
 
     scene black with dissolve
