@@ -98,7 +98,7 @@ label flfsim_choose_type:
             window show dissolve
             "你已经给人留下了不好的印象了..."
             "再想怎样挽救，也已经无济于事了..."
-            jump endgame
+            return
     "你录了一段作品。"
     "现在，只要睡个午觉..."
     scene black with dissolve
@@ -143,4 +143,4 @@ label flfsim_choose_type:
     "记住，真正给你流量的，不是金主，不是你所谓的千万粉丝，更不是神。"
     "而是你实际上寥寥无几的真粉，还有那些喷子们。"
     "没有了这些，你又是个什么东西呢..."
-    jump endgame
+    return

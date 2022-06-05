@@ -142,4 +142,4 @@ label story_char_1:
                 $ _history_list.pop()
                 call endscreen(content=_("你自裁了。你感觉自己像个人渣！"), screen="dead", music=audio.gameover)
                 return
-    jump endgame
+    return

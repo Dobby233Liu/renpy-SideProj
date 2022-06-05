@@ -106,7 +106,6 @@ label endscreen(content=_("你背叛了你的队友！"), screen="fail", music=a
     show screen reload_prompt(content) with dissolve
     pause
     stop sound
-    jump endgame
     return
 
 label endgame:
