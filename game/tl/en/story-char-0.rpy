@@ -238,7 +238,7 @@ translate en report_error_test_087fc18c:
 translate en report_error_test_12f802ba:
 
     # child_lead "伏拉夫不是要吃小孩火锅吗"
-    child_lead "Don't Fulafu make hot pot from children"
+    child_lead "Doesn't Fulafu make hot pot from children"
 
 # game/story-char-0.rpy:271
 translate en report_error_test_0c495f6a:

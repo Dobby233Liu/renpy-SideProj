@@ -87,14 +87,7 @@ label story_char_0_battle_myround:
                     play sound child_faint
                     pause 0.5
                     "KO！" # 皮一下
-                    # temp
-                    stop music fadeout 1.0
-                    pause 1.0
-                    play music pokerg_mus_win
-                    "小孩♂ xxs 被击倒了！"
-                    "你胜利了！"
-                    "获得了 0 GOLD！"
-                    $ quick_menu = True
+                    call story_char_0_win
                     child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我要被做成火锅了啊！！！"
                 # TODO add wo ai zh guo
                 "发布作品": # maybe FIXME：引战
@@ -140,14 +133,9 @@ label story_char_0_battle_myround:
                     play sound child_faint
                     pause 0.5
                     "致命一击！"
-                    stop music fadeout 1.0
-                    pause 1.0
-                    play music pokerg_mus_win
-                    "小孩♂ xxs 被击倒了！"
-                    "你胜利了！"
-                    "获得了 0 GOLD！"
-                    $ quick_menu = True
+                    call story_char_0_win
                     child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我上电视了啊啊！！！"
+                    jump story_char_0_end
                 "眩晕":
                     $ quick_menu = False
                     "会飞的鸡 使用了 眩晕！" nointeract
@@ -224,13 +212,8 @@ label story_char_0_battle_myround:
                         pause 1.5
                         hide screen chat with dissolve
                         window show
-                        # temp
-                        stop music fadeout 1.0
-                        pause 1.0
-                        play music pokerg_mus_win
-                        "你胜利了！"
-                        "获得了 0 GOLD！"
-                        $ quick_menu = True
+                        call story_char_0_win(ko=False)
+                        jump story_char_0_end
         "逃跑" if not brainfucked_run:
             if renpy.random.randint(0,3) == 2:
                 $ brainfucked_run = True
@@ -273,6 +256,7 @@ label story_char_0_battle_myround:
                 child_lead "？？？"
                 child_lead "伏拉夫不是要吃小孩火锅吗"
                 child_lead "怎么跑了"
+                jump story_char_0_end
         "gdv攻ghjghhgfffd跑pgh" if brainfucked_run:
             window hide(None)
             stop music
@@ -313,14 +297,6 @@ label story_char_0_battle_myround:
             $ quick_menu = False
             "{cps=*12}{space=30}{/cps}{k=.5}{size=+36}GAME OVER.{/size}{/k}{fast}"
             return
-label story_char_0_end:
-    stop music fadeout 0.5
-    $ quick_menu = False
-    window hide dissolve
-    scene black with dissolve
-    $ quick_menu = True
-    return
-
 define story_o_round_attack_PAN = _("平底锅")
 define story_o_round_attack_TACKLE = _("撞击")
 label story_char_0_battle_opround:
@@ -392,5 +368,24 @@ label story_char_0_battle_opround:
     pause 0.5
     "会飞的鸡 被击倒了！"
     jump story_char_0_end # why not
+    return
+label story_char_0_end:
+    stop music fadeout 0.5
+    $ quick_menu = False
+    window hide dissolve
+    scene black with dissolve
+    $ quick_menu = True
+    return
+
+label story_char_0_win(ko=True, play_music=True):
+    if play_music:
+        stop music fadeout 1.0
+        pause 1.0
+        play music pokerg_mus_win
+    if ko:
+        "小孩♂ xxs 被击倒了！"
+    "你胜利了！"
+    "获得了 0 GOLD！"
+    $ quick_menu = True
     return
 # dumb pokemon ripoff end
