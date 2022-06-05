@@ -5,6 +5,7 @@ on:
   push:
   pull_request:
   release:
+    types: [published]
 
 # 作业和其步骤
 jobs:
@@ -13,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      RENPY_SDK: 7.4.6
+      RENPY_SDK: 7.4.11
 
     steps:
       - name: 克隆仓库
