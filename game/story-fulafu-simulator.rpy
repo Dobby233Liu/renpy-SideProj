@@ -24,11 +24,11 @@ label story_fulafu_simulator:
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference
         $ old_pos = safe_get_pos()
-        #$ print(str(old_pos))
         play music "<from " + str(old_pos) + " " + audio.china2[1:18] + ">audio/c2g.ogg"
         hide fulafu_overworld
         show fulafu_overworld_jumpscare
         "现在每几天都去各种小孩家里拿“火锅底料”。{p=1.0}{nw}"
+        $ old_pos = safe_get_pos()
         stop music
         play music "<from " + str(old_pos) + " " + audio.china2[1:]
         hide fulafu_overworld_jumpscare

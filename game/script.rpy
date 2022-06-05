@@ -30,6 +30,11 @@ init python:
     renpy.random.random = _newrandom
     renpy.random.seed = _newseed
 
+    def safe_get_pos():
+        pos = renpy.music.get_pos(channel="music")
+        if pos: return pos
+        return 0
+
 label start:
     $ quick_menu = True
     $ player_character = 0

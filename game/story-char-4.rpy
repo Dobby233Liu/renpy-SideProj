@@ -1,8 +1,3 @@
-init python:
-    def safe_get_pos():
-        pos = renpy.music.get_pos(channel="music")
-        if pos: return pos
-        return 0
 label story_char_4:
     "技能：{w=1.0}{nw}"
     $ _history_list.pop()
@@ -49,10 +44,10 @@ label story_char_4_start:
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference
         $ old_pos = safe_get_pos()
-        #$ print(str(old_pos))
         play music "<from " + str(old_pos) + " " + audio.china2[1:18] + ">audio/c2g.ogg"
         show fulafu_overworld_jumpscare
         pause 0.5
+        $ old_pos = safe_get_pos()
         stop music
         play music "<from " + str(old_pos) + " " + audio.china2[1:]
         hide car_fixing
