@@ -8,8 +8,8 @@ on:
     types: [published]
 
 env:
-  RENPYORG: https://nightly.renpy.org
-  RENPY_VERSION: nightly-2021-12-04-8654f8eef
+  RENPYORG: https://www.renpy.org
+  RENPY_VERSION: 7.4.11
   KEY_CN: Dobby233Liu
 
 jobs:
