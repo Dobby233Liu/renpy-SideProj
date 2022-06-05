@@ -10,7 +10,7 @@ translate en strings:
 
     # game/script.rpy:39
     old "请选择阵营。"
-    new "Select your type."
+    new "Select a side."
 
     # game/script.rpy:39
     old "!!环境变量测试!!"
@@ -18,11 +18,11 @@ translate en strings:
 
     # game/script.rpy:39
     old "狩猎"
-    new "Hunt"
+    new "Hunter"
 
     # game/script.rpy:39
     old "逃离"
-    new "Escape"
+    new "Escaper"
 
     # game/script.rpy:39
     old "伏拉夫（模拟器）"
