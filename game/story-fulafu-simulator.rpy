@@ -6,7 +6,7 @@ label story_fulafu_simulator:
                 jump flfsim_choose_type
             "继续":
                 pass
-    scene "gui/overlay/game_menu.png" with dissolve
+    scene expression "gui/overlay/game_menu.png" with dissolve
     show fulafu_overworld with dissolve
     "你是伏拉夫，抖音上的一个俄罗斯博主。"
     "你以前四处苦苦代言红酒、开包子店等等，可是却一直没有生意。"
@@ -19,6 +19,7 @@ label story_fulafu_simulator:
     "但是自从加入了抖音，并在某个火锅店[zzz!t]之后，[r!t]，就开始[bad_fund!t]了。"
     $ ugh = _("天上还真会掉馅饼") if bad_fund == _("恰烂钱") else _("这里的火锅还挺好吃的")
     "中国各个方面都很好，而且[ugh!t]，使你爱起中国，入了中国国籍。"
+    $ persistent.introduced_sim_character_fulafu = True
     # be aware about some strange glitch that changes the music
     if renpy.music.is_playing(channel='music') and renpy.music.get_playing(channel='music') == audio.china2 and renpy.random.randint(0,3) == 1:
         # lolol ddlc reference
@@ -37,7 +38,6 @@ label flfsim_choose_type:
     show fulafu_overworld with dissolve
     "这天，你又想拍一个作品上传到抖音和西瓜视频。"
     hide fulafu_overworld with dissolve
-    $ persistent.introduced_sim_character_fulafu = True
 #label flfsim_choose_type:
     #if persistent.introduced_sim_character_fulafu:
     #    scene bg_sunny_outside with dissolve
@@ -98,7 +98,6 @@ label flfsim_choose_type:
             window show dissolve
             "你已经给人留下了不好的印象了..."
             "再想怎样挽救，也已经无济于事了..."
-            $ quick_menu = True
             jump endgame
     "你录了一段作品。"
     "现在，只要睡个午觉..."
@@ -144,6 +143,4 @@ label flfsim_choose_type:
     "记住，真正给你流量的，不是金主，不是你所谓的千万粉丝，更不是神。"
     "而是你实际上寥寥无几的真粉，还有那些喷子们。"
     "没有了这些，你又是个什么东西呢..."
-    window hide dissolve
-    $ quick_menu = True
     jump endgame

@@ -27,16 +27,8 @@ label story_char_3_menu1:
         "哦耶":
             pass
         "网红厨师长":
-            $ quick_menu = False
-            window hide dissolve
-            stop music
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你被反杀了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你被反杀了！"), screen="dead", music=audio.gameover)
+            return
         "干作者":
             show screen notify(_("？？？"))
             "休想！"
@@ -47,16 +39,8 @@ label story_char_3_menu2:
         with dissolve
         "你击败了那个小孩。接下来要去哪里？"
         "厨房":
-            $ quick_menu = False
-            window hide dissolve
-            stop music
-            scene fail with dissolve
-            play sound gameover
-            show screen reload_prompt(_("花式吊打打打打打打哒！～"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("花式吊打打打打打打哒！～"), screen="fail", music=audio.gameover)
+            return
         "卧室":
             pass
         "啥也不干":
@@ -70,16 +54,8 @@ label story_char_3_menu3:
         with dissolve
         "你看见两个小孩在修机子。要做点什么？"
         "像国服李白一样地打败他们":
-            $ quick_menu = False
-            window hide dissolve
-            stop music
-            scene win with dissolve
-            play sound win
-            show screen reload_prompt(_("你击败了所有小孩！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你击败了所有小孩！"), screen="win", music=audio.win)
+            return
         "走位":
             show screen notify(_("你想多了"))
             jump story_char_3_menu3

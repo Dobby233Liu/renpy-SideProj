@@ -23,16 +23,8 @@ label story_char_2_start:
         "是":
             pass
         "否":
-            $ quick_menu = False
-            window hide dissolve
-            stop music
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你被 xxs 反杀了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你被 xxs 反杀了！"), screen="dead", music=audio.gameover)
+            return
     menu:
         with dissolve
         "但是你的血量不足。是否打血包？"
@@ -45,16 +37,8 @@ label story_char_2_start:
             hide child_with_pan with dissolve
             "你打败了 xxs。"
         "否":
-            $ quick_menu = False
-            window hide dissolve
-            stop music
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你打不过 xxs，反而被他打死了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你打不过 xxs，反而被他打死了！"), screen="dead", music=audio.gameover)
+            return
     show child_with_pan with dissolve
     menu:
         with dissolve
@@ -77,20 +61,7 @@ label story_char_2_start:
             play sound punchs
             "呕呕呕呕呕呕呕呕呕呕呕呕呕呕" nointeract
             pause 2.0
-            scene win with dissolve
-            play sound win
-            show screen reload_prompt(_("你击败了所有小孩！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
-    $ quick_menu = False
-    window hide dissolve
-    stop music
-    scene dead with dissolve
-    play sound gameover
-    show screen reload_prompt(_("你使用的技能不仅没有打败小孩，他们还把你打死了！"))
-    pause
-    stop sound
-    $ quick_menu = True
+            call endscreen(content=_("你击败了所有小孩！"), screen="win", music=audio.win)
+            return
+    call endscreen(content=_("你使用的技能不仅没有打败小孩，他们还把你打死了！"), screen="dead", music=audio.gameover)
     return

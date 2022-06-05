@@ -28,13 +28,8 @@ label story_char_1_pre2:
             pause 1.0
             play sound dizzypt2
             pause 1.0
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你因为太手残，不小心打晕了自己！")) with dissolve
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你因为太手残，不小心打晕了自己！"), screen="dead", music=audio.gameover)
+            return
         "去找更多的物资":
             pass
     scene fix_house with slideleft
@@ -90,15 +85,8 @@ label story_char_1_pre2:
             play sound dizzypt2
             play sound child_faint
             pause 1.0
-            window hide dissolve
-            scene dead with dissolve
-            stop music
-            play sound gameover
-            show screen reload_prompt(_("你力气很小，没撞成反而被伏拉夫抓走了！")) with dissolve
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你力气很小，没撞成反而被伏拉夫抓走了！"), screen="dead", music=audio.gameover)
+            return
         "放屁":
             # this was in 1.0; forgive me
             $ _history_list.pop()
@@ -153,14 +141,8 @@ label story_char_1_pre2:
             stop sound
             play sound child_faint
             pause 1.0
-            window hide dissolve
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你跑不过伏拉夫，被他抓走了！")) with dissolve
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你跑不过伏拉夫，被他抓走了！"), screen="dead", music=audio.gameover)
+            return
     show screen spell_showcase("images/key.png", 1.25) with dissolve
     "从 伏拉夫 身上掉落一把 钥匙。"
     "你得到了 钥匙！" nointeract
@@ -185,10 +167,10 @@ label story_char_1_pre2:
             $ _history_list.pop()
             "...{w=1.0}{nw}"
             $ _history_list.pop()
-            call story_char_1_pre2_end(_("最后你找到了最后一把钥匙，\n在伏拉夫靠近之前逃脱了！"), "win", audio.win)
+            call endscreen(_("最后你找到了最后一把钥匙，\n在伏拉夫靠近之前逃脱了！"), screen="win", music=audio.win)
+            return
         "去挖地道":
             $ _history_list.pop()
-            call story_char_1_pre2_end
         "去打猎别的伏拉夫":
             $ _history_list.pop()
             $ quick_menu = False
@@ -197,22 +179,7 @@ label story_char_1_pre2:
             scene bg_sunny_outside with dissolve
             "诶诶诶，锁还没开呢！{p=1.5}{nw}"
             "你这是去干嘛！{p=1.7}{nw}"
-            call story_char_1_pre2_end
         "当场去世":
             $ _history_list.pop()
-            call story_char_1_pre2_end
-    jump endgame
-label story_char_1_pre2_end(content=_("你背叛了你的队友！"), scrn="fail", mus=audio.gameover):
-    $ quick_menu = False
-    window hide dissolve
-    stop music
-    if scrn == "win":
-        scene win with dissolve
-    else:
-        scene fail with dissolve
-    play sound mus
-    show screen reload_prompt(content) with dissolve
-    pause
-    stop sound
-    $ quick_menu = True
+    call endscreen(content=_("你背叛了你的队友！"), screen="fail", music=audio.gameover)
     return

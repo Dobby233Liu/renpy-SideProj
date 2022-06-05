@@ -97,6 +97,19 @@ label search:
     jump expression jump_to_label
     jump endgame
 
+label endscreen(content=_("你背叛了你的队友！"), screen="fail", music=audio.gameover):
+    $ quick_menu = False
+    window hide dissolve
+    stop music
+    scene expression screen with dissolve
+    play sound expression mus
+    show screen reload_prompt(content) with dissolve
+    pause
+    stop sound
+    jump endgame
+    return
+
 label endgame:
+    $ quick_menu = True
     window hide dissolve
     return

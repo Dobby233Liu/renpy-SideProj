@@ -33,13 +33,8 @@ label story_char_heimankun_start:
             pause 2.0
             play sound pong
             pause 2.0
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你被小孩打死了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你被小孩打死了！"), screen="dead", music=audio.gameover)
+            return
         "干就完了":
             $ _history_list.pop()
             pass
@@ -63,13 +58,8 @@ label story_char_heimankun_start:
             pause 2.0
             play sound pong
             pause 2.0
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你被陷害了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你被陷害了！"), screen="dead", music=audio.gameover)
+            return
     scene kitchen with dissolve
     show screen spell_showcase("images/wowotou.png", 1.5, 0.25) with dissolve
     "你找到了一个窝窝头。它可能会提升你的移动速度。"
@@ -87,22 +77,10 @@ label story_char_heimankun_start:
             pause 1.0
             play sound dizzypt2
             pause 1.0
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你被毒死了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你被毒死了！"), screen="dead", music=audio.gameover)
+            return
         "否":
             $ _history_list.pop()
             pass
-    $ quick_menu = False
-    window hide dissolve
-    stop music
-    scene win with dissolve
-    play sound win
-    show screen reload_prompt(_("时间被消耗光了，你胜利了！"))
-    pause
-    stop sound
-    $ quick_menu = True
+    call endscreen(content=_("时间被消耗光了，你胜利了！"), screen="win", music=audio.win)
+    return

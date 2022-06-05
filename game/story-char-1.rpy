@@ -44,15 +44,8 @@ label story_char_1:
             play sound pong
             scene black
             pause 1
-            $ quick_menu = False
-            #stop music
-            scene fail with dissolve
-            play sound gameover
-            show screen reload_prompt(_("潜伏在第二台处的伏拉夫把你抓走了！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("潜伏在第二台处的伏拉夫把你抓走了！"), screen="fail", music=audio.gameover)
+            return
         "发呆":
             hide car_fixing with dissolve
             scene black with dissolve
@@ -70,13 +63,8 @@ label story_char_1:
             pause 2.0
             hide screen chat with dissolve
             pause 1.0
-            scene fail with dissolve
-            play sound gameover
-            show screen reload_prompt(_("你因为挂机被踢出了游戏！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("你因为挂机被踢出了游戏！"), screen="fail", music=audio.gameover)
+            return
 
     pause 1.0
     hide car_fixing with dissolve
@@ -90,15 +78,8 @@ label story_char_1:
             $ quick_menu = False
             scene black with dissolve
             "..."
-            window hide dissolve
-            stop music
-            scene dead with dissolve
-            play sound gameover
-            show screen reload_prompt(_("伏拉夫把你抓到了！\n记住，休想溜他！"))
-            pause
-            stop sound
-            $ quick_menu = True
-            jump endgame
+            call endscreen(content=_("伏拉夫把你抓到了！\n记住，休想溜他！"), screen="dead", music=audio.gameover)
+            return
         "驱赶":
             pass
 
@@ -112,16 +93,8 @@ label story_char_1:
             "你的朋友突然告诉你洞穴被他挖通了。要去那里避难吗？"
             "再修一台":
                 $ _history_list.pop()
-                $ quick_menu = False
-                window hide dissolve
-                stop music
-                scene win with dissolve
-                play sound win
-                show screen reload_prompt(_("你修好了第三台机子。你们赢了！"))
-                pause
-                stop sound
-                $ quick_menu = True
-                jump endgame
+                call endscreen(content=_("你修好了第三台机子。你们赢了！"), screen="win", music=audio.win)
+                return
             "去洞穴":
                 $ _history_list.pop()
                 scene cave with dissolve
@@ -158,16 +131,8 @@ label story_char_1:
                 scene black with blinds
                 #window hide(None)
                 $ renpy.pause(4, hard=True)
-                $ quick_menu = False
-                #window hide dissolve
-                #stop music
-                scene fail with dissolve
-                play sound gameover
-                show screen reload_prompt(_("机子没人修，人也只能挤在一起，洞穴就这样崩了！"))
-                pause
-                stop sound
-                $ quick_menu = True
-                jump endgame
+                call endscreen(content=_("机子没人修，人也只能挤在一起，洞穴就这样崩了！"), screen="fail", music=audio.gameover)
+                return
             "给我提示！":
                 $ _history_list.pop()
                 show screen notify(_("洞穴wx")) with dissolve
@@ -175,14 +140,6 @@ label story_char_1:
                 jump story_char_1_contiune
             "死掉":
                 $ _history_list.pop()
-                $ quick_menu = False
-                window hide dissolve
-                stop music
-                scene dead with dissolve
-                play sound gameover
-                show screen reload_prompt(_("你自裁了。你感觉自己像个人渣！"))
-                pause
-                stop sound
-                $ quick_menu = True
-                jump endgame
+                call endscreen(content=_("你自裁了。你感觉自己像个人渣！"), screen="dead", music=audio.gameover)
+                return
     jump endgame

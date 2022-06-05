@@ -196,5 +196,6 @@ init python:
         renpy.call_in_new_context('_game_menu_cust')
     config.game_menu_action = prefs
 
+default persistent.old_version_content = False
 default persistent.bad_fund = None
 default persistent.introduced_sim_character_fulafu = False
