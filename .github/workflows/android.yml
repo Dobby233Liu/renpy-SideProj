@@ -8,7 +8,7 @@ on:
     types: [published]
 
 env:
-  RENPYORG: https://www.renpy.org
+  RENPYORG: https://www.renpy.org/dl
   RENPY_VERSION: 7.4.11
   KEY_CN: Dobby233Liu
 
