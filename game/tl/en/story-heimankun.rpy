@@ -10,7 +10,7 @@ translate en story_char_heimankun_decf061a:
 translate en story_char_heimankun_72184626:
 
     # "很快就到你家门口：所有小孩全部眩晕 10 秒。"
-    "Coming Close Quickly: Makes all children in a combat faint for 10 seconds."
+    "Coming Close Quickly: Makes all children in combat faint for 10 seconds."
 
 # game/story-heimankun.rpy:8
 translate en story_char_heimankun_e00b5b4a:

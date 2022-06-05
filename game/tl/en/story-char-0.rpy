@@ -34,7 +34,7 @@ translate en story_char_0_intro_5375a73e:
 translate en story_char_0_intro_8408b5dd:
 
     # child_lead "伏拉夫已经来了？？？"
-    child_lead "The Fulafu is here already???"
+    child_lead "Fulafu is here already???"
 
 # game/story-char-0.rpy:26
 translate en story_char_0_intro_3d1488c5:
@@ -238,13 +238,13 @@ translate en report_error_test_087fc18c:
 translate en report_error_test_12f802ba:
 
     # child_lead "伏拉夫不是要吃小孩火锅吗"
-    child_lead "Don't Fulafus make hot pot from children"
+    child_lead "Don't Fulafu make hot pot from children"
 
 # game/story-char-0.rpy:271
 translate en report_error_test_0c495f6a:
 
     # child_lead "怎么跑了"
-    child_lead "Why did that guy run"
+    child_lead "Why did he run"
 
 # game/story-char-0.rpy:310
 translate en story_char_0_battle_run_reload_1a5b85f2:
