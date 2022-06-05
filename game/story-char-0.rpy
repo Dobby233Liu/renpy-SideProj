@@ -89,6 +89,7 @@ label story_char_0_battle_myround:
                     "KO！" # 皮一下
                     call story_char_0_win
                     child_lead "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊我要被做成火锅了啊！！！"
+                    jump story_char_0_end
                 # TODO add wo ai zh guo
                 "发布作品": # maybe FIXME：引战
                     $ quick_menu = False
@@ -116,7 +117,6 @@ label story_char_0_battle_myround:
                         yalign 0.15
                     with vpunch
                     stop sound
-                    play sound punchs
                     pause 0.5
                     hide fulafu_battle_cast
                     show fulafu_battle_normal:
@@ -198,7 +198,6 @@ label story_char_0_battle_myround:
                         child_lead "啊啊啊啊啊啊啊啊啊啊"
                         "小孩♂ xxs 做了个噩梦，又醒来了！"
                         "攻击不是很有效果..."
-                        jump story_char_0_battle_opround
                     else:
                         child_lead "zzzzzzzzzz" nointeract
                         pause 2.0
@@ -212,7 +211,7 @@ label story_char_0_battle_myround:
                         pause 1.5
                         hide screen chat with dissolve
                         window show
-                        call story_char_0_win(ko=False)
+                        call story_char_0_win(ko=False, end=True)
                         jump story_char_0_end
         "逃跑" if not brainfucked_run:
             if renpy.random.randint(0,3) == 2:
@@ -248,10 +247,7 @@ label story_char_0_battle_myround:
                 $ quick_menu = False
                 "成功地逃跑了！"
                 window hide dissolve
-                stop music fadeout 1.0
-                pause 1.0
-                play music pokerg_mus_win fadein 1.0
-                $ quick_menu = True
+                call story_char_0_win(ko=False, end=False, quiet=True)
                 window show dissolve
                 child_lead "？？？"
                 child_lead "伏拉夫不是要吃小孩火锅吗"
@@ -269,7 +265,6 @@ label story_char_0_battle_myround:
             hide fulafu_overworld_jumpscare2
             scene black
             label story_char_0_battle_run_reload: # very solid restoration of reloading
-            $ quick_menu = False
             window show(None)
             python:
                 renpy.music.stop()
@@ -294,9 +289,8 @@ label story_char_0_battle_myround:
                 renpy.transition(config.after_load_transition, force=True)
             scene dead
             window show(None)
-            $ quick_menu = False
             "{cps=*12}{space=30}{/cps}{k=.5}{size=+36}GAME OVER.{/size}{/k}{fast}"
-            return
+            jump story_char_0_end
 define story_o_round_attack_PAN = _("平底锅")
 define story_o_round_attack_TACKLE = _("撞击")
 label story_char_0_battle_opround:
@@ -344,28 +338,29 @@ label story_char_0_battle_opround:
         hide danger with dissolve
         $ xxs_slept = False
 
+    $ success = False
     if use_attack == story_o_round_attack_PAN:
         hide child
         show child_with_pan:
             zoom 0.5
             xalign 0.9
             yalign 0.15
-        if renpy.random.randint(0,127) == 2:
-            "攻击不是很有效果..."
-            $ quick_menu = True
-            jump story_char_0_battle_myround
-        hide fulafu_battle_normal with easeoutleft
+        if renpy.random.randint(0,127) != 2:
+            $ success = True
     else:
         hide child_with_pan with easeoutright
         show child_with_pan with easeinright:
             zoom 0.5
             xalign 0.9
             yalign 0.15
-        "攻击不是很有效果..."
+    if not success:
         $ quick_menu = True
+        "攻击不是很有效果..."
         jump story_char_0_battle_myround
+    hide fulafu_battle_normal with easeoutleft
     play sound fulafu_faint
     pause 0.5
+    $ quick_menu = True
     "会飞的鸡 被击倒了！"
     jump story_char_0_end # why not
     return
@@ -377,15 +372,18 @@ label story_char_0_end:
     $ quick_menu = True
     return
 
-label story_char_0_win(ko=True, play_music=True):
+label story_char_0_win(ko=True, end=False, quiet=False, play_music=True):
     if play_music:
         stop music fadeout 1.0
         pause 1.0
         play music pokerg_mus_win
-    if ko:
-        "小孩♂ xxs 被击倒了！"
-    "你胜利了！"
-    "获得了 0 GOLD！"
+    if not quiet:
+        if ko:
+            "小孩♂ xxs 被击倒了！"
+        "你胜利了！"
+        "获得了 0 GOLD！"
     $ quick_menu = True
+    if end:
+        jump story_char_0_end
     return
 # dumb pokemon ripoff end

@@ -334,3 +334,22 @@ translate en strings:
     old "撞击"
     new "Impact"
 
+# TODO: Translation updated at 2022-06-05 12:05
+
+# game/story-char-0.rpy:385
+translate en story_char_0_win_75d8a194:
+
+    # "小孩♂ xxs 被击倒了！"
+    "Child♂ xxs was knocked out!"
+
+# game/story-char-0.rpy:386
+translate en story_char_0_win_5c2fe216:
+
+    # "你胜利了！"
+    "You won!"
+
+# game/story-char-0.rpy:387
+translate en story_char_0_win_c5cc5b07:
+
+    # "获得了 0 GOLD！"
+    "Got 0 GOLD!"
