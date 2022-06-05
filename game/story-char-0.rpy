@@ -266,25 +266,25 @@ label story_char_0_battle_myround:
             hide fulafu_overworld_jumpscare2
             scene black
             label story_char_0_battle_run_reload: # very solid restoration of reloading
+            $ quick_menu = False
             window show(None)
+            stop music
+            scene black
+            show screen reload_prompt("Saving game...")
             python:
-                renpy.music.stop()
-
-                ui.add(Solid((0, 0, 0, 255)))
-                ui.text("Saving game...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
-
                 renpy.pause(0.37, hard=True)
-
-                ui.add(Solid((0, 0, 0, 255)))
-                ui.text("Reloading script...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
-
+            hide screen reload_prompt
+            scene black
+            show screen reload_prompt("Reloading script...")
+            python:
                 renpy.pause(1.53, hard=True)
-                _window_hide(False)
-
-                ui.add(Solid((0, 0, 0, 255)))
-                ui.text("Reloading game...", size=32, xalign=0.5, yalign=0.5, color="#fff", style="_text")
-
+            window hide(None)
+            scene black
+            show screen reload_prompt("Reloading game...")
+            python:
                 renpy.pause(0.33, hard=True)
+            hide screen reload_prompt
+            python:
                 ui.pausebehavior(0)
                 ui.interact(suppress_underlay=True, suppress_overlay=True)
                 renpy.transition(config.after_load_transition, force=True)
