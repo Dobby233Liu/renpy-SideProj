@@ -172,29 +172,15 @@ init python:
 
 ## ~~~
 
-# Entry points from the game into menu-space.
-label _game_menu_cust(*args, **kwargs):
-
-    $ renpy.play(config.enter_sound)
-
-    call _enter_game_menu
-
-    $ renpy.show_screen("preferences", *args, _transient=True, **kwargs)
-    $ ui.interact()
-    jump _noisy_return
-
 define config.has_autosave = False
 define config.autosave_on_choice = False
 define config.autosave_on_quit = False
 define config.debug = config.developer
 define config.debug_text_overflow = config.debug
+default _game_menu_screen = "preferences"
 init python:
     config.keymap['game_menu'].remove('mouseup_3')
     config.keymap['hide_windows'].append('mouseup_3')
-
-    def prefs():
-        renpy.call_in_new_context('_game_menu_cust')
-    config.game_menu_action = prefs
 
 default persistent.old_version_content = False
 default persistent.bad_fund = None
