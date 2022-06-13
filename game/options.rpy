@@ -178,9 +178,6 @@ define config.autosave_on_quit = False
 define config.debug = config.developer
 define config.debug_text_overflow = config.debug
 default _game_menu_screen = "preferences"
-init python:
-    config.keymap['game_menu'].remove('mouseup_3')
-    config.keymap['hide_windows'].append('mouseup_3')
 
 default persistent.old_version_content = False
 default persistent.bad_fund = None
